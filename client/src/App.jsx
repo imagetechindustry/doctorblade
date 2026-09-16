@@ -35,7 +35,6 @@ const PublicLayout = ({ children }) => (
     <Navbar />
     <div className="flex-grow flex flex-col">{children}</div>
     <Footer />
-    <QuoteModal />
   </div>
 );
 
@@ -54,6 +53,7 @@ function App() {
   return (
     <AdminAuthProvider>
       <Router>
+        <QuoteModal />
         <Routes>
           {/* ── Public routes ── */}
           <Route

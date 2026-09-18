@@ -133,8 +133,8 @@ const CityPage = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "ImageTech Industries",
-    "url": "https://doctorblade.co.in/",
-    "logo": "https://doctorblade.co.in/logo.png",
+    "url": "https://www.doctorblade.co.in/",
+    "logo": "https://www.doctorblade.co.in/logo.png",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+91-8448336036",
@@ -154,7 +154,7 @@ const CityPage = () => {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": "Doctor Blades",
-    "image": "https://doctorblade.co.in/heroimage.webp",
+    "image": "https://www.doctorblade.co.in/heroimage.webp",
     "description": `Premium Doctor Blades available in ${locName}, ${locState}. Designed for gravure and flexographic printing presses.`,
     "brand": {
       "@type": "Brand",

@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
-const SITE_URL = 'https://doctorblade.co.in';
+const SITE_URL = 'https://www.doctorblade.co.in';
 const SITE_NAME = 'ImageTech Industries';
 const DEFAULT_IMAGE = `${SITE_URL}/heroimage.webp`;
 const TWITTER_HANDLE = '@ImageTech_Ind'; // Placeholder

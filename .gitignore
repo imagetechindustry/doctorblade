@@ -38,6 +38,7 @@ coverage/
 .DS_Store
 Thumbs.db
 *.txt
+!client/public/robots.txt
 # IDE files
 .vscode/
 .idea/

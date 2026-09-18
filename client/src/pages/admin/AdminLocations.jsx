@@ -955,7 +955,7 @@ const AdminLocations = () => {
                   />
                 </div>
                 <p className="text-[11px] text-slate-400 mt-1">
-                  Page URL: doctorblade.co.in/{formData.slug || "city"}
+                  Page URL: www.doctorblade.co.in/{formData.slug || "city"}
                 </p>
               </div>
 

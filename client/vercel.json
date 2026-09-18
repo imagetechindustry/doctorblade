@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/sitemap.xml",
-      "destination": "https://imagetech-server.onrender.com/sitemap.xml?domain=doctorblade.co.in"
+      "destination": "https://imagetech-server.onrender.com/sitemap.xml?domain=www.doctorblade.co.in"
     },
     {
       "source": "/(.*)",

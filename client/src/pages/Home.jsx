@@ -14,8 +14,8 @@ const Home = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "ImageTech Industries",
-    "url": "https://doctorblade.co.in/",
-    "logo": "https://doctorblade.co.in/logo.png",
+    "url": "https://www.doctorblade.co.in/",
+    "logo": "https://www.doctorblade.co.in/logo.png",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+91-9811000000",
@@ -34,7 +34,7 @@ const Home = () => {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": "Doctor Blade",
-    "image": "https://doctorblade.co.in/heroimage.webp",
+    "image": "https://www.doctorblade.co.in/heroimage.webp",
     "description": "The best doctor blade in Delhi, India. Premium carbon steel, stainless steel, and polymer doctor blades for flexographic and rotogravure printing.",
     "brand": {
       "@type": "Brand",

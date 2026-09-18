@@ -6,6 +6,7 @@ import ContactFAQ from "../components/contact/ContactFAQ";
 import ContactFeatures from "../components/contact/ContactFeatures";
 import HomeCTA from "../components/home/HomeCTA";
 import SEO from "../components/common/SEO";
+import ContactWebsites from "../components/contact/ContactWebsites";
 
 const ContactUs = () => {
   // Scroll to top when component mounts
@@ -34,7 +35,7 @@ const ContactUs = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Contact Us | ImageTech Industries"
         description="Get in touch with ImageTech Industries. We are the leading manufacturer of doctor blades in Delhi, India. Contact us for sales, support, and custom inquiries."
         keywords={['contact imagetech industries', 'doctor blade supplier contact', 'buy doctor blade in delhi', 'printing blade inquiries']}
@@ -55,6 +56,8 @@ const ContactUs = () => {
             </div>
           </div>
         </section>
+        {/* Specialized Product Websites Network */}
+        <ContactWebsites />
 
         {/* Features Banner */}
         <div className="bg-slate-50 pb-16">

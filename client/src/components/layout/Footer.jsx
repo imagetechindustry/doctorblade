@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-white text-gray-900 font-bold border-t border-gray-200 pt-16 mt-auto">
       {/* Top Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.6fr_0.85fr_1.1fr_1.1fr_1.35fr] gap-8 lg:gap-6 mb-16">
           {/* Column 1: Brand Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -294,7 +294,152 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 4: Quick Contacts */}
+          {/* Column 4:  */}
+          <div>
+            <h4 className="text-gray-900 font-bold mb-4 uppercase tracking-wide border-b-2 border-blue-500 inline-block pb-1">
+              OUR WEBSITES
+            </h4>
+            <ul className="space-y-3 text-sm text-gray-900 font-bold font-semibold">
+              <li>
+                <a
+                  href="https://www.imagetechindustries.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 flex items-center transition-colors group"
+                >
+                  <svg
+                    className="w-3 h-3 text-blue-500 mr-2 shrink-0 group-hover:translate-x-0.5 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  <span>imagetechindustries.com</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.doctorblade.co.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 flex items-center transition-colors group"
+                >
+                  <svg
+                    className="w-3 h-3 text-blue-500 mr-2 shrink-0 group-hover:translate-x-0.5 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  <span>doctorblade.co.in</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.stroboscopelight.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 flex items-center transition-colors group"
+                >
+                  <svg
+                    className="w-3 h-3 text-blue-500 mr-2 shrink-0 group-hover:translate-x-0.5 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  <span>stroboscopelight.com</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.barcoater.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 flex items-center transition-colors group"
+                >
+                  <svg
+                    className="w-3 h-3 text-blue-500 mr-2 shrink-0 group-hover:translate-x-0.5 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  <span>barcoater.com</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.teflondam.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 flex items-center transition-colors group"
+                >
+                  <svg
+                    className="w-3 h-3 text-blue-500 mr-2 shrink-0 group-hover:translate-x-0.5 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  <span>teflondam.com</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.inkmixingroller.com"
+                  className="hover:text-blue-600 flex items-center transition-colors group"
+                >
+                  <svg
+                    className="w-3 h-3 text-blue-500 mr-2 shrink-0 group-hover:translate-x-0.5 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  <span>inkmixingroller.com</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 5: Quick Contacts */}
           <div>
             <h4 className="text-gray-900 font-bold mb-4 uppercase tracking-wide border-b-2 border-blue-500 inline-block pb-1">
               QUICK CONTACTS

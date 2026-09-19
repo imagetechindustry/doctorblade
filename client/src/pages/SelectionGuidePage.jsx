@@ -153,56 +153,174 @@ export default function SelectionGuidePage() {
     window.scrollTo(0, 0);
   }, []);
 
-  // Interactive Calculator State
+  // Interactive Calculator State with Precision Controls
   const [machineType, setMachineType] = useState("gravure");
-  const [pressSpeed, setPressSpeed] = useState("medium");
-  const [inkType, setInkType] = useState("solvent");
   const [cylinderWidth, setCylinderWidth] = useState(1050);
+  const [pressSpeed, setPressSpeed] = useState(280);
+  const [bladeWidth, setBladeWidth] = useState(40);
+  const [overhang, setOverhang] = useState(1.3);
+  const [oscillationStroke, setOscillationStroke] = useState(15);
+  const [inkType, setInkType] = useState("solvent");
+  const [copied, setCopied] = useState(false);
+
+  const handleMachineTypeChange = (type) => {
+    setMachineType(type);
+    if (type === "flexo") {
+      setOscillationStroke(0); // Standard flexo chambers are non-oscillating
+    } else if (type === "gravure" && oscillationStroke === 0) {
+      setOscillationStroke(15);
+    }
+  };
 
   const calculateRecommendation = () => {
-    let thickness = "0.150 mm";
-    let edge = "Lamella (0.075 mm tip)";
-    let material = "WIPEX Premium Carbon Steel";
-    let pressure = "1.2 – 1.5 bar";
-    let reasoning = "Balanced wiping profile for clean tone reproduction without cylinder chrome wear.";
+    // 1. Blade Length Calculation (L_blade)
+    let cutLength = 0;
+    let clearanceText = "";
+
+    if (machineType === "flexo") {
+      if (oscillationStroke === 0) {
+        cutLength = Math.max(200, cylinderWidth - 10);
+        clearanceText = "Cylinder Face − 10 mm (5 mm end seal clearance per side)";
+      } else {
+        cutLength = Math.max(200, cylinderWidth - 2 * oscillationStroke);
+        clearanceText = `Cylinder Face − ${2 * oscillationStroke} mm (${oscillationStroke} mm stroke clearance per side)`;
+      }
+    } else {
+      const totalBuffer = oscillationStroke > 0 ? 2 * oscillationStroke : 20;
+      cutLength = Math.max(200, cylinderWidth - totalBuffer);
+      clearanceText = `Cylinder Face − ${totalBuffer} mm (${totalBuffer / 2} mm clearance per side)`;
+    }
+
+    // 2. Backing Blade Width & Thickness
+    const backingWidth = Math.max(10, Number((bladeWidth - overhang).toFixed(1)));
+
+    // 3. Blade Thickness & Hydrodynamics
+    let thickness = "0.150 mm (0.006\")";
+    let thicknessMm = 0.150;
+    let backingThickness = "0.300 mm (0.012\")";
+    let edge = "Lamella: 0.075 mm tip × 1.3 mm step";
+    let material = "WIPEX 100 Swedish Carbon Steel";
+    let targetAngle = "58° (Tolerance: 55° – 60°)";
+    let pressureBar = 1.20;
+    let liftRisk = "low"; // "low" | "moderate" | "high"
+    let reasoning = "";
+
+    if (pressSpeed >= 380) {
+      liftRisk = "high";
+    } else if (pressSpeed >= 250) {
+      liftRisk = "moderate";
+    }
 
     if (machineType === "coating") {
-      thickness = "0.250 mm or 0.300 mm";
-      edge = "Bevel 30° / Radius";
-      material = "WIPEX Stainless Steel or Hardened Carbon";
-      pressure = "2.0 – 2.4 bar";
-      reasoning = "Heavier thickness prevents blade deflection under thick, viscous coating formulations.";
-    } else if (pressSpeed === "high") {
-      thickness = "0.200 mm";
-      edge = "Lamella 0.075 mm x 1.3 mm";
-      pressure = "1.6 – 2.0 bar";
-      reasoning = "Higher beam rigidity prevents hydrodynamic ink lift over 350 m/min.";
-    }
-
-    if (inkType === "water") {
-      material = "WIPEX Stainless Steel (Anti-Corrosive)";
-      reasoning += " Stainless steel prevents edge rust and oxidation from alkaline water inks.";
+      thicknessMm = pressSpeed > 300 ? 0.300 : 0.250;
+      thickness = `${thicknessMm.toFixed(3)} mm (${thicknessMm === 0.300 ? '0.012"' : '0.010"'})`;
+      backingThickness = "0.500 mm (0.020\")";
+      edge = "30° Bevel with Micro-Radius";
+      material = inkType === "water" 
+        ? "WIPEX AISI 420 Stainless Steel (Corrosion Resistant)" 
+        : "WIPEX Hardened High-Carbon Alloy";
+      pressureBar = 1.8 + (pressSpeed / 500) * 0.4;
+      targetAngle = "50° – 55°";
+      reasoning = "Heavy-duty blade cross-section resists excessive beam deflection under high-viscosity coatings and varnishes.";
     } else if (inkType === "white") {
-      thickness = "0.200 mm";
-      edge = "Bevel 15° or Heavy Lamella";
-      reasoning += " Abrasive TiO2 particles demand greater edge durability and rigidity.";
-    } else if (machineType === "flexo" && inkType === "water") {
-      material = "WIPEX Polymer or Stainless Steel";
+      thicknessMm = 0.200;
+      thickness = "0.200 mm (0.008\")";
+      backingThickness = "0.400 mm (0.016\")";
+      edge = "15° Heavy Bevel / Heavy Lamella (0.090 mm tip)";
+      material = "WIPEX Ceramic-Coated / Hardened Carbon (600 HV)";
+      pressureBar = 1.35 + (pressSpeed / 500) * 0.35;
+      reasoning = "Abrasive Titanium Dioxide (TiO2) slurry requires high mechanical hardness and reinforced tip geometry to prevent premature tip scalloping.";
+    } else if (inkType === "uv") {
+      thicknessMm = pressSpeed >= 280 ? 0.200 : 0.150;
+      thickness = `${thicknessMm.toFixed(3)} mm (${thicknessMm === 0.200 ? '0.008"' : '0.006"'})`;
+      backingThickness = thicknessMm === 0.200 ? "0.400 mm (0.016\")" : "0.300 mm (0.012\")";
+      edge = "Lamella: 0.080 mm tip × 1.4 mm step";
+      material = "WIPEX Martensitic Swedish Carbon Steel";
+      pressureBar = 1.4 + (pressSpeed / 500) * 0.35;
+      reasoning = "High oligomer viscosity generates elevated hydrodynamic shear drag, requiring a stabilized beam structure.";
+    } else if (inkType === "water") {
+      if (pressSpeed >= 340) {
+        thicknessMm = 0.200;
+        thickness = "0.200 mm (0.008\")";
+        backingThickness = "0.400 mm (0.016\")";
+      }
+      edge = "Lamella: 0.075 mm tip × 1.3 mm step";
+      material = machineType === "flexo" 
+        ? "WIPEX Premium Polymer or Stainless Steel (Zero Anilox Scoring)" 
+        : "WIPEX AISI 420 Martensitic Stainless Steel";
+      pressureBar = 1.25 + (pressSpeed / 500) * 0.35;
+      reasoning = "Alkaline water chemistry (pH 8.2–9.5) demands anti-corrosive metallurgy to eliminate edge oxidation and premature rusting.";
+    } else {
+      if (pressSpeed >= 350) {
+        thicknessMm = 0.200;
+        thickness = "0.200 mm (0.008\")";
+        backingThickness = "0.400 mm (0.016\")";
+        edge = "Lamella: 0.075 mm tip × 1.5 mm step";
+        pressureBar = 1.35 + (pressSpeed / 500) * 0.35;
+        reasoning = "At line speeds exceeding 350 m/min, 0.200 mm steel overcomes hydrodynamic ink lift forces, maintaining a razor-clean wipe without hazing.";
+      } else {
+        thicknessMm = 0.150;
+        thickness = "0.150 mm (0.006\")";
+        backingThickness = "0.300 mm (0.012\")";
+        edge = "Lamella: 0.075 mm tip × 1.3 mm parallel step";
+        pressureBar = 1.15 + (pressSpeed / 500) * 0.35;
+        reasoning = "Standard 0.150 mm parallel lamella provides instant run-in and constant tonal density (Delta E < 1.0) with lowest possible cylinder friction.";
+      }
+      material = "WIPEX 100 Premium Swedish Carbon Steel (1% Carbon, 580–600 HV)";
     }
 
-    const recommendedWidth = Math.max(300, cylinderWidth - 30);
+    if (overhang > 1.6) {
+      pressureBar += 0.20;
+    }
+
+    const calculatedPressure = `${pressureBar.toFixed(2)} bar (${(pressureBar * 14.5038).toFixed(1)} PSI)`;
+    const pressureRange = `${(pressureBar - 0.15).toFixed(1)} – ${(pressureBar + 0.15).toFixed(1)} bar`;
 
     return {
+      cutLength,
+      clearanceText,
+      bladeWidth,
+      backingWidth,
+      backingThickness,
+      overhang,
       thickness,
+      thicknessMm,
       edge,
       material,
-      pressure,
+      calculatedPressure,
+      pressureRange,
+      targetAngle,
+      liftRisk,
       reasoning,
-      recommendedWidth,
     };
   };
 
   const recommendation = calculateRecommendation();
+
+  const handleCopySpec = () => {
+    const text = `DOCTOR BLADE SIZING & SPECIFICATION SUMMARY
+==========================================
+Printing Process: ${machineType.toUpperCase()}
+Engraved Cylinder Face Width: ${cylinderWidth} mm
+Calculated Blade Cut Length: ${recommendation.cutLength} mm
+End Clearance Rule: ${recommendation.clearanceText}
+Total Blade Width: ${bladeWidth} mm
+Free Blade Overhang: ${overhang} mm
+Backing Blade Dimensions: ${recommendation.backingWidth} mm wide × ${recommendation.backingThickness} thick
+Doctor Blade Thickness: ${recommendation.thickness}
+Edge Profile: ${recommendation.edge}
+Metallurgy / Alloy: ${recommendation.material}
+Target Contact Angle: ${recommendation.targetAngle}
+Recommended Clamping Pressure: ${recommendation.calculatedPressure} (Safe Operating Window: ${recommendation.pressureRange})
+Operating Line Speed: ${pressSpeed} m/min
+Ink System: ${inkType.toUpperCase()}`;
+
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
+  };
 
   // Structured Data Schema
   const techArticleSchema = {
@@ -312,178 +430,471 @@ export default function SelectionGuidePage() {
               <div>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-                  Interactive Pressroom Sizing Tool
+                  Precision Engineering Sizing Tool
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
                   Doctor Blade Sizing & Specification Calculator
                 </h2>
               </div>
-              <span className="self-start sm:self-auto bg-blue-50 text-blue-700 border border-blue-200 px-3.5 py-1.5 rounded-full text-xs font-bold">
-                Instant Pressroom Output
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="bg-blue-50 text-blue-700 border border-blue-200 px-3.5 py-1.5 rounded-full text-xs font-bold">
+                  Millimeter Precision
+                </span>
+                <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1.5 rounded-full text-xs font-bold">
+                  Dynamic Hydrodynamics
+                </span>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* Inputs */}
               <div className="lg:col-span-6 space-y-6">
+                {/* 1. Process Type */}
                 <div>
                   <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
                     1. Printing Press Process Type
                   </label>
                   <div className="grid grid-cols-3 gap-2.5">
                     {[
-                      { id: "gravure", label: "Rotogravure" },
-                      { id: "flexo", label: "Flexographic" },
-                      { id: "coating", label: "Coating / Lacquer" },
+                      { id: "gravure", label: "Rotogravure", sub: "55°–60° wipe" },
+                      { id: "flexo", label: "Flexographic", sub: "Chamber / Roll" },
+                      { id: "coating", label: "Coating / Lacquer", sub: "Heavy laydown" },
                     ].map((item) => (
                       <button
                         key={item.id}
                         type="button"
-                        onClick={() => setMachineType(item.id)}
-                        className={`py-3 px-3 rounded-xl text-xs font-bold transition-all text-center cursor-pointer border ${
+                        onClick={() => handleMachineTypeChange(item.id)}
+                        className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all text-center cursor-pointer border flex flex-col items-center justify-center gap-0.5 ${
                           machineType === item.id
                             ? "bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-600/30"
                             : "bg-slate-50 text-slate-700 hover:bg-slate-100 border-slate-200"
                         }`}
                       >
-                        {item.label}
+                        <span>{item.label}</span>
+                        <span className={`text-[10px] font-normal ${machineType === item.id ? "text-blue-100" : "text-slate-500"}`}>
+                          {item.sub}
+                        </span>
                       </button>
                     ))}
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
-                    2. Operating Press Speed
-                  </label>
-                  <div className="grid grid-cols-3 gap-2.5">
-                    {[
-                      { id: "slow", label: "< 180 m/min" },
-                      { id: "medium", label: "180 – 350 m/min" },
-                      { id: "high", label: "350 – 600+ m/min" },
-                    ].map((item) => (
-                      <button
-                        key={item.id}
-                        type="button"
-                        onClick={() => setPressSpeed(item.id)}
-                        className={`py-3 px-3 rounded-xl text-xs font-bold transition-all text-center cursor-pointer border ${
-                          pressSpeed === item.id
-                            ? "bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-600/30"
-                            : "bg-slate-50 text-slate-700 hover:bg-slate-100 border-slate-200"
-                        }`}
-                      >
-                        {item.label}
-                      </button>
-                    ))}
+                {/* 2. Cylinder Face Width Slider & Input */}
+                <div className="bg-slate-50/70 p-4 rounded-2xl border border-slate-200">
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                      2. Engraved Cylinder Face Width (L_face)
+                    </label>
+                    <div className="flex items-center gap-1">
+                      <input
+                        type="number"
+                        min="300"
+                        max="2500"
+                        step="5"
+                        value={cylinderWidth}
+                        onChange={(e) => setCylinderWidth(Math.max(300, Math.min(2500, Number(e.target.value) || 300)))}
+                        className="w-20 px-2.5 py-1 text-right text-sm font-extrabold text-blue-700 bg-white border border-blue-300 rounded-lg shadow-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                      <span className="text-xs font-bold text-slate-600">mm</span>
+                    </div>
+                  </div>
+
+                  <input
+                    type="range"
+                    min="300"
+                    max="2500"
+                    step="5"
+                    value={cylinderWidth}
+                    onChange={(e) => setCylinderWidth(Number(e.target.value))}
+                    className="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                  />
+
+                  <div className="flex justify-between items-center mt-2 text-[11px] text-slate-500">
+                    <span>Min: 300 mm</span>
+                    <div className="flex gap-1.5">
+                      {[800, 1050, 1250, 1600].map((w) => (
+                        <button
+                          key={w}
+                          type="button"
+                          onClick={() => setCylinderWidth(w)}
+                          className={`px-2 py-0.5 rounded text-[10px] font-semibold transition-colors cursor-pointer border ${
+                            cylinderWidth === w ? "bg-blue-600 text-white border-blue-600" : "bg-white text-slate-600 border-slate-200 hover:bg-slate-100"
+                          }`}
+                        >
+                          {w}mm
+                        </button>
+                      ))}
+                    </div>
+                    <span>Max: 2500 mm</span>
                   </div>
                 </div>
 
+                {/* 3. Press Speed Slider & Input */}
+                <div className="bg-slate-50/70 p-4 rounded-2xl border border-slate-200">
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="flex items-center gap-2">
+                      <label className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                        3. Operating Press Line Speed (V)
+                      </label>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
+                        pressSpeed < 220 
+                          ? "bg-slate-200 text-slate-700" 
+                          : pressSpeed < 380 
+                          ? "bg-blue-100 text-blue-700" 
+                          : "bg-amber-100 text-amber-800"
+                      }`}>
+                        {pressSpeed < 220 ? "Standard" : pressSpeed < 380 ? "High Speed" : "Ultra Velocity"}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <input
+                        type="number"
+                        min="40"
+                        max="650"
+                        step="5"
+                        value={pressSpeed}
+                        onChange={(e) => setPressSpeed(Math.max(40, Math.min(650, Number(e.target.value) || 40)))}
+                        className="w-20 px-2.5 py-1 text-right text-sm font-extrabold text-blue-700 bg-white border border-blue-300 rounded-lg shadow-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                      <span className="text-xs font-bold text-slate-600">m/min</span>
+                    </div>
+                  </div>
+
+                  <input
+                    type="range"
+                    min="40"
+                    max="650"
+                    step="5"
+                    value={pressSpeed}
+                    onChange={(e) => setPressSpeed(Number(e.target.value))}
+                    className="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                  />
+
+                  <div className="flex justify-between items-center mt-2 text-[11px] text-slate-500">
+                    <span>40 m/min</span>
+                    <div className="flex gap-1.5">
+                      {[150, 250, 350, 500].map((s) => (
+                        <button
+                          key={s}
+                          type="button"
+                          onClick={() => setPressSpeed(s)}
+                          className={`px-2 py-0.5 rounded text-[10px] font-semibold transition-colors cursor-pointer border ${
+                            pressSpeed === s ? "bg-blue-600 text-white border-blue-600" : "bg-white text-slate-600 border-slate-200 hover:bg-slate-100"
+                          }`}
+                        >
+                          {s} m/min
+                        </button>
+                      ))}
+                    </div>
+                    <span>650 m/min</span>
+                  </div>
+                </div>
+
+                {/* 4. Ink Chemistry */}
                 <div>
                   <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
-                    3. Ink Formulation & Chemistry
+                    4. Ink Formulation & Chemistry
                   </label>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                     {[
-                      { id: "solvent", label: "Solvent" },
-                      { id: "water", label: "Water-Based" },
-                      { id: "uv", label: "UV Curable" },
-                      { id: "white", label: "Abrasive White" },
+                      { id: "solvent", label: "Solvent", sub: "NC / PU (14–18s)" },
+                      { id: "water", label: "Water-Based", sub: "pH 8.5+ (18–24s)" },
+                      { id: "uv", label: "UV / EB", sub: "High shear drag" },
+                      { id: "white", label: "Abrasive White", sub: "TiO2 / Metallics" },
                     ].map((item) => (
                       <button
                         key={item.id}
                         type="button"
                         onClick={() => setInkType(item.id)}
-                        className={`py-3 px-2 rounded-xl text-xs font-bold transition-all text-center cursor-pointer border ${
+                        className={`py-2.5 px-2 rounded-xl text-xs font-bold transition-all text-center cursor-pointer border flex flex-col items-center justify-center gap-0.5 ${
                           inkType === item.id
                             ? "bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-600/30"
                             : "bg-slate-50 text-slate-700 hover:bg-slate-100 border-slate-200"
                         }`}
                       >
-                        {item.label}
+                        <span>{item.label}</span>
+                        <span className={`text-[10px] font-normal ${inkType === item.id ? "text-blue-100" : "text-slate-500"}`}>
+                          {item.sub}
+                        </span>
                       </button>
                     ))}
                   </div>
                 </div>
 
-                <div>
-                  <div className="flex justify-between items-center mb-2.5">
-                    <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-                      4. Engraved Cylinder Face Width: <span className="text-blue-600 font-extrabold">{cylinderWidth} mm</span>
+                {/* 5. Clamping Blade Width & Overhang Sliders */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Total Blade Width */}
+                  <div className="bg-slate-50/70 p-3.5 rounded-2xl border border-slate-200">
+                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
+                      5. Holder Blade Width
                     </label>
-                    <span className="text-xs text-slate-500 font-medium">Range: 400 to 2200 mm</span>
+                    <div className="grid grid-cols-4 gap-1.5">
+                      {[30, 40, 50, 60].map((bw) => (
+                        <button
+                          key={bw}
+                          type="button"
+                          onClick={() => setBladeWidth(bw)}
+                          className={`py-1.5 px-2 rounded-lg text-xs font-bold transition-colors cursor-pointer border ${
+                            bladeWidth === bw
+                              ? "bg-blue-600 text-white border-blue-600"
+                              : "bg-white text-slate-700 hover:bg-slate-100 border-slate-200"
+                          }`}
+                        >
+                          {bw} mm
+                        </button>
+                      ))}
+                    </div>
+                    <span className="text-[10px] text-slate-500 mt-2 block">
+                      Standard: 40 mm (Gravure) / 30 mm (Flexo)
+                    </span>
+                  </div>
+
+                  {/* Free Blade Overhang Slider */}
+                  <div className="bg-slate-50/70 p-3.5 rounded-2xl border border-slate-200">
+                    <div className="flex justify-between items-center mb-1.5">
+                      <label className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                        6. Free Overhang (E)
+                      </label>
+                      <span className="text-xs font-extrabold text-blue-700 bg-white px-2 py-0.5 rounded border border-blue-200">
+                        {overhang.toFixed(1)} mm
+                      </span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0.8"
+                      max="2.5"
+                      step="0.1"
+                      value={overhang}
+                      onChange={(e) => setOverhang(Number(e.target.value))}
+                      className="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    />
+                    <div className="flex justify-between items-center mt-1 text-[10px]">
+                      <span className="text-slate-500">0.8 mm</span>
+                      <span className={overhang >= 1.0 && overhang <= 1.5 ? "text-emerald-700 font-bold" : "text-amber-700 font-bold"}>
+                        {overhang >= 1.0 && overhang <= 1.5 ? "Ideal (1.0–1.5mm)" : overhang < 1.0 ? "Too stiff" : "Excessive flex"}
+                      </span>
+                      <span className="text-slate-500">2.5 mm</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 7. Oscillation Stroke Slider */}
+                <div className="bg-slate-50/70 p-3.5 rounded-2xl border border-slate-200">
+                  <div className="flex justify-between items-center mb-1.5">
+                    <div>
+                      <label className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
+                        7. Oscillation Stroke (S_osc)
+                      </label>
+                      <span className="text-[10px] text-slate-500">
+                        {oscillationStroke === 0 ? "Stationary (Flexo Chamber)" : `${oscillationStroke} mm stroke (${oscillationStroke * 2} mm total end clearance)`}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setOscillationStroke(0)}
+                        className={`px-2 py-0.5 rounded text-[10px] font-bold border cursor-pointer ${
+                          oscillationStroke === 0 ? "bg-blue-600 text-white border-blue-600" : "bg-white text-slate-600 border-slate-200"
+                        }`}
+                      >
+                        None (0mm)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setOscillationStroke(15)}
+                        className={`px-2 py-0.5 rounded text-[10px] font-bold border cursor-pointer ${
+                          oscillationStroke === 15 ? "bg-blue-600 text-white border-blue-600" : "bg-white text-slate-600 border-slate-200"
+                        }`}
+                      >
+                        Std 15mm
+                      </button>
+                      <span className="text-xs font-extrabold text-blue-700 bg-white px-2 py-0.5 rounded border border-blue-200">
+                        {oscillationStroke} mm
+                      </span>
+                    </div>
                   </div>
                   <input
                     type="range"
-                    min="400"
-                    max="2200"
-                    step="50"
-                    value={cylinderWidth}
-                    onChange={(e) => setCylinderWidth(Number(e.target.value))}
-                    className="w-full accent-blue-600 h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    min="0"
+                    max="25"
+                    step="1"
+                    value={oscillationStroke}
+                    onChange={(e) => setOscillationStroke(Number(e.target.value))}
+                    className="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                   />
                 </div>
               </div>
 
-              {/* Outputs (Clean Light Card) */}
+              {/* Outputs (Engineered Specification Card) */}
               <div className="lg:col-span-6 bg-slate-50 rounded-2xl p-6 sm:p-7 border border-slate-200 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between pb-4 border-b border-slate-200 mb-5">
-                    <span className="text-xs font-black uppercase tracking-wider text-blue-700">
-                      Engineered Recommendation
-                    </span>
-                    <span className="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full font-extrabold">
-                      Optimal Configuration
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-black uppercase tracking-wider text-blue-700">
+                        Engineered Specification Sheet
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className={`text-xs px-3 py-1 rounded-full font-extrabold border ${
+                        recommendation.liftRisk === "low"
+                          ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                          : recommendation.liftRisk === "moderate"
+                          ? "bg-amber-50 text-amber-700 border-amber-200"
+                          : "bg-rose-50 text-rose-700 border-rose-200"
+                      }`}>
+                        {recommendation.liftRisk === "low" 
+                          ? "● Low Hydrodynamic Lift" 
+                          : recommendation.liftRisk === "moderate" 
+                          ? "▲ Moderate Lift Warning" 
+                          : "⚠ High Velocity Lift Zone"}
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4 mb-5">
-                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                      <span className="text-xs font-bold text-slate-500 uppercase block">Blade Thickness</span>
-                      <div className="text-xl font-extrabold text-slate-900 mt-1">
+                  {/* Primary Sizing Matrix */}
+                  <div className="grid grid-cols-2 gap-3 mb-4">
+                    {/* Cut Length */}
+                    <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+                      <span className="text-[11px] font-bold text-slate-500 uppercase block">1. Blade Cut Length (L_blade)</span>
+                      <div className="text-2xl font-black text-blue-700 mt-0.5">
+                        {recommendation.cutLength} mm
+                      </div>
+                      <span className="text-[10px] text-slate-500 block mt-0.5">
+                        {recommendation.clearanceText}
+                      </span>
+                    </div>
+
+                    {/* Total Blade Width */}
+                    <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+                      <span className="text-[11px] font-bold text-slate-500 uppercase block">2. Total Blade Width (W_blade)</span>
+                      <div className="text-2xl font-black text-slate-900 mt-0.5">
+                        {recommendation.bladeWidth}.0 mm
+                      </div>
+                      <span className="text-[10px] text-slate-500 block mt-0.5">
+                        Clamping Depth + {overhang.toFixed(1)} mm Overhang
+                      </span>
+                    </div>
+
+                    {/* Blade Thickness */}
+                    <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+                      <span className="text-[11px] font-bold text-slate-500 uppercase block">3. Blade Thickness (T_blade)</span>
+                      <div className="text-lg font-black text-slate-900 mt-0.5">
                         {recommendation.thickness}
                       </div>
+                      <span className="text-[10px] text-slate-500 block mt-0.5">
+                        Micro-Tolerance: ±0.005 mm
+                      </span>
                     </div>
-                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                      <span className="text-xs font-bold text-slate-500 uppercase block">Edge Geometry</span>
-                      <div className="text-xl font-extrabold text-slate-900 mt-1 truncate" title={recommendation.edge}>
+
+                    {/* Backing Blade Dimensions */}
+                    <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+                      <span className="text-[11px] font-bold text-slate-500 uppercase block">4. Backing Blade Size</span>
+                      <div className="text-lg font-black text-slate-900 mt-0.5">
+                        {recommendation.backingWidth} mm wide
+                      </div>
+                      <span className="text-[10px] text-blue-700 font-semibold block mt-0.5">
+                        Thickness: {recommendation.backingThickness}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Secondary Parameters */}
+                  <div className="grid grid-cols-2 gap-3 mb-4">
+                    <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+                      <span className="text-[11px] font-bold text-slate-500 uppercase block">5. Edge Geometry</span>
+                      <div className="text-sm font-extrabold text-slate-900 mt-0.5" title={recommendation.edge}>
                         {recommendation.edge}
                       </div>
                     </div>
-                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                      <span className="text-xs font-bold text-slate-500 uppercase block">Material Alloy</span>
-                      <div className="text-sm sm:text-base font-extrabold text-blue-700 mt-1 truncate" title={recommendation.material}>
+
+                    <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+                      <span className="text-[11px] font-bold text-slate-500 uppercase block">6. Material Alloy</span>
+                      <div className="text-sm font-extrabold text-blue-700 mt-0.5" title={recommendation.material}>
                         {recommendation.material}
                       </div>
                     </div>
-                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-xs">
-                      <span className="text-xs font-bold text-slate-500 uppercase block">Clamping Pressure</span>
-                      <div className="text-xl font-extrabold text-slate-900 mt-1">
-                        {recommendation.pressure}
+
+                    <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+                      <span className="text-[11px] font-bold text-slate-500 uppercase block">7. Clamping Air Pressure</span>
+                      <div className="text-sm font-extrabold text-slate-900 mt-0.5">
+                        {recommendation.calculatedPressure}
+                      </div>
+                      <span className="text-[10px] text-emerald-700 font-semibold block">
+                        Safe Window: {recommendation.pressureRange}
+                      </span>
+                    </div>
+
+                    <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs">
+                      <span className="text-[11px] font-bold text-slate-500 uppercase block">8. Target Contact Angle</span>
+                      <div className="text-sm font-extrabold text-slate-900 mt-0.5">
+                        {recommendation.targetAngle}
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-blue-50/70 border border-blue-200 p-4 rounded-xl mb-4 text-sm text-slate-800 leading-relaxed">
+                  {/* Overhang Evaluation Banner */}
+                  <div className={`p-3 rounded-xl border text-xs mb-3 flex items-start gap-2 ${
+                    overhang >= 1.0 && overhang <= 1.5
+                      ? "bg-emerald-50/70 border-emerald-200 text-emerald-900"
+                      : overhang < 1.0
+                      ? "bg-amber-50/70 border-amber-200 text-amber-900"
+                      : "bg-rose-50/70 border-rose-200 text-rose-900"
+                  }`}>
+                    <span className="font-bold shrink-0">
+                      {overhang >= 1.0 && overhang <= 1.5 ? "✓ Overhang Calibrated:" : "⚠ Overhang Notice:"}
+                    </span>
+                    <span>
+                      {overhang < 1.0 
+                        ? `At ${overhang.toFixed(1)} mm, blade extension is short and rigid. Risk of micro-chatter marks and elevated cylinder chrome wear.` 
+                        : overhang <= 1.5 
+                        ? `At ${overhang.toFixed(1)} mm, free extension provides ideal beam flexibility to cleanly meter without heel wiping.` 
+                        : `At ${overhang.toFixed(1)} mm, excessive overhang causes blade to flex backward under fluid ink pressure, leading to hazing and ink spitting.`}
+                    </span>
+                  </div>
+
+                  {/* Engineering Rationale */}
+                  <div className="bg-blue-50/70 border border-blue-200 p-4 rounded-xl mb-4 text-xs text-slate-800 leading-relaxed">
                     <strong className="text-slate-900 font-bold block mb-1">Engineering Rationale:</strong>
                     {recommendation.reasoning}
                   </div>
-
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-600 bg-white p-3.5 rounded-xl border border-slate-200">
-                    <span className="font-semibold text-slate-700">Recommended Blade Length:</span>
-                    <strong className="text-slate-900 text-sm">{recommendation.recommendedWidth} mm</strong>
-                    <span className="text-blue-700 font-medium">(Cylinder − 30 mm buffer)</span>
-                  </div>
                 </div>
 
-                <button
-                  onClick={() => window.dispatchEvent(new CustomEvent("open-quote-modal"))}
-                  className="mt-6 w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-sm tracking-wide transition-all shadow-md shadow-blue-600/20 flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <span>Request Custom Blade Quote For This Setup</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
+                <div className="space-y-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <button
+                      type="button"
+                      onClick={handleCopySpec}
+                      className="py-3 px-4 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 rounded-xl font-bold text-xs tracking-wide transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      {copied ? (
+                        <>
+                          <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span className="text-emerald-700">Specification Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                          </svg>
+                          <span>Copy Specification Sheet</span>
+                        </>
+                      )}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => window.dispatchEvent(new CustomEvent("open-quote-modal"))}
+                      className="py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs tracking-wide transition-all shadow-md shadow-blue-600/20 flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      <span>Request Blade Quote</span>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

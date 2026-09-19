@@ -5,6 +5,11 @@ import HomeIndustries from "../components/home/HomeIndustries";
 import HomeAbout from "../components/home/HomeAbout";
 import HomeCertifications from "../components/home/HomeCertifications";
 import HomeWhyChoose from "../components/home/HomeWhyChoose";
+import HomeWorkingPrinciple from "../components/home/HomeWorkingPrinciple";
+import HomeSelectionGuide from "../components/home/HomeSelectionGuide";
+import HomeTroubleshootingGuide from "../components/home/HomeTroubleshootingGuide";
+import HomeIndustryCaseStudies from "../components/home/HomeIndustryCaseStudies";
+import HomePressApplications from "../components/home/HomePressApplications";
 import HomeFAQ from "../components/home/HomeFAQ";
 import HomeCTA from "../components/home/HomeCTA";
 import SEO from "../components/common/SEO";
@@ -16,6 +21,18 @@ const Home = () => {
     "name": "ImageTech Industries",
     "url": "https://www.doctorblade.co.in/",
     "logo": "https://www.doctorblade.co.in/logo.png",
+    "knowsAbout": [
+      "Doctor Blade",
+      "Carbon Steel Doctor Blade",
+      "Stainless Steel Doctor Blade",
+      "Polymer Doctor Blade",
+      "Rotogravure Printing",
+      "Flexographic Printing",
+      "Ink Metering Hydrodynamics",
+      "Lamella Edge Profile",
+      "Anilox Roll Metering",
+      "Pressroom Engineering"
+    ],
     "contactPoint": [
       {
         "@type": "ContactPoint",
@@ -57,9 +74,23 @@ const Home = () => {
   return (
     <>
       <SEO 
-        title="Best Doctor Blade in Delhi, India | ImageTech Industries"
-        description="Looking for the best doctor blade in Delhi, India? ImageTech Industries manufactures premium carbon steel, stainless steel, and polymer doctor blades for flawless printing."
-        keywords={['best doctor blade in delhi', 'best doctor blade in india', 'doctor blade manufacturer', 'carbon steel doctor blade', 'polymer doctor blade']}
+        title="Best Doctor Blade in India | Manufacturer & Supplier | ImageTech Industries"
+        description="Looking for the best doctor blade in Delhi and across India? ImageTech Industries manufactures premium Carbon Steel, Stainless Steel, and Polymer Doctor Blades with lamella & bevel edge profiles for flawless rotogravure & flexo printing."
+        keywords={[
+          'doctor blade',
+          'doctor blade in india',
+          'best doctor blade in delhi',
+          'doctor blade manufacturer',
+          'carbon steel doctor blade',
+          'stainless steel doctor blade',
+          'polymer doctor blade',
+          'lamella doctor blade',
+          'rotogravure doctor blade',
+          'flexo doctor blade',
+          'doctor blade printing defect troubleshooting',
+          'doctor blade selection guide',
+          'ImageTech Industries'
+        ]}
         schema={[orgSchema, productSchema]}
       />
       <main className="flex flex-col">
@@ -69,6 +100,11 @@ const Home = () => {
         <HomeAbout />
         <HomeCertifications />
         <HomeWhyChoose />
+        <HomeWorkingPrinciple />
+        <HomeSelectionGuide />
+        <HomeTroubleshootingGuide />
+        <HomeIndustryCaseStudies />
+        <HomePressApplications />
         <HomeFAQ />
         <HomeCTA />
       </main>

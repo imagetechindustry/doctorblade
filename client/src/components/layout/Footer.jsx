@@ -134,48 +134,7 @@ const Footer = () => {
                   About Us
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/#blog"
-                  className="hover:text-blue-600 flex items-center transition-colors"
-                >
-                  <svg
-                    className="w-3 h-3 text-blue-500 mr-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                  Blogs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/sitemap"
-                  className="hover:text-blue-600 flex items-center transition-colors"
-                >
-                  <svg
-                    className="w-3 h-3 text-blue-500 mr-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                  Sitemap
-                </Link>
-              </li>
+
               <li>
                 <Link
                   to="/contact"
@@ -216,6 +175,132 @@ const Footer = () => {
                     />
                   </svg>
                   Certifications
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/press-applications"
+                  className="hover:text-blue-600 flex items-center transition-colors"
+                >
+                  <svg
+                    className="w-3 h-3 text-blue-500 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  Press Applications
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/selection-guide"
+                  className="hover:text-blue-600 flex items-center transition-colors"
+                >
+                  <svg
+                    className="w-3 h-3 text-blue-500 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  Selection Guide
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/troubleshooting-guide"
+                  className="hover:text-blue-600 flex items-center transition-colors"
+                >
+                  <svg
+                    className="w-3 h-3 text-blue-500 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  Troubleshooting
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/working-principle"
+                  className="hover:text-blue-600 flex items-center transition-colors"
+                >
+                  <svg
+                    className="w-3 h-3 text-blue-500 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  Working Principle
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/#blog"
+                  className="hover:text-blue-600 flex items-center transition-colors"
+                >
+                  <svg
+                    className="w-3 h-3 text-blue-500 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  Blogs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/sitemap"
+                  className="hover:text-blue-600 flex items-center transition-colors"
+                >
+                  <svg
+                    className="w-3 h-3 text-blue-500 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  Sitemap
                 </Link>
               </li>
             </ul>

@@ -14,6 +14,10 @@ import TermsConditions from "./pages/TermsConditions";
 import ShippingPolicy from "./pages/ShippingPolicy";
 import ProductDetail from "./pages/ProductDetail";
 import Sitemap from "./pages/Sitemap";
+import SelectionGuidePage from "./pages/SelectionGuidePage";
+import TroubleshootingGuidePage from "./pages/TroubleshootingGuidePage";
+import WorkingPrinciplePage from "./pages/WorkingPrinciplePage";
+import PressApplicationsPage from "./pages/PressApplicationsPage";
 import CityPage from "./pages/CityPage";
 import CityProductPage from "./pages/CityProductPage";
 import Navbar from "./components/layout/Navbar";
@@ -125,6 +129,38 @@ function App() {
             element={
               <PublicLayout>
                 <ProductDetail />
+              </PublicLayout>
+            }
+          />
+          <Route
+            path="/selection-guide"
+            element={
+              <PublicLayout>
+                <SelectionGuidePage />
+              </PublicLayout>
+            }
+          />
+          <Route
+            path="/troubleshooting-guide"
+            element={
+              <PublicLayout>
+                <TroubleshootingGuidePage />
+              </PublicLayout>
+            }
+          />
+          <Route
+            path="/working-principle"
+            element={
+              <PublicLayout>
+                <WorkingPrinciplePage />
+              </PublicLayout>
+            }
+          />
+          <Route
+            path="/press-applications"
+            element={
+              <PublicLayout>
+                <PressApplicationsPage />
               </PublicLayout>
             }
           />

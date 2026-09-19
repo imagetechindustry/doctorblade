@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useLocations, usePrefetchLocation } from "../services/api";
+import { productsData } from "../data/product";
 import SEO from "../components/common/SEO";
 
 const SitemapSkeleton = () => (
@@ -179,6 +180,105 @@ const Sitemap = () => {
             )}
           </div>
         )}
+
+        {/* Products Directory */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-12 mt-12">
+          <div className="bg-gradient-to-r from-blue-50 to-white border-b border-blue-100 px-6 py-4 flex items-center justify-between">
+            <h2 className="text-xl font-bold text-blue-900">Our Products Directory</h2>
+            <span className="text-blue-600 bg-white rounded-full px-3 py-1 text-xs font-bold border border-blue-100 shadow-sm">
+              {productsData.length} Products
+            </span>
+          </div>
+          <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {productsData.map((prod) => (
+              <Link
+                key={prod.id}
+                to={`/products/${prod.slug}`}
+                className="group flex flex-col justify-between bg-white border border-gray-200 hover:border-blue-500 text-gray-800 hover:text-blue-700 font-medium p-4 rounded-xl transition-all duration-300 hover:shadow-md"
+              >
+                <div>
+                  <h3 className="text-sm font-bold text-gray-900 group-hover:text-blue-600 mb-1 leading-snug">
+                    {prod.name}
+                  </h3>
+                  <p className="text-xs text-gray-500 line-clamp-2">
+                    {prod.shortDescription}
+                  </p>
+                </div>
+                <div className="mt-3 flex items-center text-xs font-semibold text-blue-600">
+                  <span>View Product</span>
+                  <svg
+                    className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Technical Guides & Engineering Directory */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-12">
+          <div className="bg-gradient-to-r from-blue-50 to-white border-b border-blue-100 px-6 py-4 flex items-center justify-between">
+            <h2 className="text-xl font-bold text-blue-900">Technical Guides & Engineering Resources</h2>
+            <span className="text-blue-600 bg-white rounded-full px-3 py-1 text-xs font-bold border border-blue-100 shadow-sm">
+              4 Pillar Guides
+            </span>
+          </div>
+          <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              {
+                title: "Selection & Sizing Guide",
+                slug: "/selection-guide",
+                desc: "Interactive calculator, thickness tolerances (0.15/0.20mm), and chemical compatibility.",
+              },
+              {
+                title: "Defect Troubleshooting",
+                slug: "/troubleshooting-guide",
+                desc: "Visual quick-finder for streaks, hazing, spitting, scoring, and blade mounting SOP.",
+              },
+              {
+                title: "Working Principle & Physics",
+                slug: "/working-principle",
+                desc: "Hydrodynamic lift forces, 55°–60° contact angle mechanics, and lamella geometry.",
+              },
+              {
+                title: "Press Applications & Sectors",
+                slug: "/press-applications",
+                desc: "Rotogravure, CI flexo, corrugated packaging, barrier coating, and blister foil.",
+              },
+            ].map((guide, idx) => (
+              <Link
+                key={idx}
+                to={guide.slug}
+                className="group flex flex-col justify-between bg-white border border-gray-200 hover:border-blue-500 text-gray-800 hover:text-blue-700 font-medium p-4 rounded-xl transition-all duration-300 hover:shadow-md"
+              >
+                <div>
+                  <h3 className="text-sm font-bold text-gray-900 group-hover:text-blue-600 mb-1 leading-snug">
+                    {guide.title}
+                  </h3>
+                  <p className="text-xs text-gray-500 line-clamp-2">
+                    {guide.desc}
+                  </p>
+                </div>
+                <div className="mt-3 flex items-center text-xs font-semibold text-blue-600">
+                  <span>Read Guide</span>
+                  <svg
+                    className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

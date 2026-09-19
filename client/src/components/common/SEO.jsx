@@ -24,12 +24,24 @@ export default function SEO({
   noindex = false,
 }) {
   const location = useLocation();
-  const fullTitle = title === name ? title : `${title} | ${name}`;
 
-  // Strip trailing slash (except root) so "/foo" and "/foo/" don't produce
-  // two different canonical URLs for the same page.
-  const path = location.pathname.replace(/\/+$/, '');
-  const currentUrl = `${SITE_URL}${path || ''}`;
+  // Avoid duplicate brand suffix if title already contains site name or ImageTech
+  const fullTitle = !title
+    ? name
+    : title === name || title.includes(name) || title.includes('ImageTech')
+    ? title
+    : `${title} | ${name}`;
+
+  // Keep document.title immediately in sync
+  React.useEffect(() => {
+    if (fullTitle) {
+      document.title = fullTitle;
+    }
+  }, [fullTitle]);
+
+  // Format canonical URL: root gets trailing slash (matches sitemap & GSC), subpages don't
+  const cleanPath = location.pathname.replace(/\/+$/, '');
+  const currentUrl = cleanPath ? `${SITE_URL}${cleanPath}` : `${SITE_URL}/`;
 
   const schemaList = Array.isArray(schema) ? schema : schema ? [schema] : [];
   const keywordContent = Array.isArray(keywords) ? keywords.join(', ') : keywords;
@@ -40,7 +52,15 @@ export default function SEO({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {keywordContent && <meta name="keywords" content={keywordContent} />}
-      <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+      <meta name="author" content="ImageTech Industries" />
+      <meta
+        name="robots"
+        content={
+          noindex
+            ? 'noindex, nofollow'
+            : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        }
+      />
       <link rel="canonical" href={currentUrl} />
 
       {/* Open Graph */}

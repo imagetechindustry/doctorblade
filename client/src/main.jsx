@@ -28,6 +28,11 @@ const persister = createSyncStoragePersister({
   key: "TANSTACK_QUERY_CACHE_V1",
 });
 
+// Remove static fallback SEO elements so dynamic React metadata does not duplicate in DOM
+if (typeof document !== "undefined") {
+  document.querySelectorAll("[data-static='true']").forEach((el) => el.remove());
+}
+
 const rootElement = document.getElementById("root");
 
 createRoot(rootElement).render(

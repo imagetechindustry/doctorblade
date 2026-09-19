@@ -3,21 +3,21 @@ import React from "react";
 const HomeCTA = ({ locationData }) => {
   const locName = locationData ? locationData.name : "Your Application";
   return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-      <section className="bg-slate-800 text-white relative overflow-hidden rounded-3xl shadow-2xl my-4">
+    <div className="py-8 sm:py-12 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      <section className="bg-slate-800 text-white relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl my-2 sm:my-4">
         {/* Background gradients and decorations */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-800 z-0"></div>
 
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10 py-16 lg:py-20 flex flex-col md:flex-row items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-16 relative z-10 py-10 sm:py-16 lg:py-20 flex flex-col md:flex-row items-center justify-between">
           {/* Left Side Content */}
-          <div className="w-full md:w-2/3 lg:w-3/4 mb-10 md:mb-0 z-20">
-            <h4 className="text-blue-400 font-bold tracking-wider text-xs uppercase mb-3">
+          <div className="w-full md:w-2/3 lg:w-3/4 mb-6 md:mb-0 z-20">
+            <h4 className="text-blue-400 font-bold tracking-wider text-[11px] sm:text-xs uppercase mb-2 sm:mb-3">
               Let's Work Together
             </h4>
-            <h2 className="text-3xl md:text-4xl font-extrabold leading-tight mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight mb-2 sm:mb-4">
               Need the Right Doctor Blade in {locName}?
             </h2>
-            <p className="text-white font-bold text-lg max-w-3xl">
+            <p className="text-white font-medium text-sm sm:text-base lg:text-lg max-w-3xl">
               Get in touch with our experts for product recommendations, custom
               solutions or a quick quote.
             </p>
@@ -29,11 +29,11 @@ const HomeCTA = ({ locationData }) => {
               onClick={() =>
                 window.dispatchEvent(new CustomEvent("open-quote-modal"))
               }
-              className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-full font-semibold transition-colors shadow-xl shadow-blue-900/50 flex items-center group whitespace-nowrap"
+              className="w-full sm:w-auto justify-center bg-blue-600 hover:bg-blue-500 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl sm:rounded-full font-semibold transition-colors shadow-xl shadow-blue-900/50 flex items-center group whitespace-nowrap cursor-pointer text-sm sm:text-base"
             >
               Get a Quote now
               <svg
-                className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
+                className="w-4 h-4 sm:w-5 sm:h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

@@ -8,24 +8,24 @@ const HomeCertifications = ({ locationData }) => {
       {/* Background Split */}
       <div className="absolute top-0 left-0 w-full lg:w-5/12 h-full bg-slate-900 z-0 hidden lg:block"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12 lg:py-0">
-        <div className="flex flex-col lg:flex-row shadow-2xl lg:shadow-none rounded-3xl overflow-hidden lg:rounded-none">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 sm:py-12 lg:py-0">
+        <div className="flex flex-col lg:flex-row shadow-xl lg:shadow-none rounded-2xl sm:rounded-3xl overflow-hidden lg:rounded-none">
           {/* Left Dark Content */}
-          <div className="w-full lg:w-4/12 bg-slate-900 text-white p-8 lg:py-24 lg:pr-12">
-            <h4 className="text-blue-400 font-bold tracking-wider text-xs uppercase mb-2">
+          <div className="w-full lg:w-4/12 bg-slate-900 text-white p-5 sm:p-8 lg:py-24 lg:pr-12">
+            <h4 className="text-blue-400 font-bold tracking-wider text-[11px] sm:text-xs uppercase mb-2">
               Quality & Certifications
             </h4>
-            <h2 className="text-3xl font-extrabold leading-tight mb-6">
+            <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight mb-4 sm:mb-6">
               Committed to Global Standards
             </h2>
-            <p className="text-white font-bold mb-8 leading-relaxed text-sm">
+            <p className="text-white font-medium mb-6 sm:mb-8 leading-relaxed text-xs sm:text-sm">
               Our products are manufactured and inspected to meet strict quality
               standards, ensuring consistent performance and reliability in
               every application.
             </p>
             <Link
               to="/certifications"
-              className="bg-white text-slate-900 px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-gray-100 transition-colors inline-flex items-center"
+              className="bg-white text-slate-900 px-5 sm:px-6 py-2.5 rounded-full font-semibold text-xs sm:text-sm hover:bg-gray-100 transition-colors inline-flex items-center justify-center w-full sm:w-auto text-center cursor-pointer"
             >
               View Certifications
               <svg
@@ -45,8 +45,8 @@ const HomeCertifications = ({ locationData }) => {
           </div>
 
           {/* Middle Certificate Image (Overlapping) */}
-          <div className="w-full lg:w-4/12 bg-slate-800 lg:bg-transparent flex items-center justify-center p-8 lg:p-0 relative z-20">
-            <div className="bg-white p-2 rounded-xl shadow-2xl w-full max-w-sm transform lg:scale-110 border border-gray-200 hover:zoom-200 transition-transform ">
+          <div className="w-full lg:w-4/12 bg-slate-800 lg:bg-transparent flex items-center justify-center p-4 sm:p-8 lg:p-0 relative z-20">
+            <div className="bg-white p-2 rounded-xl shadow-2xl w-full max-w-xs sm:max-w-sm transform lg:scale-110 border border-gray-200">
               <div className="border-4 border-double border-gray-200 p-2 flex flex-col items-center justify-center text-center bg-gray-50 relative overflow-hidden">
                 <img
                   src="/certification.jpg"
@@ -58,7 +58,7 @@ const HomeCertifications = ({ locationData }) => {
           </div>
 
           {/* Right White Content */}
-          <div className="w-full lg:w-4/12 bg-white p-8 lg:py-24 lg:pl-16">
+          <div className="w-full lg:w-4/12 bg-white p-5 sm:p-8 lg:py-24 lg:pl-16">
             <div className="space-y-8">
               <div className="flex items-start">
                 <div className="bg-blue-50 p-2.5 rounded-lg text-blue-600 shrink-0 mt-1">

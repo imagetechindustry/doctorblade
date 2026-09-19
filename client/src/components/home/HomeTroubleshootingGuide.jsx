@@ -102,27 +102,27 @@ const HomeTroubleshootingGuide = ({ locationData }) => {
     troubleshootingItems[0];
 
   return (
-    <section className="py-16 lg:py-24 bg-white border-t border-slate-200/80">
+    <section className="py-10 sm:py-16 lg:py-24 bg-white border-t border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 px-2">
+          <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-2 sm:mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
             Pressroom Defect Troubleshooting Guide
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-3 sm:mb-4">
             Solving Common Print Defects with a <span className="text-blue-600">Precision Doctor Blade</span>
           </h2>
-          <p className="text-base md:text-lg text-slate-700 leading-relaxed">
+          <p className="text-xs sm:text-base md:text-lg text-slate-700 leading-relaxed">
             Diagnose and eliminate costly pressroom defects caused by incorrect blade angles, tip feathering, and excessive clamping pressure in {locName} packaging plants.
           </p>
         </div>
 
         {/* Interactive Troubleshooting Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* Left Column: Defect Selector List */}
-          <div className="lg:col-span-5 space-y-3">
-            <div className="text-xs font-bold uppercase tracking-wider text-slate-600 mb-2 px-1 flex items-center justify-between">
+          <div className="lg:col-span-5 space-y-2.5 sm:space-y-3">
+            <div className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5 sm:mb-2 px-1 flex items-center justify-between">
               <span>Select Pressroom Defect:</span>
               <span className="text-blue-600 font-semibold">{troubleshootingItems.length} Diagnostics</span>
             </div>
@@ -132,15 +132,15 @@ const HomeTroubleshootingGuide = ({ locationData }) => {
                 <button
                   key={item.id}
                   onClick={() => setSelectedId(item.id)}
-                  className={`w-full text-left p-4 sm:p-5 rounded-2xl border transition-all duration-200 cursor-pointer flex items-center justify-between ${
+                  className={`w-full text-left p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border transition-all duration-200 cursor-pointer flex items-center justify-between ${
                     isSelected
                       ? "bg-blue-50/90 border-blue-400 shadow-sm ring-1 ring-blue-400/30"
                       : "bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/80 shadow-xs"
                   }`}
                 >
-                  <div className="flex items-center space-x-3.5">
+                  <div className="flex items-center space-x-3 sm:space-x-3.5">
                     <div
-                      className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
+                      className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 ${
                         isSelected
                           ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
                           : "bg-slate-100 text-slate-700 border border-slate-200"
@@ -149,16 +149,16 @@ const HomeTroubleshootingGuide = ({ locationData }) => {
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-slate-900 leading-snug">
+                      <h3 className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
                         {item.defect}
                       </h3>
-                      <span className="text-xs text-slate-600 font-medium block mt-0.5">
+                      <span className="text-[11px] sm:text-xs text-slate-600 font-medium block mt-0.5">
                         {item.pressType}
                       </span>
                     </div>
                   </div>
                   <svg
-                    className={`w-5 h-5 ml-2 shrink-0 transition-transform ${
+                    className={`w-4 h-4 sm:w-5 sm:h-5 ml-2 shrink-0 transition-transform ${
                       isSelected ? "text-blue-600 translate-x-1" : "text-slate-400"
                     }`}
                     fill="none"
@@ -173,62 +173,62 @@ const HomeTroubleshootingGuide = ({ locationData }) => {
           </div>
 
           {/* Right Column: Detailed Diagnostic Card */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg">
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-slate-100 mb-6">
+          <div className="lg:col-span-7 bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200 shadow-md">
+            <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 pb-4 sm:pb-6 border-b border-slate-100 mb-4 sm:mb-6">
               <div>
-                <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">
+                <span className="text-[11px] sm:text-xs font-bold text-blue-700 uppercase tracking-wider">
                   Diagnostic Breakdown
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 mt-0.5 sm:mt-1">
                   {activeItem.defect}
                 </h3>
               </div>
-              <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200">
+              <span className="text-[11px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200">
                 {activeItem.severity}
               </span>
             </div>
 
             {/* Root Cause Analysis */}
-            <div className="mb-6">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+            <div className="mb-4 sm:mb-6">
+              <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+                <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-amber-500"></span>
+                <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-900">
                   Pressroom Root Cause:
                 </h4>
               </div>
-              <p className="text-slate-800 text-sm leading-relaxed bg-amber-50/70 p-4 sm:p-5 rounded-2xl border border-amber-200">
+              <p className="text-slate-800 text-xs sm:text-sm leading-relaxed bg-amber-50/70 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-amber-200">
                 {activeItem.rootCause}
               </p>
             </div>
 
             {/* Engineering Solution */}
-            <div className="mb-8">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+            <div className="mb-6 sm:mb-8">
+              <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+                <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-500"></span>
+                <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-900">
                   How a Precision Doctor Blade Solves It:
                 </h4>
               </div>
-              <p className="text-slate-800 text-sm leading-relaxed bg-emerald-50/70 p-4 sm:p-5 rounded-2xl border border-emerald-200">
+              <p className="text-slate-800 text-xs sm:text-sm leading-relaxed bg-emerald-50/70 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-emerald-200">
                 {activeItem.solution}
               </p>
             </div>
 
             {/* Application & CTA Box */}
-            <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="pt-4 sm:pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
               <div className="text-xs sm:text-sm text-slate-600">
                 Applicable Systems: <strong className="text-slate-900 font-bold">{activeItem.pressType}</strong>
               </div>
-              <div className="flex items-center gap-3 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 w-full sm:w-auto">
                 <Link
                   to="/troubleshooting-guide"
-                  className="w-full sm:w-auto px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs rounded-full transition-all text-center cursor-pointer border border-slate-200/80"
+                  className="w-full sm:w-auto px-4 sm:px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs rounded-full transition-all text-center cursor-pointer border border-slate-200/80"
                 >
                   View Full Guide
                 </Link>
                 <button
                   onClick={() => window.dispatchEvent(new CustomEvent("open-quote-modal"))}
-                  className="w-full sm:w-auto px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-full shadow-md shadow-blue-600/20 hover:shadow-lg transition-all text-center cursor-pointer"
+                  className="w-full sm:w-auto px-5 sm:px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-full shadow-md shadow-blue-600/20 hover:shadow-lg transition-all text-center cursor-pointer"
                 >
                   Request Technical Advice
                 </button>

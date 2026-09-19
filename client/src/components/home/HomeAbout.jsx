@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const HomeAbout = ({ locationData }) => {
   const locName = locationData ? locationData.name : "India";
   return (
-    <section className="py-8 lg:py-12 pb-24 lg:pb-32 bg-gray-50 border-t border-gray-100">
+    <section className="py-8 sm:py-12 pb-16 sm:pb-24 lg:pb-32 bg-gray-50 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
           {/* Left Side: Image & Floating Card */}
           <div className="w-full lg:w-1/2 relative">
-            <div className="rounded-2xl overflow-hidden shadow-xl relative h-[450px]">
+            <div className="rounded-2xl overflow-hidden shadow-xl relative h-[280px] sm:h-[360px] lg:h-[450px]">
               <img
                 src="/about.jpg"
                 alt="ImageTech Manufacturing"
@@ -19,11 +19,11 @@ const HomeAbout = ({ locationData }) => {
             </div>
 
             {/* Floating Checklist Card */}
-            <div className="absolute -bottom-8 -right-4 md:-right-8 bg-slate-900 text-white p-6 md:p-8 rounded-2xl shadow-2xl max-w-xs border border-slate-700/50">
-              <div className="flex items-center space-x-3 mb-6 pb-6 border-b border-slate-700">
-                <div className="bg-blue-600/20 p-2.5 rounded-lg text-blue-400">
+            <div className="absolute -bottom-6 right-2 sm:-bottom-8 sm:-right-4 md:-right-8 bg-slate-900 text-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-2xl max-w-[270px] sm:max-w-xs border border-slate-700/50">
+              <div className="flex items-center space-x-2.5 sm:space-x-3 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-slate-700">
+                <div className="bg-blue-600/20 p-2 sm:p-2.5 rounded-lg text-blue-400 shrink-0">
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5 sm:w-6 sm:h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -36,11 +36,11 @@ const HomeAbout = ({ locationData }) => {
                     />
                   </svg>
                 </div>
-                <h3 className="font-bold text-lg leading-tight">
+                <h3 className="font-bold text-sm sm:text-base md:text-lg leading-tight">
                   Manufacturing Excellence Since 1992
                 </h3>
               </div>
-              <ul className="space-y-4">
+              <ul className="space-y-2.5 sm:space-y-4">
                 {[
                 "Advanced Manufacturing",
                 "Strict Quality Control",
@@ -49,10 +49,10 @@ const HomeAbout = ({ locationData }) => {
                 ].map((item, index) => (
                   <li
                     key={index}
-                    className="flex items-center text-white text-sm font-bold"
+                    className="flex items-center text-white text-xs sm:text-sm font-bold"
                   >
                     <svg
-                      className="w-5 h-5 mr-3 text-blue-500 shrink-0"
+                      className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 text-blue-500 shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -72,15 +72,15 @@ const HomeAbout = ({ locationData }) => {
           </div>
 
           {/* Right Side: Content & Stats */}
-          <div className="w-full lg:w-1/2 mt-12 lg:mt-0 lg:pl-10">
-            <h4 className="text-blue-600 font-bold tracking-wider text-sm uppercase mb-2">
+          <div className="w-full lg:w-1/2 mt-10 lg:mt-0 lg:pl-10">
+            <h4 className="text-blue-600 font-bold tracking-wider text-xs sm:text-sm uppercase mb-2">
               About ImageTech Industries
             </h4>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 sm:mb-6 leading-tight">
               Your Trusted Doctor Blade Manufacturer in {locName}
             </h2>
-            <div className="space-y-4 text-gray-600 text-lg">
-              <p className="text-lg text-gray-900 mb-8 leading-relaxed">
+            <div className="space-y-3 sm:space-y-4 text-gray-700 text-sm sm:text-base lg:text-lg">
+              <p className="text-sm sm:text-base lg:text-lg text-gray-800 mb-6 sm:mb-8 leading-relaxed">
                 Based in Delhi, ImageTech Industries is recognized for manufacturing
                 the best Doctor Blades in {locName} for the printing and packaging
                 sector. With an unwavering focus on quality and innovation, we deliver
@@ -90,7 +90,7 @@ const HomeAbout = ({ locationData }) => {
             </div>
             <Link
               to="/about"
-              className="bg-blue-600 text-white px-8 py-4 pb-4 rounded-md font-semibold hover:bg-blue-700 transition-colors shadow-md shadow-blue-500/20 mb-12"
+              className="inline-block w-full sm:w-auto text-center bg-blue-600 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-md font-semibold hover:bg-blue-700 transition-colors shadow-md shadow-blue-500/20 mb-8 sm:mb-12 cursor-pointer text-sm sm:text-base"
             >
               Learn More About Us &rarr;
             </Link>

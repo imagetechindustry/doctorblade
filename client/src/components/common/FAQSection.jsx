@@ -25,7 +25,7 @@ const FAQSection = ({ title, subtitle, description, faqs }) => {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-white border-t border-gray-100">
+    <section className="py-10 sm:py-16 lg:py-24 bg-white border-t border-gray-100">
       {/* Inject SEO Schema */}
       <script
         type="application/ld+json"
@@ -33,40 +33,40 @@ const FAQSection = ({ title, subtitle, description, faqs }) => {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 max-w-3xl mx-auto">
-          <h4 className="text-blue-600 font-bold tracking-widest text-xs uppercase mb-3">
+        <div className="text-center mb-8 sm:mb-12 max-w-3xl mx-auto px-2">
+          <h4 className="text-blue-600 font-bold tracking-widest text-[11px] sm:text-xs uppercase mb-2 sm:mb-3">
             {subtitle || "Frequently Asked Questions"}
           </h4>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4 uppercase">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-3 sm:mb-4 uppercase">
             {title || "Everything You Need To Know"}
           </h2>
-          <p className="text-gray-900 text-lg">
+          <p className="text-gray-800 text-sm sm:text-base lg:text-lg">
             {description ||
             "Find answers to common questions about our products and services."}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
           {visibleFaqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={index}
-                className={`border rounded-2xl transition-all duration-300 h-max ${
+                className={`border rounded-xl sm:rounded-2xl transition-all duration-300 h-max ${
                   isOpen
-                    ? "border-blue-200 shadow-md"
+                    ? "border-blue-200 shadow-md bg-blue-50/20"
                     : "border-gray-200 bg-white hover:border-blue-300 hover:shadow-sm"
                 }`}
               >
                 <button
-                  className="w-full px-6 py-5 flex items-start justify-between text-left focus:outline-none rounded-2xl"
+                  className="w-full px-4 sm:px-6 py-3.5 sm:py-5 flex items-start justify-between text-left focus:outline-none rounded-xl sm:rounded-2xl cursor-pointer"
                   onClick={() => toggleFAQ(index)}
                   aria-expanded={isOpen}
                 >
-                  <div className="flex items-start pr-4">
-                    <span className="flex-shrink-0 mt-0.5 mr-3 text-blue-500">
+                  <div className="flex items-start pr-3 sm:pr-4">
+                    <span className="flex-shrink-0 mt-0.5 mr-2.5 sm:mr-3 text-blue-500">
                       <svg
-                        className="w-5 h-5"
+                        className="w-4 h-4 sm:w-5 sm:h-5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -79,16 +79,16 @@ const FAQSection = ({ title, subtitle, description, faqs }) => {
                         />
                       </svg>
                     </span>
-                    <span className="text-sm sm:text-base font-extrabold text-gray-900">
+                    <span className="text-xs sm:text-sm md:text-base font-extrabold text-gray-900 leading-snug">
                       {faq.question}
                     </span>
                   </div>
                   <span
-                    className={`flex-shrink-0 w-6 h-6 flex items-center justify-center transition-colors ${isOpen ? "text-blue-600" : "text-blue-500"}`}
+                    className={`flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center transition-colors ${isOpen ? "text-blue-600" : "text-blue-500"}`}
                   >
                     {isOpen ? (
                       <svg
-                        className="w-5 h-5"
+                        className="w-4 h-4 sm:w-5 sm:h-5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -102,7 +102,7 @@ const FAQSection = ({ title, subtitle, description, faqs }) => {
                       </svg>
                     ) : (
                       <svg
-                        className="w-5 h-5"
+                        className="w-4 h-4 sm:w-5 sm:h-5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -123,7 +123,7 @@ const FAQSection = ({ title, subtitle, description, faqs }) => {
                     isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="px-6 pb-6 pt-2 text-gray-900 leading-relaxed text-sm ml-8">
+                  <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-1 sm:pt-2 text-gray-800 leading-relaxed text-xs sm:text-sm pl-7 sm:pl-14">
                     {faq.answer}
                   </div>
                 </div>

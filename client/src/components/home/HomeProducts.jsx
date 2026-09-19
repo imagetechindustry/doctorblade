@@ -16,31 +16,31 @@ const HomeProducts = ({ locationData }) => {
     externalLink: p.externalLink,
   }));
   return (
-    <section className="py-16 lg:py-24 bg-gray-50">
+    <section className="py-10 sm:py-16 lg:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-8 sm:mb-12">
           <div>
-            <h4 className="text-blue-600 font-bold tracking-wider text-sm uppercase mb-2">
+            <h4 className="text-blue-600 font-bold tracking-wider text-xs sm:text-sm uppercase mb-2">
               Our Products
             </h4>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
               Advanced Ink Metering Solutions {locName ? `in ${locName}` : ''}
             </h2>
-            <p className="mt-4 text-lg text-gray-900 max-w-2xl">
+            <p className="mt-2 sm:mt-4 text-sm sm:text-base lg:text-lg text-gray-800 max-w-2xl leading-relaxed">
               A wide range of high-performance Doctor Blades designed to keep printing ink properly mixed and ensure consistent print quality in your presses.
             </p>
           </div>
-          <div className="mt-6 md:mt-0 shrink-0">
+          <div className="mt-4 sm:mt-6 md:mt-0 shrink-0">
             <a
               href="https://www.imagetechindustries.com/products"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-blue-600 border border-blue-200 bg-white hover:bg-blue-50 px-6 py-2.5 rounded-full font-semibold transition-colors shadow-sm"
+              className="inline-flex items-center text-blue-600 border border-blue-200 bg-white hover:bg-blue-50 px-5 sm:px-6 py-2.5 rounded-full font-semibold text-xs sm:text-sm transition-colors shadow-sm cursor-pointer"
             >
               View All Products
               <svg
-                className="w-4 h-4 ml-2"
+                className="w-4 h-4 ml-1.5 sm:ml-2"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -57,34 +57,34 @@ const HomeProducts = ({ locationData }) => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {products.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-2xl p-6 shadow-md border border-gray-100 hover:shadow-xl transition-shadow group flex flex-col h-full"
+              className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 hover:shadow-xl transition-shadow group flex flex-col h-full"
             >
               <a href={product.externalLink} target="_blank" rel="noopener noreferrer" className="block group/link cursor-pointer">
-                <div className="bg-gray-100 rounded-xl mb-6 overflow-hidden aspect-square flex items-center justify-center p-4">
+                <div className="bg-gray-100 rounded-xl mb-4 sm:mb-6 overflow-hidden aspect-square flex items-center justify-center p-3 sm:p-4">
                   <img
                     src={product.image}
                     alt={product.title}
                     className="w-full h-full object-cover mix-blend-multiply group-hover/link:scale-105 transition-transform duration-500 rounded-lg shadow-sm"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover/link:text-blue-600 transition-colors">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 leading-tight group-hover/link:text-blue-600 transition-colors">
                   {product.title}
                 </h3>
               </a>
-              <p className="text-gray-900 text-sm mb-6 flex-grow">
+              <p className="text-gray-700 text-xs sm:text-sm mb-4 sm:mb-6 flex-grow leading-relaxed">
                 {product.description}
               </p>
               <Link
                 to={product.link}
-                className="inline-flex items-center text-blue-600 font-semibold text-sm hover:text-blue-800 transition-colors mt-auto"
+                className="inline-flex items-center text-blue-600 font-semibold text-xs sm:text-sm hover:text-blue-800 transition-colors mt-auto"
               >
                 View Details
                 <svg
-                  className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform"
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1 transform group-hover:translate-x-1 transition-transform"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

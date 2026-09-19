@@ -174,7 +174,7 @@ export default function WorkingPrinciplePage() {
       <div className="bg-slate-50 min-h-screen py-6 lg:py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumbs */}
-          <nav className="text-sm font-semibold mb-6 flex text-slate-500">
+          <nav className="text-xs sm:text-sm font-semibold mb-4 sm:mb-6 flex flex-wrap text-slate-500">
             <Link to="/" className="hover:text-blue-600 transition-colors">
               Home
             </Link>
@@ -190,71 +190,71 @@ export default function WorkingPrinciplePage() {
           <TechnicalGuidesNav />
 
           {/* Hero Header */}
-          <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-slate-200 mb-12">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-4">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-12 shadow-sm border border-slate-200 mb-8 sm:mb-12">
+            <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-3 sm:mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
               Pillar 03 • Mechanics & Hydrodynamics
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-3 sm:mb-4">
               Doctor Blade <span className="text-blue-600">Working Principle</span> & Physics
             </h1>
-            <p className="text-base sm:text-lg text-slate-700 max-w-3xl leading-relaxed mb-8">
+            <p className="text-sm sm:text-base lg:text-lg text-slate-700 max-w-3xl leading-relaxed mb-6 sm:mb-8">
               At line speeds exceeding 400 meters per minute, a doctor blade is not merely a mechanical scraper—it operates as a precision hydrodynamic metering valve. Understanding the balance between mechanical contact pressure, ink shear viscosity, and contact angle physics is the key to achieving zero pressroom defects.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-slate-100">
-              <div className="flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center justify-center font-black text-sm shrink-0">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-6 pt-5 sm:pt-6 border-t border-slate-100">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center justify-center font-black text-xs sm:text-sm shrink-0">
                   01
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-900">Hydrodynamic Equilibrium</div>
-                  <div className="text-xs text-slate-600">Balance between fluid lift & pressure</div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900">Hydrodynamic Equilibrium</div>
+                  <div className="text-[11px] sm:text-xs text-slate-600">Balance between fluid lift & pressure</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center justify-center font-black text-sm shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center justify-center font-black text-xs sm:text-sm shrink-0">
                   02
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-900">The 55°–60° Rule</div>
-                  <div className="text-xs text-slate-600">Optimal contact angle for zero scumming</div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900">The 55°–60° Rule</div>
+                  <div className="text-[11px] sm:text-xs text-slate-600">Optimal contact angle for zero scumming</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center justify-center font-black text-sm shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center justify-center font-black text-xs sm:text-sm shrink-0">
                   03
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-900">Lamella Geometry</div>
-                  <div className="text-xs text-slate-600">Constant contact surface width over time</div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900">Lamella Geometry</div>
+                  <div className="text-[11px] sm:text-xs text-slate-600">Constant contact surface width over time</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Section: The 4-Stage Ink Shearing Cycle */}
-          <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-slate-200 mb-12">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-3">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-10 shadow-sm border border-slate-200 mb-8 sm:mb-12">
+            <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-2 sm:mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
               Press Mechanics
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mb-2 sm:mb-3">
               The 4-Stage Doctor Blade Shearing & Metering Cycle
             </h2>
-            <p className="text-base text-slate-700 leading-relaxed mb-8">
+            <p className="text-xs sm:text-base text-slate-700 leading-relaxed mb-6 sm:mb-8">
               Ink metering is a dynamic, continuous thermodynamic and fluid process occurring at millisecond speeds. Here is what happens at the microscopic cylinder-blade interface:
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
               {shearingStages.map((st, i) => (
-                <div key={i} className="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                <div key={i} className="bg-slate-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-200 flex flex-col justify-between">
                   <div>
-                    <div className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2">
+                    <div className="text-[11px] sm:text-xs font-bold text-blue-700 uppercase tracking-wider mb-1.5 sm:mb-2">
                       {st.stage}
                     </div>
-                    <h3 className="text-base font-bold text-slate-900 mb-3">{st.title}</h3>
-                    <p className="text-sm text-slate-700 leading-relaxed">{st.description}</p>
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 mb-2 sm:mb-3">{st.title}</h3>
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{st.description}</p>
                   </div>
                 </div>
               ))}
@@ -262,28 +262,28 @@ export default function WorkingPrinciplePage() {
           </div>
 
           {/* Physics & Hydrodynamics Breakdown */}
-          <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-slate-200 mb-12">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-3">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-10 shadow-sm border border-slate-200 mb-8 sm:mb-12">
+            <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-2 sm:mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
               Fluid Mechanics & Press Dynamics
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mb-2 sm:mb-3">
               How Ink Metering Works: Hydrodynamics vs. Mechanical Pressure
             </h2>
-            <p className="text-base text-slate-700 leading-relaxed mb-8">
+            <p className="text-xs sm:text-base text-slate-700 leading-relaxed mb-6 sm:mb-8">
               When an engraved rotogravure cylinder or ceramic anilox roll emerges from the ink fountain, it carries an excessive, uneven layer of wet ink across both the cells and the non-image land areas. The doctor blade's task is to sheer away 100% of excess surface ink while leaving precisely the cell-metered volume intact.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-              <div className="bg-slate-50 p-6 sm:p-7 rounded-2xl border border-slate-200">
-                <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mb-6 sm:mb-8">
+              <div className="bg-slate-50 p-4 sm:p-7 rounded-xl sm:rounded-2xl border border-slate-200">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2.5 flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-blue-600 shrink-0"></span>
                   1. Hydrodynamic Lift Force (P_hydro)
                 </h3>
-                <p className="text-sm text-slate-700 leading-relaxed mb-3">
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-3">
                   As the cylinder rotates at high surface speed, fluid ink is dragged toward the converging wedge between the cylinder and blade. This generates intense hydrodynamic pressure that pushes the blade tip away from the cylinder face:
                 </p>
-                <div className="bg-white p-3.5 rounded-xl border border-blue-200 text-xs font-mono text-blue-900 font-bold mb-3">
+                <div className="bg-white p-3 sm:p-3.5 rounded-xl border border-blue-200 text-[11px] sm:text-xs font-mono text-blue-900 font-bold mb-3 break-all sm:break-normal">
                   P_hydro ∝ (Ink Viscosity × Press Speed) / tan(Contact Angle)
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
@@ -291,15 +291,15 @@ export default function WorkingPrinciplePage() {
                 </p>
               </div>
 
-              <div className="bg-slate-50 p-6 sm:p-7 rounded-2xl border border-slate-200">
-                <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+              <div className="bg-slate-50 p-4 sm:p-7 rounded-xl sm:rounded-2xl border border-slate-200">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2.5 flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-blue-600 shrink-0"></span>
                   2. Mechanical Clamping Pressure (P_mech)
                 </h3>
-                <p className="text-sm text-slate-700 leading-relaxed mb-3">
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-3">
                   The pneumatic holder applies mechanical force to keep the tip seated against the cylinder. To achieve zero wear and clean wiping, P_mech must exactly counterbalance P_hydro:
                 </p>
-                <div className="bg-white p-3.5 rounded-xl border border-blue-200 text-xs font-mono text-blue-900 font-bold mb-3">
+                <div className="bg-white p-3 sm:p-3.5 rounded-xl border border-blue-200 text-[11px] sm:text-xs font-mono text-blue-900 font-bold mb-3 break-all sm:break-normal">
                   Ideal Pressroom State: P_mech ≈ P_hydro + ε (Minimal excess)
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
@@ -309,29 +309,29 @@ export default function WorkingPrinciplePage() {
             </div>
 
             {/* Contact Angle Highlight (100% Light Theme) */}
-            <div className="bg-blue-50/70 border border-blue-200 rounded-3xl p-6 sm:p-8 text-slate-900">
-              <div className="max-w-3xl mb-6">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-800 mb-2">
+            <div className="bg-blue-50/70 border border-blue-200 rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-slate-900">
+              <div className="max-w-3xl mb-4 sm:mb-6">
+                <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-800 mb-2">
                   The Golden Pressroom Rule
                 </span>
-                <h3 className="text-2xl font-extrabold text-slate-900">
+                <h3 className="text-lg sm:text-2xl font-extrabold text-slate-900">
                   Why 55° to 60° is the Optimal Doctor Blade Contact Angle
                 </h3>
-                <p className="text-sm text-slate-700 mt-2 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-700 mt-1.5 sm:mt-2 leading-relaxed">
                   The contact angle formed between the doctor blade tangent and the cylinder surface must remain strictly between <strong>55° and 60°</strong>:
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm">
-                <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-xs sm:text-sm">
+                <div className="bg-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 shadow-xs">
                   <strong className="text-rose-700 block mb-1 font-bold text-sm">Below 50° (Too Flat)</strong>
                   <span className="text-slate-600 leading-relaxed">Blade floats on hydrodynamic fluid wedge; causes hazing, ink spitting, and non-image scumming.</span>
                 </div>
-                <div className="bg-white p-4 sm:p-5 rounded-2xl border border-emerald-300 shadow-xs ring-1 ring-emerald-300/40">
+                <div className="bg-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-emerald-300 shadow-xs ring-1 ring-emerald-300/40">
                   <strong className="text-emerald-700 block mb-1 font-bold text-sm">55° – 60° (Optimal Range)</strong>
                   <span className="text-slate-800 font-medium leading-relaxed">Crisp ink shearing, minimal friction heat, and maximum cylinder chrome lifespan.</span>
                 </div>
-                <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs">
+                <div className="bg-white p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 shadow-xs">
                   <strong className="text-amber-700 block mb-1 font-bold text-sm">Over 65° (Too Steep)</strong>
                   <span className="text-slate-600 leading-relaxed">Blade chatters, feathers rapidly, and chisels directly into copper cell walls.</span>
                 </div>
@@ -340,37 +340,42 @@ export default function WorkingPrinciplePage() {
           </div>
 
           {/* Section: Press Velocity vs Clamping Force Curve Table */}
-          <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden mb-12">
-            <div className="bg-slate-50 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-slate-200 overflow-hidden mb-8 sm:mb-12">
+            <div className="bg-slate-50 border-b border-slate-200 px-4 sm:px-6 py-3.5 sm:py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4">
               <div>
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">
                   Press Speed vs. Recommended Pneumatic Pressure Curve
                 </h3>
                 <p className="text-xs text-slate-600 mt-0.5">
                   How line velocity impacts hydrodynamic lift and blade selection
                 </p>
               </div>
-              <span className="text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+              <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 sm:px-3 py-1 rounded-full border border-blue-200 self-start sm:self-auto">
                 Operating Curve
               </span>
             </div>
+            {/* Mobile swipe helper */}
+            <div className="sm:hidden px-4 py-1.5 bg-blue-50/60 text-[11px] font-semibold text-blue-700 flex items-center justify-between border-b border-blue-100">
+              <span>← Swipe table horizontally →</span>
+              <span>4 columns</span>
+            </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm">
-                <thead className="bg-slate-50/70 border-b border-slate-200 text-slate-700 font-bold uppercase tracking-wider text-xs">
+              <table className="w-full text-left text-xs sm:text-sm min-w-[550px]">
+                <thead className="bg-slate-50/70 border-b border-slate-200 text-slate-700 font-bold uppercase tracking-wider text-[11px] sm:text-xs">
                   <tr>
-                    <th className="py-4 px-5">Press Speed Range</th>
-                    <th className="py-4 px-5">Hydrodynamic Lift Force</th>
-                    <th className="py-4 px-5">Recommended Pressure</th>
-                    <th className="py-4 px-5">Recommended Blade Specification</th>
+                    <th className="py-3 sm:py-4 px-4 sm:px-5">Press Speed Range</th>
+                    <th className="py-3 sm:py-4 px-4 sm:px-5">Hydrodynamic Lift Force</th>
+                    <th className="py-3 sm:py-4 px-4 sm:px-5">Recommended Pressure</th>
+                    <th className="py-3 sm:py-4 px-4 sm:px-5">Recommended Blade Specification</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {speedPressureCurve.map((row, i) => (
                     <tr key={i} className="hover:bg-blue-50/40 transition-colors">
-                      <td className="py-4 px-5 font-bold text-slate-900">{row.speed}</td>
-                      <td className="py-4 px-5 text-slate-700">{row.hydroLift}</td>
-                      <td className="py-4 px-5 font-bold text-blue-700">{row.recommendedPressure}</td>
-                      <td className="py-4 px-5 text-slate-700 font-semibold">{row.bladeSpec}</td>
+                      <td className="py-3 sm:py-4 px-4 sm:px-5 font-bold text-slate-900">{row.speed}</td>
+                      <td className="py-3 sm:py-4 px-4 sm:px-5 text-slate-700">{row.hydroLift}</td>
+                      <td className="py-3 sm:py-4 px-4 sm:px-5 font-bold text-blue-700">{row.recommendedPressure}</td>
+                      <td className="py-3 sm:py-4 px-4 sm:px-5 text-slate-700 font-semibold">{row.bladeSpec}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -379,44 +384,44 @@ export default function WorkingPrinciplePage() {
           </div>
 
           {/* Edge Profile Geometry Comparison */}
-          <div className="mb-12">
-            <div className="text-center max-w-3xl mx-auto mb-10">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-3">
+          <div className="mb-8 sm:mb-12">
+            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-10 px-2">
+              <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-2 sm:mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
                 Precision Manufacturing
               </span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
                 Understanding Edge Geometries: Lamella vs. Bevel vs. Round
               </h2>
-              <p className="text-base text-slate-700 mt-2">
+              <p className="text-xs sm:text-base text-slate-700 mt-2">
                 The edge shape determines how contact pressure is distributed across cylinder cells throughout the entire production run.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               {edgeProfiles.map((edge) => (
                 <div
                   key={edge.name}
-                  className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-300 transition-all flex flex-col justify-between group"
+                  className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-300 transition-all flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 mb-4">
-                      <span className="text-xs font-black text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
+                    <div className="flex items-center justify-between pb-3 sm:pb-3.5 border-b border-slate-100 mb-3 sm:mb-4">
+                      <span className="text-[11px] sm:text-xs font-black text-blue-700 bg-blue-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md sm:rounded-lg border border-blue-200">
                         {edge.badge}
                       </span>
-                      <span className="text-xs text-slate-500 font-semibold uppercase tracking-wider">
+                      <span className="text-[11px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider">
                         ISO Profile
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
                       {edge.name}
                     </h3>
-                    <p className="text-sm text-slate-700 leading-relaxed mb-5">
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4 sm:mb-5">
                       {edge.description}
                     </p>
 
-                    <div className="space-y-3 text-xs bg-slate-50 p-4 rounded-2xl border border-slate-200 mb-6">
+                    <div className="space-y-2.5 sm:space-y-3 text-xs bg-slate-50 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-200 mb-5 sm:mb-6">
                       <div>
                         <strong className="text-slate-900 block uppercase tracking-wider font-bold mb-0.5">
                           Tip Geometry:
@@ -440,7 +445,7 @@ export default function WorkingPrinciplePage() {
 
                   <button
                     onClick={() => window.dispatchEvent(new CustomEvent("open-quote-modal"))}
-                    className="w-full py-3 bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white rounded-xl text-xs font-bold transition-all text-center cursor-pointer border border-blue-200 hover:border-blue-600 shadow-xs"
+                    className="w-full py-2.5 sm:py-3 bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white rounded-xl text-xs font-bold transition-all text-center cursor-pointer border border-blue-200 hover:border-blue-600 shadow-xs"
                   >
                     Request Sample of this Profile
                   </button>
@@ -450,35 +455,40 @@ export default function WorkingPrinciplePage() {
           </div>
 
           {/* Head-to-Head Comparison Table */}
-          <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden mb-12">
-            <div className="bg-slate-50 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-slate-200 overflow-hidden mb-8 sm:mb-12">
+            <div className="bg-slate-50 border-b border-slate-200 px-4 sm:px-6 py-3.5 sm:py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4">
               <div>
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">
                   Sub-Standard Generic Blades vs. WIPEX Precision Doctor Blades
                 </h3>
                 <p className="text-xs text-slate-600 mt-0.5">
                   See the difference refined carbon steel micro-structure makes in press performance
                 </p>
               </div>
-              <span className="text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+              <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 sm:px-3 py-1 rounded-full border border-blue-200 self-start sm:self-auto">
                 Direct Comparison
               </span>
             </div>
+            {/* Mobile swipe helper */}
+            <div className="sm:hidden px-4 py-1.5 bg-blue-50/60 text-[11px] font-semibold text-blue-700 flex items-center justify-between border-b border-blue-100">
+              <span>← Swipe table horizontally →</span>
+              <span>3 columns</span>
+            </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm">
-                <thead className="bg-slate-50/70 border-b border-slate-200 text-slate-700 font-bold uppercase tracking-wider text-xs">
+              <table className="w-full text-left text-xs sm:text-sm min-w-[550px]">
+                <thead className="bg-slate-50/70 border-b border-slate-200 text-slate-700 font-bold uppercase tracking-wider text-[11px] sm:text-xs">
                   <tr>
-                    <th className="py-4 px-5 w-1/3">Performance Metric</th>
-                    <th className="py-4 px-5 w-1/3 text-rose-700">Generic Low-Cost Blades</th>
-                    <th className="py-4 px-5 text-blue-700">WIPEX Precision Blades</th>
+                    <th className="py-3 sm:py-4 px-4 sm:px-5 w-1/3">Performance Metric</th>
+                    <th className="py-3 sm:py-4 px-4 sm:px-5 w-1/3 text-rose-700">Generic Low-Cost Blades</th>
+                    <th className="py-3 sm:py-4 px-4 sm:px-5 text-blue-700">WIPEX Precision Blades</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {comparisonTable.map((row, i) => (
                     <tr key={i} className="hover:bg-blue-50/40 transition-colors">
-                      <td className="py-4 px-5 font-bold text-slate-900">{row.feature}</td>
-                      <td className="py-4 px-5 text-slate-600">{row.generic}</td>
-                      <td className="py-4 px-5 text-blue-700 font-semibold">{row.wipex}</td>
+                      <td className="py-3 sm:py-4 px-4 sm:px-5 font-bold text-slate-900">{row.feature}</td>
+                      <td className="py-3 sm:py-4 px-4 sm:px-5 text-slate-600">{row.generic}</td>
+                      <td className="py-3 sm:py-4 px-4 sm:px-5 text-blue-700 font-semibold">{row.wipex}</td>
                     </tr>
                   ))}
                 </tbody>

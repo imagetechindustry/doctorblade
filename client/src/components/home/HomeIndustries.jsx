@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const industries = [
   {
     name: "Flexible Packaging",
@@ -30,31 +30,31 @@ const industries = [
 const HomeIndustries = ({ locationData }) => {
   const locName = locationData ? locationData.name : "";
   return (
-    <section className="py-16 lg:py-24 bg-white border-t border-gray-100">
+    <section className="py-10 sm:py-16 lg:py-24 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Side: Text and Grid */}
           <div>
-            <h4 className="text-blue-600 font-bold tracking-wider text-sm uppercase mb-2">
+            <h4 className="text-blue-600 font-bold tracking-wider text-xs sm:text-sm uppercase mb-2">
               Industries We Serve
             </h4>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4 sm:mb-6">
               Supporting Diverse Industries with Reliable Solutions {locName ? `in ${locName}` : ''}
             </h2>
-            <p className="text-lg text-gray-900 mb-10">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-800 mb-6 sm:mb-10 leading-relaxed">
               Our Doctor Blades are widely used across various industries to
               ensure consistent ink metering, efficiency and reliability in printing and packaging processes.
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 mb-6 sm:mb-8">
               {industries.map((industry, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center text-center p-4 rounded-xl border border-gray-100 hover:shadow-lg hover:border-blue-100 transition-all group cursor-default"
+                  className="flex flex-col items-center text-center p-3 sm:p-4 rounded-xl border border-gray-100 hover:shadow-lg hover:border-blue-100 transition-all group cursor-default bg-slate-50/50"
                 >
-                  <div className="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <div className="w-11 h-11 sm:w-14 sm:h-14 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 mb-2.5 sm:mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors shrink-0">
                     <svg
-                      className="w-7 h-7"
+                      className="w-5 h-5 sm:w-7 sm:h-7"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -67,20 +67,20 @@ const HomeIndustries = ({ locationData }) => {
                       />
                     </svg>
                   </div>
-                  <h3 className="font-semibold text-sm text-gray-900 leading-tight">
+                  <h3 className="font-bold text-xs sm:text-sm text-gray-900 leading-tight">
                     {industry.name}
                   </h3>
                 </div>
               ))}
             </div>
 
-            <a
-              href="#"
-              className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors"
+            <Link
+              to="/press-applications"
+              className="inline-flex items-center text-blue-600 font-semibold text-sm hover:text-blue-800 transition-colors"
             >
               Explore All Industries
               <svg
-                className="w-4 h-4 ml-2"
+                className="w-4 h-4 ml-1.5 sm:ml-2"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -92,12 +92,12 @@ const HomeIndustries = ({ locationData }) => {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
 
           {/* Right Side: Image and Features */}
-          <div className="relative">
-            <div className="rounded-2xl overflow-hidden shadow-2xl relative h-[400px] w-full">
+          <div className="relative mt-4 lg:mt-0">
+            <div className="rounded-2xl overflow-hidden shadow-xl relative h-[280px] sm:h-[350px] lg:h-[400px] w-full">
               {/* Fallback image */}
               <img
                 src="/quality.jpg"
@@ -105,11 +105,11 @@ const HomeIndustries = ({ locationData }) => {
                 className="w-full h-full object-cover object-center"
               />
 
-              <div className="absolute bottom-0 left-0 bg-blue-900/95 backdrop-blur text-white p-6 rounded-tr-3xl">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-blue-600 p-3 rounded-lg">
+              <div className="absolute bottom-0 left-0 bg-blue-900/95 backdrop-blur text-white p-4 sm:p-6 rounded-tr-2xl sm:rounded-tr-3xl">
+                <div className="flex items-center space-x-3 sm:space-x-4">
+                  <div className="bg-blue-600 p-2.5 sm:p-3 rounded-lg shrink-0">
                     <svg
-                      className="w-6 h-6"
+                      className="w-5 h-5 sm:w-6 sm:h-6"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

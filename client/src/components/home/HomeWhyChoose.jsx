@@ -26,26 +26,26 @@ const reasons = [
 const HomeWhyChoose = ({ locationData }) => {
   const locName = locationData ? locationData.name : "India";
   return (
-    <section className="py-16 lg:py-24 bg-gray-50 border-t border-gray-100">
+    <section className="py-10 sm:py-16 lg:py-24 bg-gray-50 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h4 className="text-blue-600 font-bold tracking-wider text-sm uppercase mb-2">
+        <div className="text-center mb-8 sm:mb-16 px-2">
+          <h4 className="text-blue-600 font-bold tracking-wider text-xs sm:text-sm uppercase mb-2">
             Why Choose ImageTech Industries
           </h4>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 sm:mb-4">
             The Best Doctor Blade Manufacturer in {locName}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-8 text-center shadow-sm border border-gray-100 hover:shadow-xl hover:border-blue-100 transition-all group"
+              className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-8 text-center shadow-sm border border-gray-100 hover:shadow-xl hover:border-blue-100 transition-all group"
             >
-              <div className="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 shrink-0">
                 <svg
-                  className="w-8 h-8"
+                  className="w-6 h-6 sm:w-8 sm:h-8"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -58,10 +58,10 @@ const HomeWhyChoose = ({ locationData }) => {
                   />
                 </svg>
               </div>
-              <h3 className="font-bold text-lg text-gray-900 mb-3">
+              <h3 className="font-bold text-base sm:text-lg text-gray-900 mb-1.5 sm:mb-3">
                 {reason.title}
               </h3>
-              <p className="text-gray-900 text-sm leading-relaxed">
+              <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
                 {reason.description}
               </p>
             </div>

@@ -277,7 +277,7 @@ export default function TroubleshootingGuidePage() {
       <div className="bg-slate-50 min-h-screen py-6 lg:py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumbs */}
-          <nav className="text-sm font-semibold mb-6 flex text-slate-500">
+          <nav className="text-xs sm:text-sm font-semibold mb-4 sm:mb-6 flex flex-wrap text-slate-500">
             <Link to="/" className="hover:text-blue-600 transition-colors">
               Home
             </Link>
@@ -293,69 +293,69 @@ export default function TroubleshootingGuidePage() {
           <TechnicalGuidesNav />
 
           {/* Hero Header */}
-          <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-slate-200 mb-12">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-4">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-12 shadow-sm border border-slate-200 mb-8 sm:mb-12">
+            <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-3 sm:mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
               Pillar 02 • Defect Diagnostic Suite
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-3 sm:mb-4">
               Doctor Blade <span className="text-blue-600">Defect Troubleshooting</span> Guide
             </h1>
-            <p className="text-base sm:text-lg text-slate-700 max-w-3xl leading-relaxed mb-8">
+            <p className="text-sm sm:text-base lg:text-lg text-slate-700 max-w-3xl leading-relaxed mb-6 sm:mb-8">
               Pressroom printing defects cost packaging plants thousands of dollars in scrapped substrate and downtime every shift. This guide provides quick diagnosis, hydrodynamic root cause analysis, and field-tested solutions for every doctor blade wiping defect.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-slate-100">
-              <div className="flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center justify-center font-black text-sm shrink-0">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-6 pt-5 sm:pt-6 border-t border-slate-100">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center justify-center font-black text-xs sm:text-sm shrink-0">
                   01
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-900">Zero Guesswork</div>
-                  <div className="text-xs text-slate-600">Symptom-to-solution matrix</div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900">Zero Guesswork</div>
+                  <div className="text-[11px] sm:text-xs text-slate-600">Symptom-to-solution matrix</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center justify-center font-black text-sm shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center justify-center font-black text-xs sm:text-sm shrink-0">
                   02
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-900">Pressroom Safety</div>
-                  <div className="text-xs text-slate-600">Anilox scoring prevention</div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900">Pressroom Safety</div>
+                  <div className="text-[11px] sm:text-xs text-slate-600">Anilox scoring prevention</div>
                 </div>
               </div>
-              <div className="flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center justify-center font-black text-sm shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-blue-700 border border-blue-200/60 flex items-center justify-center font-black text-xs sm:text-sm shrink-0">
                   03
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-slate-900">Standard SOP</div>
-                  <div className="text-xs text-slate-600">Mounting torque sequence</div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900">Standard SOP</div>
+                  <div className="text-[11px] sm:text-xs text-slate-600">Mounting torque sequence</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Visual Defect Quick-Finder (Interactive Filter) */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 mb-12">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-sm border border-slate-200 mb-8 sm:mb-12">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-5 sm:mb-6">
               <div>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-2">
+                <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-1.5 sm:mb-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
                   Visual Quick-Finder
                 </span>
-                <h2 className="text-2xl font-extrabold text-slate-900">
+                <h2 className="text-lg sm:text-2xl font-extrabold text-slate-900">
                   Identify Your Print Defect in Seconds
                 </h2>
               </div>
 
               {/* Filter Pills */}
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1 sm:gap-1.5">
                 {categories.map((cat) => (
                   <button
                     key={cat}
                     onClick={() => setFilterCategory(cat)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer border ${
+                    className={`px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer border ${
                       filterCategory === cat
                         ? "bg-blue-600 text-white border-blue-600 shadow-sm"
                         : "bg-slate-50 text-slate-700 hover:bg-slate-100 border-slate-200"
@@ -367,26 +367,26 @@ export default function TroubleshootingGuidePage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {filteredQuickFinder.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-slate-50 p-5 rounded-2xl border border-slate-200 hover:border-blue-300 hover:bg-white transition-all flex flex-col justify-between group"
+                  className="bg-slate-50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 hover:border-blue-300 hover:bg-white transition-all flex flex-col justify-between group"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="text-xs font-bold uppercase tracking-wide px-2.5 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
+                      <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wide px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
                         {item.category}
                       </span>
                     </div>
-                    <h3 className="font-bold text-base text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="font-bold text-sm sm:text-base text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors">
                       {item.symptom}
                     </h3>
                     <p className="text-xs text-slate-600 leading-relaxed mb-3">
                       <strong className="text-slate-800">Cause:</strong> {item.likelyCause}
                     </p>
                   </div>
-                  <div className="pt-3 border-t border-slate-200 text-xs text-emerald-800 font-semibold bg-emerald-50/80 p-3 rounded-xl">
+                  <div className="pt-2.5 border-t border-slate-200 text-xs text-emerald-800 font-semibold bg-emerald-50/80 p-2.5 sm:p-3 rounded-lg sm:rounded-xl">
                     <strong className="text-emerald-900 block mb-0.5">Quick Fix:</strong>
                     {item.quickFix}
                   </div>
@@ -396,34 +396,34 @@ export default function TroubleshootingGuidePage() {
           </div>
 
           {/* Section: Operator 3-Step Root Cause Decision Tree */}
-          <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-slate-200 mb-12">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-3">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-10 shadow-sm border border-slate-200 mb-8 sm:mb-12">
+            <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-2 sm:mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
               Pressroom Flowchart
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mb-2 sm:mb-3">
               Press Operator Root Cause Decision Tree
             </h2>
-            <p className="text-base text-slate-700 leading-relaxed mb-8">
+            <p className="text-xs sm:text-base text-slate-700 leading-relaxed mb-6 sm:mb-8">
               When a defect appears on the printed web, do not immediately stop the press or crank up pneumatic pressure. Follow this 3-question diagnostic sequence to isolate the cause:
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
               {diagnosticFlowchart.map((fc, i) => (
-                <div key={i} className="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                <div key={i} className="bg-slate-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-slate-200 flex flex-col justify-between">
                   <div>
-                    <span className="text-xs font-black text-blue-700 uppercase tracking-wider block mb-2">
+                    <span className="text-[11px] sm:text-xs font-black text-blue-700 uppercase tracking-wider block mb-1.5 sm:mb-2">
                       {fc.step}
                     </span>
-                    <h3 className="text-base font-bold text-slate-900 mb-4">{fc.question}</h3>
-                    <div className="space-y-3 text-xs">
-                      <div className="bg-white p-3 rounded-xl border border-slate-200">
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 mb-3 sm:mb-4">{fc.question}</h3>
+                    <div className="space-y-2.5 sm:space-y-3 text-xs">
+                      <div className="bg-white p-2.5 sm:p-3 rounded-lg sm:rounded-xl border border-slate-200">
                         <strong className="text-emerald-700 font-bold block mb-0.5">IF YES:</strong>
-                        <span className="text-slate-700">{fc.yesResult}</span>
+                        <span className="text-slate-700 leading-relaxed">{fc.yesResult}</span>
                       </div>
-                      <div className="bg-white p-3 rounded-xl border border-slate-200">
+                      <div className="bg-white p-2.5 sm:p-3 rounded-lg sm:rounded-xl border border-slate-200">
                         <strong className="text-rose-700 font-bold block mb-0.5">IF NO:</strong>
-                        <span className="text-slate-700">{fc.noResult}</span>
+                        <span className="text-slate-700 leading-relaxed">{fc.noResult}</span>
                       </div>
                     </div>
                   </div>
@@ -433,41 +433,41 @@ export default function TroubleshootingGuidePage() {
           </div>
 
           {/* Deep-Dive Defect Cards (8 Detailed Defects) */}
-          <div className="mb-12">
-            <div className="text-center max-w-3xl mx-auto mb-10">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-3">
+          <div className="mb-8 sm:mb-12">
+            <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-10 px-2">
+              <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-2 sm:mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
                 In-Depth Root Cause Breakdown
               </span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
                 Detailed Mechanical & Hydrodynamic Solutions
               </h2>
-              <p className="text-base text-slate-700 mt-2">
+              <p className="text-xs sm:text-base text-slate-700 mt-2">
                 Actionable pressroom countermeasures to permanently resolve the 8 most common doctor blade defects.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
               {defectCards.map((card) => (
                 <div
                   key={card.code}
-                  className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all flex flex-col justify-between group"
+                  className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
-                      <span className="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
+                    <div className="flex items-center justify-between pb-3 sm:pb-4 border-b border-slate-100 mb-3 sm:mb-4">
+                      <span className="font-mono text-[11px] sm:text-xs font-bold text-blue-700 bg-blue-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md sm:rounded-lg border border-blue-200">
                         {card.code}
                       </span>
-                      <span className="text-xs font-bold px-3 py-1 rounded-full bg-rose-50 text-rose-700 border border-rose-200">
+                      <span className="text-[11px] sm:text-xs font-bold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-rose-50 text-rose-700 border border-rose-200">
                         {card.severity}
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2 sm:mb-3 group-hover:text-blue-600 transition-colors">
                       {card.name}
                     </h3>
 
-                    <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 mb-5 text-sm text-slate-800 leading-relaxed">
+                    <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-amber-50/70 border border-amber-200 mb-4 sm:mb-5 text-xs sm:text-sm text-slate-800 leading-relaxed">
                       <strong className="text-slate-900 font-bold block mb-1">
                         Failure Mechanism:
                       </strong>
@@ -475,13 +475,13 @@ export default function TroubleshootingGuidePage() {
                     </div>
 
                     <div>
-                      <strong className="text-xs font-bold uppercase tracking-wider text-slate-800 block mb-2">
+                      <strong className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-800 block mb-2">
                         Pressroom Action Plan:
                       </strong>
-                      <ul className="space-y-2 mb-6">
+                      <ul className="space-y-2 mb-4 sm:mb-6">
                         {card.countermeasures.map((step, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-sm text-slate-700 leading-relaxed">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0 mt-2"></span>
+                          <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0 mt-1.5"></span>
                             <span>{step}</span>
                           </li>
                         ))}
@@ -489,11 +489,11 @@ export default function TroubleshootingGuidePage() {
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-100 bg-slate-50 -mx-6 -mb-6 sm:-mx-8 sm:-mb-8 p-4 sm:p-5 rounded-b-3xl">
-                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
+                  <div className="pt-3 sm:pt-4 border-t border-slate-100 bg-slate-50 -mx-4 -mb-4 sm:-mx-6 sm:-mb-6 lg:-mx-8 lg:-mb-8 p-3.5 sm:p-5 rounded-b-2xl sm:rounded-b-3xl">
+                    <span className="text-[11px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider block">
                       Recommended Doctor Blade:
                     </span>
-                    <strong className="text-sm text-blue-700 font-bold block mt-0.5">
+                    <strong className="text-xs sm:text-sm text-blue-700 font-bold block mt-0.5">
                       {card.recommendedBlade}
                     </strong>
                   </div>
@@ -503,41 +503,41 @@ export default function TroubleshootingGuidePage() {
           </div>
 
           {/* Standard Operating Procedure (SOP) Card (100% Light Theme) */}
-          <div className="bg-white rounded-3xl p-8 sm:p-10 text-slate-900 shadow-md border border-slate-200 mb-12">
-            <div className="max-w-3xl mb-8">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-3">
+          <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-10 text-slate-900 shadow-md border border-slate-200 mb-8 sm:mb-12">
+            <div className="max-w-3xl mb-6 sm:mb-8">
+              <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-2 sm:mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
                 Quality Protocol
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mb-2 sm:mb-3">
                 Doctor Blade Mounting & Alignment SOP
               </h2>
-              <p className="text-base text-slate-700 leading-relaxed">
+              <p className="text-xs sm:text-base text-slate-700 leading-relaxed">
                 Over 70% of premature doctor blade failures stem from wavy clamping or uneven torque during blade changeovers. Follow this 4-point standard operating procedure:
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-xs">
-                <div className="font-bold text-base text-blue-700 mb-1.5">1. Center-Out Torque Sequence</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-6 text-xs sm:text-sm">
+              <div className="bg-slate-50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 shadow-xs">
+                <div className="font-bold text-sm sm:text-base text-blue-700 mb-1">1. Center-Out Torque Sequence</div>
                 <p className="text-slate-700 leading-relaxed">
                   Always tighten holder bolts starting from the absolute center and working outward in alternating pairs. This eliminates ripples and blade buckle waves.
                 </p>
               </div>
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-xs">
-                <div className="font-bold text-base text-blue-700 mb-1.5">2. Overhang Verification</div>
+              <div className="bg-slate-50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 shadow-xs">
+                <div className="font-bold text-sm sm:text-base text-blue-700 mb-1">2. Overhang Verification</div>
                 <p className="text-slate-700 leading-relaxed">
                   Verify blade overhang past backing blade with a depth gauge. Maintain uniform 1.0 to 1.5 mm extension along the entire cylinder length.
                 </p>
               </div>
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-xs">
-                <div className="font-bold text-base text-blue-700 mb-1.5">3. The 55°–60° Angle Check</div>
+              <div className="bg-slate-50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 shadow-xs">
+                <div className="font-bold text-sm sm:text-base text-blue-700 mb-1">3. The 55°–60° Angle Check</div>
                 <p className="text-slate-700 leading-relaxed">
                   Use a magnetic angle finder against the blade holder. Contact angles below 50° promote ink floating; angles over 65° induce rapid cylinder wear.
                 </p>
               </div>
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 shadow-xs">
-                <div className="font-bold text-base text-blue-700 mb-1.5">4. Minimum Necessary Pressure</div>
+              <div className="bg-slate-50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 shadow-xs">
+                <div className="font-bold text-sm sm:text-base text-blue-700 mb-1">4. Minimum Necessary Pressure</div>
                 <p className="text-slate-700 leading-relaxed">
                   Begin at 1.0 bar pneumatic pressure. Increment by 0.1 bar only until wiping becomes clean. Never exceed 1.8 bar under normal operating conditions.
                 </p>

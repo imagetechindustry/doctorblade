@@ -34,15 +34,15 @@ const HomeHero = ({ locationData }) => {
               gravure and flexographic printing applications.
             </p>
 
-            <div className="flex flex-row gap-2 sm:gap-4 overflow-x-auto hide-scrollbar pb-1">
+            <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-4 pb-1">
               <button
                 onClick={() =>
                   window.dispatchEvent(new CustomEvent("open-quote-modal"))
                 }
-                className="flex items-center whitespace-nowrap px-4 sm:px-8 py-3 sm:py-4 text-sm sm:text-base bg-blue-600 text-white rounded-lg font-semibold shadow-lg shadow-blue-500/30 hover:bg-blue-700 transition-all duration-300"
+                className="flex items-center justify-center whitespace-nowrap px-5 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base bg-blue-600 text-white rounded-lg font-semibold shadow-lg shadow-blue-500/30 hover:bg-blue-700 transition-all duration-300 cursor-pointer"
               >
                 <svg
-                  className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 shrink-0"
+                  className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -56,7 +56,7 @@ const HomeHero = ({ locationData }) => {
                 </svg>
                 Get a Quote
                 <svg
-                  className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2 shrink-0"
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2 shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -74,11 +74,11 @@ const HomeHero = ({ locationData }) => {
                 href="https://www.imagetechindustries.com/products"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center whitespace-nowrap px-4 sm:px-8 py-3 sm:py-4 text-sm sm:text-base bg-white text-blue-600 border border-blue-200 rounded-lg font-semibold hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 shadow-sm"
+                className="flex items-center justify-center whitespace-nowrap px-5 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base bg-white text-blue-600 border border-blue-200 rounded-lg font-semibold hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 shadow-sm"
               >
                 Explore Our Products
                 <svg
-                  className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2 shrink-0"
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1.5 sm:ml-2 shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -208,7 +208,7 @@ const HomeHero = ({ locationData }) => {
               fetchPriority="high"
               loading="eager"
               decoding="sync"
-              className="relative z-10 w-full max-w-2xl scale-[1.1] translate-x-0 md:-translate-x-8 lg:-translate-x-12 -translate-y-24 object-contain drop-shadow-2xl rounded-2xl"
+              className="relative z-10 w-full max-w-2xl scale-100 md:scale-[1.1] translate-x-0 md:-translate-x-8 lg:-translate-x-12 -translate-y-4 sm:-translate-y-10 md:-translate-y-24 object-contain drop-shadow-2xl rounded-2xl"
             />
 
             {/* Side Floating Badges - Expanding on Hover */}

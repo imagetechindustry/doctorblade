@@ -153,14 +153,36 @@ const CityPage = () => {
   const productSchema = {
     "@context": "https://schema.org/",
     "@type": "Product",
-    "name": "Doctor Blades",
+    "name": `Doctor Blades in ${locName}`,
     "image": "https://www.doctorblade.co.in/heroimage.webp",
     "description": `Premium Doctor Blades available in ${locName}, ${locState}. Designed for gravure and flexographic printing presses.`,
+    "sku": `IT-DB-${locationSlug ? locationSlug.replace(/[^a-zA-Z0-9]/g, "").toUpperCase() : "DEL"}`,
+    "mpn": `IT-DB-${locationSlug ? locationSlug.replace(/[^a-zA-Z0-9]/g, "").toUpperCase() : "DEL"}`,
     "brand": {
       "@type": "Brand",
       "name": "ImageTech Industries"
     },
-    "areaServed": locName
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "INR",
+      "lowPrice": "350",
+      "highPrice": "4500",
+      "offerCount": "15",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2027-12-31",
+      "url": `https://www.doctorblade.co.in/${locationSlug}`,
+      "seller": {
+        "@type": "Organization",
+        "name": "ImageTech Industries"
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "120",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
   };
 
   return (

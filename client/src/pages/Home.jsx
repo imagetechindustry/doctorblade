@@ -66,14 +66,32 @@ const Home = () => {
     "name": "Doctor Blade",
     "image": "https://www.doctorblade.co.in/heroimage.webp",
     "description": "A doctor blade is a thin, flexible scraping blade used in gravure and flexo printing machines to remove excess ink from cylinders. ImageTech Industries manufactures premium carbon steel, stainless steel, and polymer doctor blades. Get best doctor blade price in India.",
+    "sku": "IT-DB-SERIES",
+    "mpn": "IT-DB-SERIES",
     "brand": {
       "@type": "Brand",
       "name": "ImageTech Industries"
     },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "INR",
+      "lowPrice": "350",
+      "highPrice": "4500",
+      "offerCount": "15",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2027-12-31",
+      "url": "https://www.doctorblade.co.in/",
+      "seller": {
+        "@type": "Organization",
+        "name": "ImageTech Industries"
+      }
+    },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "120"
+      "reviewCount": "120",
+      "bestRating": "5",
+      "worstRating": "1"
     }
   };
 

@@ -25,9 +25,32 @@ const ProductDetail = () => {
     name: product.name,
     image: `https://www.doctorblade.co.in${product.images[0]}`,
     description: product.shortDescription,
+    sku: `IT-${product.slug?.toUpperCase()}`,
+    mpn: `IT-${product.slug?.toUpperCase()}`,
     brand: {
       "@type": "Brand",
       name: "ImageTech Industries",
+    },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "INR",
+      lowPrice: "350",
+      highPrice: "3800",
+      offerCount: "10",
+      availability: "https://schema.org/InStock",
+      priceValidUntil: "2027-12-31",
+      url: `https://www.doctorblade.co.in/products/${product.slug}`,
+      seller: {
+        "@type": "Organization",
+        name: "ImageTech Industries",
+      },
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "96",
+      bestRating: "5",
+      worstRating: "1",
     },
   };
 

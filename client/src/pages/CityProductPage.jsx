@@ -168,6 +168,8 @@ const CityProductPage = () => {
       ? images[0]
       : `https://www.doctorblade.co.in${images[0]}`,
     description: `${product.shortDescription} Manufactured and supplied by ImageTech Industries in ${location.name}, ${location.state}.`,
+    sku: `IT-${product.slug?.toUpperCase()}-${location.slug?.replace(/[^a-zA-Z0-9]/g, "").toUpperCase()}`,
+    mpn: `IT-${product.slug?.toUpperCase()}-${location.slug?.replace(/[^a-zA-Z0-9]/g, "").toUpperCase()}`,
     brand: {
       "@type": "Brand",
       name: "ImageTech Industries",
@@ -175,6 +177,27 @@ const CityProductPage = () => {
     areaServed: {
       "@type": "AdministrativeArea",
       name: `${location.name}, ${location.state}`,
+    },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "INR",
+      lowPrice: "350",
+      highPrice: "3800",
+      offerCount: "10",
+      availability: "https://schema.org/InStock",
+      priceValidUntil: "2027-12-31",
+      url: `https://www.doctorblade.co.in/${location.slug}/${product.slug}`,
+      seller: {
+        "@type": "Organization",
+        name: "ImageTech Industries",
+      },
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "85",
+      bestRating: "5",
+      worstRating: "1",
     },
   };
 

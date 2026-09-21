@@ -179,19 +179,23 @@ export default function PressApplicationsPage() {
   return (
     <>
       <SEO
-        title="Doctor Blade Press Applications | Rotogravure, Flexo & Coating Doctor Blade"
-        description="Discover specialized doctor blade press applications across flexible packaging, rotogravure printing, CI flexo, and industrial coating lines. Select the ideal doctor blade for high-speed rotogravure cylinders operating with solvent-based inks. Implement enclosed chamber doctor blade systems for chambered flexographic anilox roll metering. Deploy corrosion-resistant stainless steel doctor blade options for water-based ink packaging and pharmaceutical blister foil doctor blade operations."
+        title="Doctor Blade Coating & Printing Applications | Doctor Blade for Every Press"
+        description="Explore doctor blade coating applications and doctor blade uses across all printing machine types. Learn how doctor blade works in rotogravure printing, flexographic printing, and industrial coating lines. Select the ideal doctor blade type and doctor blade material for your specific press application. Our doctor blade solutions cover flexible packaging, label printing, corrugated cartons, barrier coatings, and pharmaceutical foil. Get application-specific doctor blade price quotes and doctor blade operation guidance from ImageTech Industries."
         keywords={[
           "doctor blade",
+          "doctor blade coating",
+          "doctor blade for printing machine",
           "doctor blade applications",
-          "doctor blade press applications",
+          "doctor blade operation",
+          "doctor blade types",
           "rotogravure doctor blade",
           "flexo doctor blade",
+          "doctor blade material",
+          "doctor blade price",
           "chamber doctor blade system",
           "coating doctor blade",
           "flexible packaging doctor blade",
           "corrugated doctor blade",
-          "pharma blister foil doctor blade",
           "doctor blade printing press",
           "ImageTech Industries",
         ]}

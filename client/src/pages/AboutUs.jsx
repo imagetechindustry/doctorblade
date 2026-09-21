@@ -28,17 +28,21 @@ const AboutUs = () => {
   return (
     <>
       <SEO 
-        title="About ImageTech Industries | Doctor Blade Manufacturer & Supplier in India"
-        description="ImageTech Industries is India's leading doctor blade manufacturer specializing in precision doctor blade engineering for rotogravure and flexo printing. Our ISO-certified doctor blade facility produces high-grade carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade products. We deliver trusted doctor blade solutions to printers and converters across India and international markets. Partner with our doctor blade technical specialists for customized doctor blade sizes and reliable doctor blade performance."
+        title="Doctor Blade Manufacturer in India Since 1992 | About ImageTech Industries"
+        description="ImageTech Industries is India's trusted doctor blade manufacturer since 1992, specializing in precision doctor blade engineering for rotogravure and flexographic printing machines. Our ISO 9001:2015 certified facility produces all doctor blade types including carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade. We supply doctor blade material in custom sizes and doctor blade edge profiles for every printing press. Learn about our doctor blade operation expertise, competitive doctor blade price, and PAN-India doctor blade delivery network."
         keywords={[
           'doctor blade',
           'doctor blade manufacturer',
+          'doctor blade manufacturer in india',
+          'doctor blade types',
+          'doctor blade material',
+          'doctor blade price',
+          'doctor blade for printing machine',
           'about doctor blade supplier',
           'best doctor blade in delhi',
-          'doctor blade manufacturing in india',
-          'ImageTech Industries doctor blade',
-          'printing doctor blade factory',
-          'industrial doctor blade exporter'
+          'doctor blade factory india',
+          'doctor blade exporter',
+          'ImageTech Industries'
         ]}
         schema={aboutSchema}
       />

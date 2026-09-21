@@ -23,11 +23,17 @@ const Home = () => {
     "logo": "https://www.doctorblade.co.in/logo.png",
     "knowsAbout": [
       "Doctor Blade",
+      "Doctor Blade Types",
+      "Doctor Blade Material",
+      "Doctor Blade Price",
+      "Doctor Blade Coating",
+      "Doctor Blade for Printing Machine",
+      "Doctor Blade Operation",
       "Carbon Steel Doctor Blade",
       "Stainless Steel Doctor Blade",
       "Polymer Doctor Blade",
-      "Rotogravure Printing",
-      "Flexographic Printing",
+      "Rotogravure Doctor Blade",
+      "Flexographic Doctor Blade",
       "Ink Metering Hydrodynamics",
       "Lamella Edge Profile",
       "Anilox Roll Metering",
@@ -59,7 +65,7 @@ const Home = () => {
     "@type": "Product",
     "name": "Doctor Blade",
     "image": "https://www.doctorblade.co.in/heroimage.webp",
-    "description": "The best doctor blade in Delhi, India. Premium carbon steel, stainless steel, and polymer doctor blades for flexographic and rotogravure printing.",
+    "description": "A doctor blade is a thin, flexible scraping blade used in gravure and flexo printing machines to remove excess ink from cylinders. ImageTech Industries manufactures premium carbon steel, stainless steel, and polymer doctor blades. Get best doctor blade price in India.",
     "brand": {
       "@type": "Brand",
       "name": "ImageTech Industries"
@@ -74,27 +80,41 @@ const Home = () => {
   return (
     <>
       <SEO 
-        title="Doctor Blade | Best Doctor Blade Manufacturer in India | ImageTech Industries"
-        description="Looking for the best doctor blade in Delhi and across India? ImageTech Industries is a certified doctor blade manufacturer supplying premium carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade solutions. Every doctor blade is engineered with precision lamella and bevel edge profiles to eliminate doctor blade streaks and press downtime. Contact us today for wholesale doctor blade prices and custom doctor blade specifications."
+        title="Doctor Blade - Types, Material, Price & Manufacturer in India | ImageTech Industries"
+        description="What is a doctor blade? A doctor blade is a thin, flexible scraping blade used in rotogravure and flexographic printing machines to wipe excess ink from the cylinder surface. ImageTech Industries is India's leading doctor blade manufacturer since 1992, supplying premium carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade for every printing press. Compare doctor blade types, check doctor blade material options, get competitive doctor blade price, and learn doctor blade operation principles. Our doctor blade coating solutions serve flexible packaging, label printing, and corrugated industries across India."
         keywords={[
           'doctor blade',
           'doctor blades',
-          'doctor blade in india',
-          'best doctor blade in delhi',
+          'doctor blade price',
+          'doctor blade types',
+          'doctor blade material',
+          'doctor blade coating',
+          'doctor blade for printing machine',
+          'doctor blade operation',
           'doctor blade manufacturer',
           'doctor blade supplier',
+          'doctor blade cutter',
+          'doctor blade name',
+          'buy doctor blade',
+          'doctor blade in india',
+          'best doctor blade in delhi',
           'carbon steel doctor blade',
           'stainless steel doctor blade',
           'polymer doctor blade',
           'lamella doctor blade',
           'rotogravure doctor blade',
           'flexo doctor blade',
-          'printing doctor blade',
+          'doctor blade for gravure printing',
+          'doctor blade for flexo printing',
+          'printing machine doctor blade',
+          'doctor blade edge profile',
+          'doctor blade thickness',
+          'doctor blade angle',
+          'doctor blade price in india',
+          'industrial doctor blade',
           'doctor blade defect troubleshooting',
           'doctor blade selection guide',
           'doctor blade working principle',
-          'doctor blade press applications',
-          'doctor blade price',
           'ImageTech Industries'
         ]}
         schema={[orgSchema, productSchema]}

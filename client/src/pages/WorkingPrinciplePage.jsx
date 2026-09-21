@@ -155,19 +155,23 @@ export default function WorkingPrinciplePage() {
   return (
     <>
       <SEO
-        title="Doctor Blade Working Principle & Mechanics | Hydrodynamics & Contact Angle"
-        description="Learn the doctor blade working principle governing ink metering hydrodynamics and fluid mechanics in modern printing presses. Discover how a doctor blade balances hydrodynamic lift force and mechanical doctor blade pressure at a 55° to 60° doctor blade contact angle. Understand the doctor blade wear lifecycle and why a lamella doctor blade maintains a consistent contact area. Optimize your doctor blade setup to achieve uniform ink film thickness and prevent doctor blade deflection."
+        title="Doctor Blade Operation & Working Principle | How Doctor Blade Works in Printing"
+        description="How does a doctor blade work? The doctor blade operation involves a thin, flexible blade pressing against a rotating cylinder at a precise 55°–60° contact angle to scrape excess ink and leave a uniform ink film. This guide explains the complete doctor blade working principle including hydrodynamic lift forces, doctor blade pressure mechanics, and doctor blade contact angle physics. Learn how doctor blade operation affects print quality in rotogravure and flexographic printing machines. Understand lamella doctor blade wear patterns and bevel doctor blade deflection resistance."
         keywords={[
           "doctor blade",
+          "doctor blade operation",
           "doctor blade working principle",
           "how doctor blade works",
+          "doctor blade for printing machine",
           "doctor blade physics",
           "doctor blade hydrodynamics",
           "doctor blade contact angle",
           "doctor blade pressure",
+          "doctor blade types",
           "lamella doctor blade mechanics",
-          "rotogravure doctor blade principle",
-          "flexo doctor blade metering",
+          "rotogravure doctor blade operation",
+          "flexo doctor blade operation",
+          "doctor blade coating process",
           "doctor blade wear mechanism",
           "ImageTech Industries",
         ]}

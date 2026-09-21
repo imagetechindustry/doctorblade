@@ -17,9 +17,9 @@ const ShippingPolicy = () => {
   return (
     <>
       <SEO 
-        title="Doctor Blade Shipping & Delivery Policy | ImageTech Industries"
-        description="Learn about the doctor blade shipping and delivery policy at ImageTech Industries. We dispatch precision doctor blade orders domestically across India and internationally. Track your doctor blade consignment and verify expected doctor blade delivery timelines."
-        keywords={['doctor blade shipping policy', 'doctor blade delivery', 'doctor blade manufacturer', 'ImageTech Industries']}
+        title="Doctor Blade Shipping & Delivery Policy India | ImageTech Industries"
+        description="Doctor blade shipping and delivery policy at ImageTech Industries. We dispatch all doctor blade types – carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade – across India with same-day dispatch from our Delhi factory. Track your doctor blade order and check expected doctor blade delivery timelines for your printing machine."
+        keywords={['doctor blade', 'doctor blade shipping', 'doctor blade delivery', 'buy doctor blade', 'doctor blade price', 'doctor blade manufacturer', 'ImageTech Industries']}
         schema={shippingSchema}
       />
       <div className="bg-slate-50 min-h-screen py-16 lg:py-24">

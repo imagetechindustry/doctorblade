@@ -343,22 +343,28 @@ Ink System: ${inkType.toUpperCase()}`;
   return (
     <>
       <SEO
-        title="Doctor Blade Selection & Sizing Guide | Calculator, Thickness & Edge Profiles"
-        description="Explore our comprehensive doctor blade selection guide for flexo and rotogravure printing presses. Use our interactive doctor blade calculator to calculate optimal doctor blade thickness (0.15mm and 0.20mm) and doctor blade wiping angles. Compare doctor blade edge profiles including lamella doctor blade and bevel doctor blade designs. Choose the perfect doctor blade material from carbon steel doctor blade to corrosion-resistant stainless steel doctor blade."
+        title="Doctor Blade Types, Material & Sizing Guide | Doctor Blade Selection Calculator"
+        description="Complete guide to doctor blade types, doctor blade material selection, and doctor blade sizing for printing machines. Use our interactive doctor blade calculator to find the right doctor blade thickness (0.15mm to 0.50mm), doctor blade edge profile (lamella, bevel, rounded), and doctor blade material (carbon steel, stainless steel, polymer). Learn which doctor blade type fits your rotogravure or flexo printing press. Compare doctor blade price and performance across all doctor blade categories for your specific printing application."
         keywords={[
           "doctor blade",
+          "doctor blade types",
+          "doctor blade material",
           "doctor blade selection guide",
           "doctor blade calculator",
           "doctor blade thickness",
           "doctor blade sizing",
+          "doctor blade price",
           "doctor blade lamella",
           "doctor blade bevel edge",
-          "doctor blade in flexography",
-          "rotogravure doctor blade sizing",
-          "carbon steel doctor blade 0.15mm",
+          "doctor blade for printing machine",
+          "doctor blade coating",
+          "carbon steel doctor blade",
           "stainless steel doctor blade",
           "polymer doctor blade",
+          "doctor blade edge profile",
           "doctor blade contact angle",
+          "rotogravure doctor blade sizing",
+          "flexo doctor blade selection",
           "ImageTech Industries",
         ]}
         schema={[techArticleSchema]}

@@ -194,8 +194,8 @@ const CityProductPage = () => {
   return (
     <>
       <SEO
-        title={`${product.name} in ${location.name}, ${location.state} | ImageTech Industries`}
-        description={`Looking for ${product.name} in ${location.name}, ${location.state}? ImageTech Industries manufactures and supplies high-performance doctor blades with fast same-day dispatch across ${location.name}. Contact our engineering team to order your precision doctor blade tailored for rotogravure and flexo printing applications.`}
+        title={`${product.name} in ${location.name} | Doctor Blade Price & Supplier ${location.state}`}
+        description={`Buy ${product.name} in ${location.name}, ${location.state} from ImageTech Industries \u2014 India's trusted doctor blade manufacturer. This doctor blade type is engineered for rotogravure and flexo printing machines. Get competitive doctor blade price with same-day dispatch across ${location.name}. Choose the right doctor blade material and doctor blade thickness for your press.`}
         image={
           images[0]?.startsWith("http")
             ? images[0]
@@ -203,13 +203,15 @@ const CityProductPage = () => {
         }
         keywords={[
           "doctor blade",
+          `${product.name}`,
           `${product.name} in ${location.name}`,
-          `${product.name} supplier ${location.name}`,
-          `${product.name} manufacturer ${location.state}`,
-          `Doctor Blade ${location.name}`,
-          `Doctor Blades ${location.name}`,
-          `Doctor Blades ${location.state}`,
-          product.name,
+          `doctor blade price ${location.name}`,
+          `doctor blade supplier ${location.name}`,
+          `doctor blade types`,
+          `doctor blade material`,
+          `doctor blade for printing machine`,
+          `doctor blade price`,
+          `doctor blade ${location.state}`,
           "ImageTech Industries",
         ]}
         schema={[productSchema, faqSchema]}

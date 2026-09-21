@@ -17,9 +17,9 @@ const PrivacyPolicy = () => {
   return (
     <>
       <SEO
-        title="Privacy Policy | Doctor Blade Manufacturer | ImageTech Industries"
-        description="Read the privacy policy for ImageTech Industries, a premier doctor blade manufacturer. Learn how our doctor blade customer information and doctor blade inquiry details are safely protected."
-        keywords={['privacy policy', 'doctor blade manufacturer', 'doctor blade privacy', 'ImageTech Industries']}
+        title="Doctor Blade Manufacturer Privacy Policy | ImageTech Industries"
+        description="Privacy policy for ImageTech Industries, a leading doctor blade manufacturer in India. Learn how we protect your personal information when you buy doctor blade products, request doctor blade price quotes, or contact us about doctor blade types and doctor blade material specifications."
+        keywords={['doctor blade', 'doctor blade manufacturer', 'doctor blade privacy policy', 'buy doctor blade', 'ImageTech Industries']}
         schema={privacySchema}
       />
       <div className="bg-slate-50 min-h-screen py-16 lg:py-24">

@@ -17,9 +17,9 @@ const TermsConditions = () => {
   return (
     <>
       <SEO 
-        title="Terms and Conditions | Doctor Blade Orders | ImageTech Industries"
-        description="Review the terms and conditions governing doctor blade sales and services at ImageTech Industries. Read our policies regarding doctor blade order processing, doctor blade warranty terms, and custom doctor blade supply agreements."
-        keywords={['doctor blade terms and conditions', 'doctor blade warranty', 'doctor blade supplier', 'ImageTech Industries']}
+        title="Doctor Blade Order Terms & Conditions | ImageTech Industries"
+        description="Terms and conditions for buying doctor blade from ImageTech Industries. Read our doctor blade order processing, doctor blade warranty, doctor blade return policy, and custom doctor blade supply terms. These terms apply to all doctor blade types and doctor blade material purchases."
+        keywords={['doctor blade', 'doctor blade order', 'doctor blade terms', 'buy doctor blade', 'doctor blade warranty', 'doctor blade manufacturer', 'ImageTech Industries']}
         schema={termsSchema}
       />
       <div className="bg-slate-50 min-h-screen py-16 lg:py-24">

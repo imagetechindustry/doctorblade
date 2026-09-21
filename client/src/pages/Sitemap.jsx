@@ -70,15 +70,18 @@ const Sitemap = () => {
   return (
     <>
       <SEO
-        title="Doctor Blade Locations & Cities Sitemap | ImageTech Industries India"
-        description="Find doctor blade supplier locations across India with our comprehensive doctor blade city sitemap directory. Discover local doctor blade distribution and same-day doctor blade dispatch in your industrial hub. ImageTech Industries supplies carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade products across all Indian states. Locate your nearest doctor blade partner and order precision doctor blade coils or pre-cut doctor blade strips."
+        title="Doctor Blade Supplier Locations Across India | Buy Doctor Blade Near You"
+        description="Find a doctor blade supplier near you across India. ImageTech Industries delivers all doctor blade types including carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade to every major city. Get competitive doctor blade price with same-day doctor blade dispatch from our Delhi factory. Browse our doctor blade distributor network covering Mumbai, Chennai, Kolkata, Bangalore, Hyderabad, Ahmedabad, and 100+ cities."
         keywords={[
           'doctor blade',
-          'doctor blade locations',
+          'doctor blade supplier',
+          'buy doctor blade',
+          'doctor blade price',
           'doctor blade in india',
-          'doctor blade sitemap',
-          'doctor blade supplier near me',
-          'buy doctor blade in delhi',
+          'doctor blade near me',
+          'doctor blade types',
+          'doctor blade material',
+          'doctor blade for printing machine',
           'doctor blade distributor',
           'ImageTech Industries'
         ]}

@@ -22,14 +22,16 @@ const Certifications = () => {
   return (
     <>
       <SEO 
-        title="ISO 9001:2015 Certified Doctor Blade Quality Standards | ImageTech Industries"
-        description="ImageTech Industries is an ISO 9001:2015 certified doctor blade manufacturer adhering to rigorous international doctor blade quality standards. Every batch of doctor blade material undergoes strict hardness testing, edge profile inspection, and straightness verification. Our certified doctor blade production guarantees zero burrs and consistent doctor blade metallurgy. Trust our certified doctor blade manufacturing processes for dependable print quality and extended doctor blade life."
+        title="Doctor Blade Quality Certifications | ISO 9001:2015 Certified Manufacturer India"
+        description="ImageTech Industries holds ISO 9001:2015 certification for doctor blade manufacturing. Every doctor blade undergoes strict quality testing for hardness, doctor blade material consistency, and edge precision. Our certified doctor blade production ensures zero burrs in every doctor blade type we manufacture. Certified doctor blade metallurgy guarantees reliable doctor blade operation and extended doctor blade life in your printing machine."
         keywords={[
           'doctor blade',
           'certified doctor blade',
-          'ISO 9001 doctor blade manufacturer',
+          'doctor blade manufacturer',
+          'ISO 9001 doctor blade',
           'doctor blade quality standards',
-          'doctor blade metallurgy',
+          'doctor blade material quality',
+          'doctor blade types certification',
           'precision doctor blade manufacturing',
           'ImageTech Industries'
         ]}

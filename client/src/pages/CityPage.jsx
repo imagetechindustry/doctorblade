@@ -166,19 +166,23 @@ const CityPage = () => {
   return (
     <>
       <SEO
-        title={`Best Doctor Blade Manufacturer in ${locName} | ImageTech Industries`}
-        description={`Looking for the best doctor blade in ${locName}, ${locState}? ImageTech Industries is a certified doctor blade manufacturer supplying premium carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade products across ${locName}. Order your precision doctor blade today for prompt dispatch and factory-direct doctor blade prices.`}
+        title={`Doctor Blade in ${locName} | Doctor Blade Price, Types & Supplier ${locState}`}
+        description={`Buy doctor blade in ${locName}, ${locState} from ImageTech Industries — India's certified doctor blade manufacturer. We supply all doctor blade types including carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade for printing machines in ${locName}. Get competitive doctor blade price, choose the right doctor blade material, and order with same-day dispatch. Doctor blade for rotogravure and flexo printing machine available in ${locName}.`}
         keywords={[
           `doctor blade`,
           `doctor blade in ${locName}`,
-          `Best Doctor Blade in ${locName}`,
-          `Doctor Blade Manufacturer in ${locName}`,
-          `Doctor Blades in ${locName}`,
-          `Doctor Blade ${locState}`,
-          'ImageTech Industries',
-          'WIPEX Doctor Blade',
-          'Gravure Printing Doctor Blade',
-          'Flexographic Printing Doctor Blade'
+          `doctor blade price in ${locName}`,
+          `doctor blade supplier ${locName}`,
+          `doctor blade manufacturer ${locName}`,
+          `doctor blade types`,
+          `doctor blade material`,
+          `doctor blade for printing machine`,
+          `doctor blade price`,
+          `doctor blade ${locState}`,
+          'carbon steel doctor blade',
+          'stainless steel doctor blade',
+          'polymer doctor blade',
+          'ImageTech Industries'
         ]}
         schema={[orgSchema, productSchema]}
       />

@@ -256,21 +256,23 @@ export default function TroubleshootingGuidePage() {
   return (
     <>
       <SEO
-        title="Doctor Blade Troubleshooting Guide | Fix Doctor Blade Streaks, Hazing & Spitting"
-        description="Master doctor blade troubleshooting with practical solutions for rotogravure and flexo printing defects. Eliminate doctor blade streaks, cylinder hazing, ink spitting, and premature doctor blade wear using proven press adjustments. Follow our step-by-step doctor blade installation and maintenance SOP to extend your doctor blade lifespan. Inspect doctor blade contact angles and doctor blade pressure settings to prevent anilox cylinder scoring."
+        title="Doctor Blade Troubleshooting | Fix Streaks, Hazing & Defects in Printing Machine"
+        description="Complete doctor blade troubleshooting guide for rotogravure and flexographic printing machines. Fix doctor blade streaks, doctor blade hazing, ink spitting, and cylinder scoring with proven press adjustments. Learn which doctor blade type solves each printing defect, how doctor blade material choice affects wear life, and optimal doctor blade pressure settings. Our step-by-step doctor blade installation SOP extends doctor blade lifespan and reduces printing machine downtime. Free doctor blade technical support from ImageTech Industries."
         keywords={[
           "doctor blade",
           "doctor blade troubleshooting",
           "doctor blade streaks",
           "doctor blade hazing",
+          "doctor blade for printing machine",
+          "doctor blade types",
           "doctor blade spitting",
           "doctor blade wear",
-          "doctor blade chatter marks",
+          "doctor blade material",
+          "doctor blade operation",
           "doctor blade angle adjustment",
           "anilox scoring doctor blade",
           "rotogravure doctor blade defects",
           "flexo doctor blade troubleshooting",
-          "doctor blade SOP",
           "doctor blade maintenance",
           "ImageTech Industries",
         ]}

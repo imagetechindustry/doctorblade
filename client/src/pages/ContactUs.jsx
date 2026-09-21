@@ -47,17 +47,20 @@ const ContactUs = () => {
   return (
     <>
       <SEO
-        title="Contact ImageTech Industries | Buy Doctor Blade | Inquiries & Quotation"
-        description="Contact ImageTech Industries for direct factory doctor blade quotes, technical doctor blade support, and custom doctor blade manufacturing inquiries. Request samples of our carbon steel doctor blade, stainless steel doctor blade, or polymer doctor blade for your printing trials. Our doctor blade engineering team helps you choose the correct doctor blade thickness, width, and edge profile. Speak with our Delhi doctor blade team today for immediate doctor blade dispatch and PAN-India delivery."
+        title="Buy Doctor Blade Online | Doctor Blade Price & Quote | ImageTech Industries"
+        description="Buy doctor blade directly from ImageTech Industries, India's leading doctor blade manufacturer. Get instant doctor blade price quotes for carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade. Request free doctor blade samples for your printing machine trial. Our doctor blade technical team helps you select the right doctor blade type, doctor blade material, and doctor blade thickness for your gravure or flexo press. Contact our Delhi doctor blade factory for same-day doctor blade dispatch across India."
         keywords={[
           'doctor blade',
           'buy doctor blade',
-          'contact doctor blade manufacturer',
-          'doctor blade quote',
-          'doctor blade supplier contact',
-          'doctor blade in delhi',
-          'custom doctor blade order',
+          'doctor blade price',
           'doctor blade price in india',
+          'doctor blade quote',
+          'doctor blade types',
+          'doctor blade material',
+          'doctor blade for printing machine',
+          'contact doctor blade manufacturer',
+          'doctor blade supplier delhi',
+          'custom doctor blade order',
           'ImageTech Industries'
         ]}
         schema={contactSchema}

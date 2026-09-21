@@ -256,19 +256,22 @@ export default function TroubleshootingGuidePage() {
   return (
     <>
       <SEO
-        title="Doctor Blade Defect Troubleshooting Guide | Fix Streaks, Hazing & Spitting"
-        description="Troubleshoot doctor blade printing defects: actionable root causes and countermeasures for hairline streaks, hazing, scumming, ink spitting, chatter, and cylinder scoring. Standard operating procedures (SOP) for press operators."
+        title="Doctor Blade Troubleshooting Guide | Fix Doctor Blade Streaks, Hazing & Spitting"
+        description="Master doctor blade troubleshooting with practical solutions for rotogravure and flexo printing defects. Eliminate doctor blade streaks, cylinder hazing, ink spitting, and premature doctor blade wear using proven press adjustments. Follow our step-by-step doctor blade installation and maintenance SOP to extend your doctor blade lifespan. Inspect doctor blade contact angles and doctor blade pressure settings to prevent anilox cylinder scoring."
         keywords={[
+          "doctor blade",
           "doctor blade troubleshooting",
           "doctor blade streaks",
-          "printing hazing doctor blade",
+          "doctor blade hazing",
           "doctor blade spitting",
+          "doctor blade wear",
           "doctor blade chatter marks",
           "doctor blade angle adjustment",
-          "anilox scoring fix",
+          "anilox scoring doctor blade",
           "rotogravure doctor blade defects",
           "flexo doctor blade troubleshooting",
           "doctor blade SOP",
+          "doctor blade maintenance",
           "ImageTech Industries",
         ]}
         schema={[techArticleSchema]}

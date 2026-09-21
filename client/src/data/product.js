@@ -46,8 +46,20 @@ If you are looking for Carbon Steel Doctor Blades in India, our range provides r
       { question: "Where are Carbon Steel Doctor Blades used?", answer: "They are suitable for gravure printing, flexographic printing, flexible packaging, label printing, paper printing, coating machines, and other industrial printing applications." },
       { question: "How do I select the right Carbon Steel Doctor Blade?", answer: "Selection should be based on the printing process, machine configuration, roller condition, ink or coating type, substrate, and operating speed." }
     ],
-    metaTitle: "Wipex Carbon Steel Doctor Blade | ImageTech Industries",
-    metaDescription: "Buy Carbon Steel Doctor Blades engineered for precise ink and coating control. Available in multiple widths with customized specifications."
+    metaTitle: "Wipex Carbon Steel Doctor Blade | Doctor Blade Manufacturer | ImageTech Industries",
+    metaDescription: "Buy high-carbon steel doctor blade products engineered for precision gravure and flexographic printing. This carbon steel doctor blade features a refined micro-carbide grain structure to ensure smooth doctor blade wiping and minimal cylinder wear. Available in standard 0.15mm and 0.20mm doctor blade thickness with custom doctor blade widths.",
+    keywords: [
+      "doctor blade",
+      "carbon steel doctor blade",
+      "rotogravure doctor blade",
+      "flexo doctor blade",
+      "0.15mm doctor blade",
+      "0.20mm doctor blade",
+      "lamella doctor blade",
+      "printing doctor blade",
+      "Wipex doctor blade",
+      "ImageTech Industries"
+    ]
   },
   {
     id: "wipex-stainless-steel-doctor-blade",
@@ -93,8 +105,19 @@ We supply top-tier stainless steel doctor blades to packaging and printing compa
       { question: "Can the edge profile be customized?", answer: "Absolutely. We offer customized lamella and bevel edge profiles based on your printing requirements." },
       { question: "Is it suitable for flexo printing?", answer: "Yes, it is highly recommended for flexographic printing, especially in the corrugated sector where water-based inks are standard." }
     ],
-    metaTitle: "Wipex Stainless Steel Doctor Blade | ImageTech Industries",
-    metaDescription: "Premium Stainless Steel Doctor Blades for water-based inks. High corrosion resistance, long life, and exceptional edge stability."
+    metaTitle: "Wipex Stainless Steel Doctor Blade | Corrosion Resistant Doctor Blade | ImageTech Industries",
+    metaDescription: "Premium stainless steel doctor blade designed for water-based inks and corrosive printing environments. This stainless steel doctor blade prevents oxidation and delivers long-lasting doctor blade edge stability in flexo chambers. Each stainless steel doctor blade is available with custom lamella doctor blade or bevel doctor blade profiles.",
+    keywords: [
+      "doctor blade",
+      "stainless steel doctor blade",
+      "corrosion resistant doctor blade",
+      "water based ink doctor blade",
+      "flexo chamber doctor blade",
+      "lamella doctor blade",
+      "bevel doctor blade",
+      "Wipex stainless steel doctor blade",
+      "ImageTech Industries"
+    ]
   },
   {
     id: "wipex-polymer-doctor-blade",
@@ -143,8 +166,18 @@ WIPEX Polymer Doctor Blades offer a combination of smooth wiping, flexibility an
       { question: "What are the benefits of a Polymer Doctor Blade?", answer: "They offer non-metallic construction, help protect cylinders from scratches, provide smooth wiping, good flexibility, and are easy to handle and install." },
       { question: "Can WIPEX Polymer Doctor Blades be used for gravure printing?", answer: "Yes, they are suitable for gravure printing, flexographic printing, flexible packaging, label printing, paper printing, and coating applications." }
     ],
-    metaTitle: "WIPEX Polymer Doctor Blade | Non-Metallic | ImageTech Industries",
-    metaDescription: "High-quality WIPEX Polymer Doctor Blades designed for smooth wiping and ultimate cylinder protection. Explore non-metallic printing solutions."
+    metaTitle: "WIPEX Polymer Doctor Blade | Non-Metallic Doctor Blade | ImageTech Industries",
+    metaDescription: "High-performance WIPEX polymer doctor blade manufactured from durable engineering polymers for ultimate anilox cylinder protection. This non-metallic polymer doctor blade provides gentle, scratch-free doctor blade wiping in flexo and gravure printing machines. Order polymer doctor blade supplies in multiple widths to eliminate ceramic anilox scoring and extend doctor blade chamber life.",
+    keywords: [
+      "doctor blade",
+      "polymer doctor blade",
+      "plastic doctor blade",
+      "non-metallic doctor blade",
+      "anilox cylinder protection doctor blade",
+      "flexo polymer doctor blade",
+      "Wipex polymer doctor blade",
+      "ImageTech Industries"
+    ]
   },
   {
     id: "custom-size-slit-blades",
@@ -188,7 +221,18 @@ We work closely with press operators and maintenance engineers to identify the p
       { question: "Can I order blades in pre-cut lengths?", answer: "Absolutely. We can supply blades in continuous coils or pre-cut to the exact length of your doctor blade chamber for easy, drop-in installation." },
       { question: "What materials are available for custom blades?", answer: "We can provide custom sizing for our entire range, including Carbon Steel, Stainless Steel, and Polymer blades." }
     ],
-    metaTitle: "Custom Size Doctor Blades | ImageTech Industries",
-    metaDescription: "Order tailor-made Custom Size & Slit Doctor Blades. Precision manufactured in multiple widths, thicknesses, and lamella profiles."
+    metaTitle: "Custom Size Doctor Blades | Tailor-Made Slit Doctor Blade | ImageTech Industries",
+    metaDescription: "Order tailor-made custom size doctor blade products precision-slit to your exact machine specifications. We manufacture custom doctor blade dimensions in carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade formulations. Each custom doctor blade can be ordered in continuous doctor blade coils or pre-cut doctor blade strips.",
+    keywords: [
+      "doctor blade",
+      "custom doctor blade",
+      "slit doctor blade",
+      "custom size doctor blade",
+      "pre-cut doctor blade strips",
+      "doctor blade coils",
+      "custom lamella doctor blade",
+      "OEM doctor blade",
+      "ImageTech Industries"
+    ]
   }
 ];

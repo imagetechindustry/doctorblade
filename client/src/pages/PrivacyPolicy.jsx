@@ -17,8 +17,9 @@ const PrivacyPolicy = () => {
   return (
     <>
       <SEO
-        title="Privacy Policy | ImageTech Industries"
-        description="Privacy policy for ImageTech Industries. Read how we handle and protect your personal information."
+        title="Privacy Policy | Doctor Blade Manufacturer | ImageTech Industries"
+        description="Read the privacy policy for ImageTech Industries, a premier doctor blade manufacturer. Learn how our doctor blade customer information and doctor blade inquiry details are safely protected."
+        keywords={['privacy policy', 'doctor blade manufacturer', 'doctor blade privacy', 'ImageTech Industries']}
         schema={privacySchema}
       />
       <div className="bg-slate-50 min-h-screen py-16 lg:py-24">

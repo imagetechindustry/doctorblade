@@ -28,9 +28,18 @@ const AboutUs = () => {
   return (
     <>
       <SEO 
-        title="About Us | ImageTech Industries"
-        description="Learn about ImageTech Industries, a trusted manufacturer of Doctor Blades in Delhi, India. Discover our history, manufacturing capabilities, and global presence."
-        keywords={['about imagetech industries', 'doctor blade manufacturer history', 'best doctor blade in delhi', 'printing blade supplier']}
+        title="About ImageTech Industries | Doctor Blade Manufacturer & Supplier in India"
+        description="ImageTech Industries is India's leading doctor blade manufacturer specializing in precision doctor blade engineering for rotogravure and flexo printing. Our ISO-certified doctor blade facility produces high-grade carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade products. We deliver trusted doctor blade solutions to printers and converters across India and international markets. Partner with our doctor blade technical specialists for customized doctor blade sizes and reliable doctor blade performance."
+        keywords={[
+          'doctor blade',
+          'doctor blade manufacturer',
+          'about doctor blade supplier',
+          'best doctor blade in delhi',
+          'doctor blade manufacturing in india',
+          'ImageTech Industries doctor blade',
+          'printing doctor blade factory',
+          'industrial doctor blade exporter'
+        ]}
         schema={aboutSchema}
       />
       <main>

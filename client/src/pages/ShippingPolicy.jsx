@@ -17,8 +17,9 @@ const ShippingPolicy = () => {
   return (
     <>
       <SEO 
-        title="Shipping & Delivery Policy | ImageTech Industries"
-        description="Learn about the shipping and delivery policy at ImageTech Industries. We ship precision doctor blades and industrial products domestically within India and internationally."
+        title="Doctor Blade Shipping & Delivery Policy | ImageTech Industries"
+        description="Learn about the doctor blade shipping and delivery policy at ImageTech Industries. We dispatch precision doctor blade orders domestically across India and internationally. Track your doctor blade consignment and verify expected doctor blade delivery timelines."
+        keywords={['doctor blade shipping policy', 'doctor blade delivery', 'doctor blade manufacturer', 'ImageTech Industries']}
         schema={shippingSchema}
       />
       <div className="bg-slate-50 min-h-screen py-16 lg:py-24">

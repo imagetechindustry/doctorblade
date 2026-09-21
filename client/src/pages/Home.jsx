@@ -74,21 +74,27 @@ const Home = () => {
   return (
     <>
       <SEO 
-        title="Best Doctor Blade in India | Manufacturer & Supplier | ImageTech Industries"
-        description="Looking for the best doctor blade in Delhi and across India? ImageTech Industries manufactures premium Carbon Steel, Stainless Steel, and Polymer Doctor Blades with lamella & bevel edge profiles for flawless rotogravure & flexo printing."
+        title="Doctor Blade Manufacturer in India | Best Doctor Blade in Delhi | ImageTech Industries"
+        description="Looking for the best doctor blade in Delhi and across India? ImageTech Industries is a certified doctor blade manufacturer supplying premium carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade solutions. Every doctor blade is engineered with precision lamella and bevel edge profiles to eliminate doctor blade streaks and press downtime. Contact us today for wholesale doctor blade prices and custom doctor blade specifications."
         keywords={[
           'doctor blade',
+          'doctor blades',
           'doctor blade in india',
           'best doctor blade in delhi',
           'doctor blade manufacturer',
+          'doctor blade supplier',
           'carbon steel doctor blade',
           'stainless steel doctor blade',
           'polymer doctor blade',
           'lamella doctor blade',
           'rotogravure doctor blade',
           'flexo doctor blade',
-          'doctor blade printing defect troubleshooting',
+          'printing doctor blade',
+          'doctor blade defect troubleshooting',
           'doctor blade selection guide',
+          'doctor blade working principle',
+          'doctor blade press applications',
+          'doctor blade price',
           'ImageTech Industries'
         ]}
         schema={[orgSchema, productSchema]}

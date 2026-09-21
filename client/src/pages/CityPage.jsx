@@ -167,8 +167,10 @@ const CityPage = () => {
     <>
       <SEO
         title={`Best Doctor Blade Manufacturer in ${locName} | ImageTech Industries`}
-        description={`Looking for the best Doctor Blades in ${locName}, ${locState}? ImageTech Industries manufactures and supplies premium carbon steel, stainless steel, and polymer doctor blades.`}
+        description={`Looking for the best doctor blade in ${locName}, ${locState}? ImageTech Industries is a certified doctor blade manufacturer supplying premium carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade products across ${locName}. Order your precision doctor blade today for prompt dispatch and factory-direct doctor blade prices.`}
         keywords={[
+          `doctor blade`,
+          `doctor blade in ${locName}`,
           `Best Doctor Blade in ${locName}`,
           `Doctor Blade Manufacturer in ${locName}`,
           `Doctor Blades in ${locName}`,

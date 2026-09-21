@@ -22,9 +22,17 @@ const Certifications = () => {
   return (
     <>
       <SEO 
-        title="ISO 9001:2015 Certifications | ImageTech Industries"
-        description="ImageTech Industries is an ISO 9001:2015 certified manufacturer of high-quality doctor blades. View our certifications and commitment to global standards."
-        keywords={['ISO 9001 certified manufacturer', 'doctor blade quality standard', 'imagetech industries certification', 'doctor blade manufacturing standards']}
+        title="ISO 9001:2015 Certified Doctor Blade Quality Standards | ImageTech Industries"
+        description="ImageTech Industries is an ISO 9001:2015 certified doctor blade manufacturer adhering to rigorous international doctor blade quality standards. Every batch of doctor blade material undergoes strict hardness testing, edge profile inspection, and straightness verification. Our certified doctor blade production guarantees zero burrs and consistent doctor blade metallurgy. Trust our certified doctor blade manufacturing processes for dependable print quality and extended doctor blade life."
+        keywords={[
+          'doctor blade',
+          'certified doctor blade',
+          'ISO 9001 doctor blade manufacturer',
+          'doctor blade quality standards',
+          'doctor blade metallurgy',
+          'precision doctor blade manufacturing',
+          'ImageTech Industries'
+        ]}
         schema={certSchema}
       />
       <div className="flex flex-col min-h-screen">

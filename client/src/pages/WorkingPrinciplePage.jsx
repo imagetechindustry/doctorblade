@@ -155,17 +155,20 @@ export default function WorkingPrinciplePage() {
   return (
     <>
       <SEO
-        title="Doctor Blade Working Principle & Physics | Ink Metering Hydrodynamics"
-        description="Learn the working principle of doctor blades: the physics of ink metering, hydrodynamic lift forces, 55°–60° contact angle mechanics, speed-pressure curves, and why lamella edge profiles prevent press downtime."
+        title="Doctor Blade Working Principle & Mechanics | Hydrodynamics & Contact Angle"
+        description="Learn the doctor blade working principle governing ink metering hydrodynamics and fluid mechanics in modern printing presses. Discover how a doctor blade balances hydrodynamic lift force and mechanical doctor blade pressure at a 55° to 60° doctor blade contact angle. Understand the doctor blade wear lifecycle and why a lamella doctor blade maintains a consistent contact area. Optimize your doctor blade setup to achieve uniform ink film thickness and prevent doctor blade deflection."
         keywords={[
+          "doctor blade",
           "doctor blade working principle",
           "how doctor blade works",
           "doctor blade physics",
-          "ink metering hydrodynamics",
-          "doctor blade contact angle 55 60",
-          "lamella vs bevel doctor blade",
-          "rotogravure doctor blade mechanics",
-          "flexo doctor blade working",
+          "doctor blade hydrodynamics",
+          "doctor blade contact angle",
+          "doctor blade pressure",
+          "lamella doctor blade mechanics",
+          "rotogravure doctor blade principle",
+          "flexo doctor blade metering",
+          "doctor blade wear mechanism",
           "ImageTech Industries",
         ]}
         schema={[techArticleSchema]}

@@ -49,6 +49,13 @@ const ProductDetail = () => {
       <SEO
         title={`${product.metaTitle}`}
         description={product.metaDescription}
+        keywords={product.keywords || [
+          "doctor blade",
+          "doctor blades",
+          product.name,
+          "doctor blade manufacturer",
+          "ImageTech Industries"
+        ]}
         schema={[productSchema, faqSchema]}
       />
       <div className="bg-slate-50 min-h-screen py-4 lg:py-8">

@@ -179,17 +179,20 @@ export default function PressApplicationsPage() {
   return (
     <>
       <SEO
-        title="Doctor Blade Press Applications & Sectors | Gravure, Flexo & Coating"
-        description="Comprehensive guide on doctor blade applications across 6 industrial sectors: flexible packaging, rotogravure, CI flexo, corrugated cartons, specialty coating, and pharmaceutical foil."
+        title="Doctor Blade Press Applications | Rotogravure, Flexo & Coating Doctor Blade"
+        description="Discover specialized doctor blade press applications across flexible packaging, rotogravure printing, CI flexo, and industrial coating lines. Select the ideal doctor blade for high-speed rotogravure cylinders operating with solvent-based inks. Implement enclosed chamber doctor blade systems for chambered flexographic anilox roll metering. Deploy corrosion-resistant stainless steel doctor blade options for water-based ink packaging and pharmaceutical blister foil doctor blade operations."
         keywords={[
+          "doctor blade",
           "doctor blade applications",
-          "rotogravure doctor blade sectors",
-          "flexo doctor blade uses",
-          "flexible packaging doctor blade",
+          "doctor blade press applications",
+          "rotogravure doctor blade",
+          "flexo doctor blade",
           "chamber doctor blade system",
-          "corrugated doctor blade",
           "coating doctor blade",
+          "flexible packaging doctor blade",
+          "corrugated doctor blade",
           "pharma blister foil doctor blade",
+          "doctor blade printing press",
           "ImageTech Industries",
         ]}
         schema={[techArticleSchema]}

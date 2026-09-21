@@ -195,13 +195,14 @@ const CityProductPage = () => {
     <>
       <SEO
         title={`${product.name} in ${location.name}, ${location.state} | ImageTech Industries`}
-        description={`Looking for ${product.name} in ${location.name}, ${location.state}? ImageTech Industries manufactures and supplies high-performance Doctor Blades with fast delivery.`}
+        description={`Looking for ${product.name} in ${location.name}, ${location.state}? ImageTech Industries manufactures and supplies high-performance doctor blades with fast same-day dispatch across ${location.name}. Contact our engineering team to order your precision doctor blade tailored for rotogravure and flexo printing applications.`}
         image={
           images[0]?.startsWith("http")
             ? images[0]
             : `https://www.doctorblade.co.in${images[0]}`
         }
         keywords={[
+          "doctor blade",
           `${product.name} in ${location.name}`,
           `${product.name} supplier ${location.name}`,
           `${product.name} manufacturer ${location.state}`,

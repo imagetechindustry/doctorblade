@@ -47,9 +47,19 @@ const ContactUs = () => {
   return (
     <>
       <SEO
-        title="Contact Us | ImageTech Industries"
-        description="Get in touch with ImageTech Industries. We are the leading manufacturer of doctor blades in Delhi, India. Contact us for sales, support, and custom inquiries."
-        keywords={['contact imagetech industries', 'doctor blade supplier contact', 'buy doctor blade in delhi', 'printing blade inquiries']}
+        title="Contact ImageTech Industries | Buy Doctor Blade | Inquiries & Quotation"
+        description="Contact ImageTech Industries for direct factory doctor blade quotes, technical doctor blade support, and custom doctor blade manufacturing inquiries. Request samples of our carbon steel doctor blade, stainless steel doctor blade, or polymer doctor blade for your printing trials. Our doctor blade engineering team helps you choose the correct doctor blade thickness, width, and edge profile. Speak with our Delhi doctor blade team today for immediate doctor blade dispatch and PAN-India delivery."
+        keywords={[
+          'doctor blade',
+          'buy doctor blade',
+          'contact doctor blade manufacturer',
+          'doctor blade quote',
+          'doctor blade supplier contact',
+          'doctor blade in delhi',
+          'custom doctor blade order',
+          'doctor blade price in india',
+          'ImageTech Industries'
+        ]}
         schema={contactSchema}
       />
       <div className="flex flex-col min-h-screen">

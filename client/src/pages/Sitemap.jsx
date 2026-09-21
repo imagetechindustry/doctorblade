@@ -70,8 +70,18 @@ const Sitemap = () => {
   return (
     <>
       <SEO
-        title="Sitemap - Locations & Cities | ImageTech Industries"
-        description="Browse all nationwide distribution locations and cities for the best Doctor Blades by ImageTech Industries in India."
+        title="Doctor Blade Locations & Cities Sitemap | ImageTech Industries India"
+        description="Find doctor blade supplier locations across India with our comprehensive doctor blade city sitemap directory. Discover local doctor blade distribution and same-day doctor blade dispatch in your industrial hub. ImageTech Industries supplies carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade products across all Indian states. Locate your nearest doctor blade partner and order precision doctor blade coils or pre-cut doctor blade strips."
+        keywords={[
+          'doctor blade',
+          'doctor blade locations',
+          'doctor blade in india',
+          'doctor blade sitemap',
+          'doctor blade supplier near me',
+          'buy doctor blade in delhi',
+          'doctor blade distributor',
+          'ImageTech Industries'
+        ]}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-10">

@@ -344,7 +344,7 @@ Ink System: ${inkType.toUpperCase()}`;
     <>
       <SEO
         title="Doctor Blade Selection & Sizing Guide | Calculator, Thickness & Edge Profiles"
-        description="Complete doctor blade selection guide for rotogravure & flexo printing presses. Interactive blade calculator, thickness specifications (0.15mm / 0.20mm), lamella vs bevel edge comparison, metallurgy guide, and solvent compatibility."
+        description="Explore our comprehensive doctor blade selection guide for flexo and rotogravure printing presses. Use our interactive doctor blade calculator to calculate optimal doctor blade thickness (0.15mm and 0.20mm) and doctor blade wiping angles. Compare doctor blade edge profiles including lamella doctor blade and bevel doctor blade designs. Choose the perfect doctor blade material from carbon steel doctor blade to corrosion-resistant stainless steel doctor blade."
         keywords={[
           "doctor blade",
           "doctor blade selection guide",
@@ -352,11 +352,13 @@ Ink System: ${inkType.toUpperCase()}`;
           "doctor blade thickness",
           "doctor blade sizing",
           "doctor blade lamella",
+          "doctor blade bevel edge",
           "doctor blade in flexography",
           "rotogravure doctor blade sizing",
           "carbon steel doctor blade 0.15mm",
           "stainless steel doctor blade",
           "polymer doctor blade",
+          "doctor blade contact angle",
           "ImageTech Industries",
         ]}
         schema={[techArticleSchema]}

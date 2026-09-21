@@ -74,7 +74,7 @@ const Home = () => {
   return (
     <>
       <SEO 
-        title="Doctor Blade Manufacturer in India | Best Doctor Blade in Delhi | ImageTech Industries"
+        title="Doctor Blade | Best Doctor Blade Manufacturer in India | ImageTech Industries"
         description="Looking for the best doctor blade in Delhi and across India? ImageTech Industries is a certified doctor blade manufacturer supplying premium carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade solutions. Every doctor blade is engineered with precision lamella and bevel edge profiles to eliminate doctor blade streaks and press downtime. Contact us today for wholesale doctor blade prices and custom doctor blade specifications."
         keywords={[
           'doctor blade',

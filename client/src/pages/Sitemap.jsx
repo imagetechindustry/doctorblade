@@ -90,8 +90,8 @@ const Sitemap = () => {
 
   // Location specific title using variable in SEO
   const locationTitle = isFiltered
-    ? `Doctor Blade Supplier in ${locationScope} | Doctor Blade Price, Types & Delivery`
-    : `Doctor Blade Supplier Across ${locationScope} (${cityCount} Cities & ${stateCount} States) | Buy Doctor Blade Near You`;
+    ? `Doctor Blade - Manufacturer in ${locationScope} | Get Doctor Blade in best Price, Types, Material & Coating | ImageTech Industries`
+    : `Doctor Blade - Manufacturer Across ${locationScope} (${cityCount} Cities & ${stateCount} States) | Buy Doctor Blade Near You`;
 
   // Location specific description using variable in SEO
   const locationDescription = isFiltered

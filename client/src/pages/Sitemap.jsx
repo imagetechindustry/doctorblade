@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useLocations, usePrefetchLocation } from "../services/api";
 import { productsData } from "../data/product";
 import SEO from "../components/common/SEO";
@@ -33,7 +33,21 @@ const SitemapSkeleton = () => (
 
 const Sitemap = () => {
   const prefetchLocation = usePrefetchLocation();
-  const [search, setSearch] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const locationParam =
+    searchParams.get("location") ||
+    searchParams.get("city") ||
+    searchParams.get("state") ||
+    searchParams.get("search") ||
+    searchParams.get("q") ||
+    "";
+  const [search, setSearch] = useState(locationParam);
+  const [prevLocationParam, setPrevLocationParam] = useState(locationParam);
+
+  if (locationParam !== prevLocationParam) {
+    setPrevLocationParam(locationParam);
+    setSearch(locationParam);
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -67,24 +81,61 @@ const Sitemap = () => {
     return Object.keys(groupedLocations).sort((a, b) => a.localeCompare(b));
   }, [groupedLocations]);
 
+  // Location-specific dynamic variables for SEO
+  const isFiltered = Boolean(search.trim());
+  const activeLocation = search.trim();
+  const locationScope = isFiltered ? activeLocation : "India";
+  const cityCount = locations.length > 0 ? `${locations.length}+` : "100+";
+  const stateCount = sortedStates.length > 0 ? `${sortedStates.length}` : "28";
+
+  // Location specific title using variable in SEO
+  const locationTitle = isFiltered
+    ? `Doctor Blade Supplier in ${locationScope} | Doctor Blade Price, Types & Delivery`
+    : `Doctor Blade Supplier Across ${locationScope} (${cityCount} Cities & ${stateCount} States) | Buy Doctor Blade Near You`;
+
+  // Location specific description using variable in SEO
+  const locationDescription = isFiltered
+    ? `Find verified doctor blade suppliers and manufacturers in ${locationScope}. Buy carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade with transparent doctor blade price and fast delivery in ${locationScope}.`
+    : `Find a doctor blade supplier near you across ${cityCount} cities and ${stateCount} states in India. ImageTech Industries delivers all doctor blade types including carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade with competitive doctor blade price and same-day dispatch from our Delhi factory.`;
+
+  // Location specific keywords using variable in SEO
+  const locationKeywords = [
+    "doctor blade",
+    isFiltered ? `doctor blade in ${locationScope}` : "doctor blade in india",
+    isFiltered ? `doctor blade supplier in ${locationScope}` : "doctor blade supplier india",
+    isFiltered ? `doctor blade price in ${locationScope}` : "doctor blade price",
+    isFiltered ? `doctor blade manufacturer ${locationScope}` : "doctor blade manufacturer in india",
+    "doctor blade supplier",
+    "buy doctor blade",
+    "doctor blade near me",
+    "doctor blade types",
+    "doctor blade material",
+    "doctor blade for printing machine",
+    "doctor blade distributor",
+    "ImageTech Industries",
+  ];
+
+  const handleSearchChange = (e) => {
+    const val = e.target.value;
+    setSearch(val);
+    if (val.trim()) {
+      setSearchParams({ location: val }, { replace: true });
+    } else {
+      setSearchParams({}, { replace: true });
+    }
+  };
+
+  const handleClearSearch = () => {
+    setSearch("");
+    setSearchParams({}, { replace: true });
+  };
+
   return (
     <>
       <SEO
-        title="Doctor Blade Supplier Locations Across India | Buy Doctor Blade Near You"
-        description="Find a doctor blade supplier near you across India. ImageTech Industries delivers all doctor blade types including carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade to every major city. Get competitive doctor blade price with same-day doctor blade dispatch from our Delhi factory. Browse our doctor blade distributor network covering Mumbai, Chennai, Kolkata, Bangalore, Hyderabad, Ahmedabad, and 100+ cities."
-        keywords={[
-          'doctor blade',
-          'doctor blade supplier',
-          'buy doctor blade',
-          'doctor blade price',
-          'doctor blade in india',
-          'doctor blade near me',
-          'doctor blade types',
-          'doctor blade material',
-          'doctor blade for printing machine',
-          'doctor blade distributor',
-          'ImageTech Industries'
-        ]}
+        title={locationTitle}
+        description={locationDescription}
+        keywords={locationKeywords}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-10">
@@ -92,10 +143,20 @@ const Sitemap = () => {
             PAN India Presence
           </div>
           <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl">
-            Our <span className="text-blue-600">Locations</span>
+            {isFiltered ? (
+              <>
+                Doctor Blades in <span className="text-blue-600">{locationScope}</span>
+              </>
+            ) : (
+              <>
+                Our <span className="text-blue-600">Locations</span>
+              </>
+            )}
           </h1>
           <p className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
-            Find the best Doctor Blades in a city near you. Select your state and city below.
+            {isFiltered
+              ? `Find verified doctor blade suppliers, distributors, and delivery in ${locationScope}.`
+              : "Find the best Doctor Blades in a city near you across India. Select your state and city below."}
           </p>
         </div>
 
@@ -106,7 +167,7 @@ const Sitemap = () => {
               type="text"
               placeholder="Search by city, state, or region..."
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={handleSearchChange}
               className="w-full pl-11 pr-10 py-3 bg-white border border-gray-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm text-gray-900 transition-all placeholder:text-gray-400"
             />
             <svg
@@ -119,7 +180,7 @@ const Sitemap = () => {
             </svg>
             {search && (
               <button
-                onClick={() => setSearch("")}
+                onClick={handleClearSearch}
                 className="absolute right-3.5 top-3.5 text-gray-400 hover:text-gray-600"
                 title="Clear search"
               >

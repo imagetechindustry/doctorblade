@@ -79,9 +79,9 @@ const Home = () => {
 
   return (
     <>
-      <SEO 
-        title="Doctor Blade - Types, Material, Price & Manufacturer in India | ImageTech Industries"
-        description="What is a doctor blade? A doctor blade is a thin, flexible scraping blade used in rotogravure and flexographic printing machines to wipe excess ink from the cylinder surface. ImageTech Industries is India's leading doctor blade manufacturer since 1992, supplying premium carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade for every printing press. Compare doctor blade types, check doctor blade material options, get competitive doctor blade price, and learn doctor blade operation principles. Our doctor blade coating solutions serve flexible packaging, label printing, and corrugated industries across India."
+      <SEO
+        title="Doctor Blade - Manufacturer in India | Get Best Price,Types, Material  | ImageTech Industries"
+        description="India's leading doctor blade manufacturer since 1992,ImageTech Industries is supplying best quality carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade for every printing press.What is a doctor blade? A doctor blade is a thin, flexible scraping blade used in rotogravure and flexographic printing machines to wipe excess ink from the cylinder surface. Compare doctor blade types, check doctor blade material options, get competitive doctor blade price, and learn doctor blade operation principles. Our doctor blade coating solutions serve flexible packaging, label printing, and corrugated industries across India."
         keywords={[
           'doctor blade',
           'doctor blades',

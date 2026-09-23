@@ -4,7 +4,8 @@ import { useLocation } from 'react-router-dom';
 
 const SITE_URL = 'https://www.doctorblade.co.in';
 const SITE_NAME = 'ImageTech Industries';
-const DEFAULT_IMAGE = `${SITE_URL}/heroimage.webp`;
+const LOGO_URL = `${SITE_URL}/logo.png`;
+const DEFAULT_IMAGE = LOGO_URL;
 const TWITTER_HANDLE = '@ImageTech_Ind'; // Placeholder
 
 /**
@@ -62,12 +63,16 @@ export default function SEO({
         }
       />
       <link rel="canonical" href={currentUrl} />
+      <link rel="icon" type="image/png" href="/logo.png" />
+      <link rel="shortcut icon" type="image/png" href="/logo.png" />
+      <link rel="apple-touch-icon" href="/logo.png" />
 
       {/* Open Graph */}
       <meta property="og:type" content={type} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
+      <meta property="og:logo" content={LOGO_URL} />
       <meta property="og:url" content={currentUrl} />
       <meta property="og:site_name" content={name} />
       <meta property="og:locale" content="en_IN" />

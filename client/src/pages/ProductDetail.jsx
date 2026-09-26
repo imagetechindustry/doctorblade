@@ -27,14 +27,17 @@ const ProductDetail = () => {
 
   const productImages = (product.images || []).map(formatImageUrl);
 
+  const rawSku = (product.slug || product.id || "product").toUpperCase();
+  const productSku = rawSku.startsWith("WIPEX-") ? rawSku : `WIPEX-${rawSku}`;
+
   const productSchema = {
     "@context": "https://schema.org/",
     "@type": "Product",
     name: product.name,
     image: productImages.length > 1 ? productImages : productImages[0] || "https://www.doctorblade.co.in/heroimage.webp",
     description: product.shortDescription,
-    sku: `WIPEX-${product.id || product.slug?.toUpperCase() || "PRODUCT"}`,
-    mpn: `WIPEX-${product.id || product.slug?.toUpperCase() || "PRODUCT"}`,
+    sku: productSku,
+    mpn: productSku,
     brand: {
       "@type": "Brand",
       name: "ImageTech Industries",

@@ -166,6 +166,9 @@ const CityProductPage = () => {
     return `https://www.doctorblade.co.in${encodeURI(imgPath)}`;
   };
   const productImages = (images || []).map(formatImageUrl);
+  const baseSku = (product.slug || product.id || "product").toUpperCase().replace(/^WIPEX-?/, "");
+  const locCode = location.slug?.replace(/[^a-zA-Z0-9]/g, "").toUpperCase() || "IN";
+  const cityProductSku = `WIPEX-${baseSku}-${locCode}`;
 
   const productSchema = {
     "@context": "https://schema.org/",
@@ -173,8 +176,8 @@ const CityProductPage = () => {
     name: `${product.name} in ${location.name}`,
     image: productImages.length > 1 ? productImages : productImages[0] || "https://www.doctorblade.co.in/heroimage.webp",
     description: `${product.shortDescription} Manufactured and supplied by ImageTech Industries in ${location.name}, ${location.state}.`,
-    sku: `WIPEX-${product.slug?.toUpperCase()}-${location.slug?.replace(/[^a-zA-Z0-9]/g, "").toUpperCase()}`,
-    mpn: `WIPEX-${product.slug?.toUpperCase()}-${location.slug?.replace(/[^a-zA-Z0-9]/g, "").toUpperCase()}`,
+    sku: cityProductSku,
+    mpn: cityProductSku,
     brand: {
       "@type": "Brand",
       name: "ImageTech Industries",

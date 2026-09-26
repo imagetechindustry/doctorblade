@@ -47,7 +47,7 @@ If you are looking for Carbon Steel Doctor Blades in India, our range provides r
       { question: "How do I select the right Carbon Steel Doctor Blade?", answer: "Selection should be based on the printing process, machine configuration, roller condition, ink or coating type, substrate, and operating speed." }
     ],
     metaTitle: "Carbon Steel Doctor Blade | Doctor Blade Price, Types & Material | ImageTech",
-    metaDescription: "Buy premium carbon steel doctor blade from ImageTech Industries – India's trusted doctor blade manufacturer. This carbon steel doctor blade is the most popular doctor blade type for rotogravure and flexographic printing machines. Available in 0.15mm and 0.20mm doctor blade thickness with lamella and bevel doctor blade edge profiles. Get competitive doctor blade price for carbon steel doctor blade material in custom sizes. Ideal doctor blade for printing machine operations requiring precision ink metering.",
+    metaDescription: "Buy  carbon steel doctor blade from ImageTech Industries – India's trusted doctor blade manufacturer. This carbon steel doctor blade is the most popular doctor blade type for rotogravure and flexographic printing machines. Available in 0.15mm and 0.20mm doctor blade thickness with lamella and bevel doctor blade edge profiles. Get competitive doctor blade price for carbon steel doctor blade material in custom sizes. Ideal doctor blade for printing machine operations requiring precision ink metering.",
     keywords: [
       "doctor blade",
       "carbon steel doctor blade",
@@ -76,7 +76,7 @@ If you are looking for Carbon Steel Doctor Blades in India, our range provides r
       "/Doctorblade/CARBON STEEL  AND STAINLESS STEEL/225.jpg",
       "/Doctorblade/CARBON STEEL  AND STAINLESS STEEL/232.jpg"
     ],
-    overview: "Stainless Steel Doctor Blades are premium wiping blades designed for high-performance and corrosion resistance. These blades are particularly essential for printing processes using water-based inks and coatings where oxidation is a major concern.\n\nBuilt to withstand demanding environments, stainless steel blades offer prolonged edge life, reducing the frequency of blade changes and minimizing machine downtime.",
+    overview: "Stainless Steel Doctor Blades are quality wiping blades designed for high-performance and corrosion resistance. These blades are particularly essential for printing processes using water-based inks and coatings where oxidation is a major concern.\n\nBuilt to withstand demanding environments, stainless steel blades offer prolonged edge life, reducing the frequency of blade changes and minimizing machine downtime.",
     detailedDescription: `For applications utilizing water-based inks or highly corrosive coatings, standard carbon steel blades may rust and deteriorate rapidly. Our Stainless Steel Doctor Blades are manufactured from high-grade stainless alloys that resist oxidation and chemical breakdown, ensuring a clean and consistent wipe over a much longer operational lifespan.
 
 These blades offer exceptional edge stability and wear resistance, making them ideal for long printing runs. They prevent ink contamination caused by rust particles, ensuring your print quality remains flawless from the start of the roll to the end.

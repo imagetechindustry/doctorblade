@@ -6,9 +6,9 @@ export const productsData = [
     shortDescription: "Carbon Steel Doctor Blades engineered for precise and consistent ink and coating control, available in multiple widths and thicknesses.",
     externalLink: "https://www.imagetechindustries.com/products/wipex-carbon-steel-doctor-blade",
     images: [
-      "/Doctorblade/CARBON STEEL  AND STAINLESS STEEL/224.jpg",
-      "/Doctorblade/CARBON STEEL  AND STAINLESS STEEL/229.jpg",
-      "/Doctorblade/CARBON STEEL  AND STAINLESS STEEL/230.jpg"
+      "/Doctorblade/steel-blade/224.jpg",
+      "/Doctorblade/steel-blade/229.jpg",
+      "/Doctorblade/steel-blade/230.jpg"
     ],
     overview: "Carbon Steel Doctor Blades are precision-engineered wiping blades designed to remove excess ink and coating from printing and coating rollers. Manufactured from quality carbon steel, these blades provide reliable wiping performance, edge stability and consistent ink control for demanding printing applications.\n\nThe controlled wiping action of a doctor blade helps maintain uniform ink distribution on the printing roller, reducing excess ink, streaks, smudging and other common printing defects.",
     detailedDescription: `Our Carbon Steel Doctor Blades are available in different widths and thicknesses to meet various machine and application requirements. Standard thickness options include 0.15 mm and 0.20 mm, while customized thickness, width and lamella specifications can also be provided according to customer requirements.
@@ -73,8 +73,8 @@ If you are looking for Carbon Steel Doctor Blades in India, our range provides r
     shortDescription: "Corrosion-resistant stainless steel doctor blades for long life, stable performance, and water-based ink applications.",
     externalLink: "https://www.imagetechindustries.com/products/wipex-carbon-steel-doctor-blade",
     images: [
-      "/Doctorblade/CARBON STEEL  AND STAINLESS STEEL/225.jpg",
-      "/Doctorblade/CARBON STEEL  AND STAINLESS STEEL/232.jpg"
+      "/Doctorblade/steel-blade/225.jpg",
+      "/Doctorblade/steel-blade/232.jpg"
     ],
     overview: "Stainless Steel Doctor Blades are quality wiping blades designed for high-performance and corrosion resistance. These blades are particularly essential for printing processes using water-based inks and coatings where oxidation is a major concern.\n\nBuilt to withstand demanding environments, stainless steel blades offer prolonged edge life, reducing the frequency of blade changes and minimizing machine downtime.",
     detailedDescription: `For applications utilizing water-based inks or highly corrosive coatings, standard carbon steel blades may rust and deteriorate rapidly. Our Stainless Steel Doctor Blades are manufactured from high-grade stainless alloys that resist oxidation and chemical breakdown, ensuring a clean and consistent wipe over a much longer operational lifespan.
@@ -135,9 +135,9 @@ We supply top-tier stainless steel doctor blades to packaging and printing compa
     shortDescription: "Non-metallic doctor blades designed for smooth and consistent ink wiping while protecting printing cylinders from wear.",
     externalLink: "https://www.imagetechindustries.com/products/wipex-polymer-doctor-blade",
     images: [
-      "/Doctorblade/POLYMER BLADE/227.jpg",
-      "/Doctorblade/POLYMER BLADE/228.jpg",
-      "/Doctorblade/POLYMER BLADE/231.jpg"
+      "/Doctorblade/polymer-blade/227.jpg",
+      "/Doctorblade/polymer-blade/228.jpg",
+      "/Doctorblade/polymer-blade/231.jpg"
     ],
     overview: "WIPEX Polymer Doctor Blades are high-quality non-metallic doctor blades designed for smooth and consistent removal of excess ink and coating from printing rollers and cylinders. Made from durable engineering polymer, these blades provide controlled wiping performance while helping reduce wear and scratches on valuable printing surfaces.\n\nCompared with conventional metal doctor blades, polymer doctor blades provide softer contact with the printing surface. This makes them a suitable choice for applications where protecting gravure cylinders and anilox rollers is important.",
     detailedDescription: `WIPEX Polymer Doctor Blades are designed to provide reliable ink metering and smooth wiping during printing and coating operations. Their flexible and non-metallic construction helps maintain stable contact with the roller while reducing the possibility of cylinder damage.
@@ -199,8 +199,8 @@ WIPEX Polymer Doctor Blades offer a combination of smooth wiping, flexibility an
     shortDescription: "Tailor-made doctor blades available in multiple widths, thicknesses, and lamella profiles with custom specifications.",
     externalLink: "https://www.imagetechindustries.com/products?category=doctor-blades",
     images: [
-      "/Doctorblade/CARBON STEEL  AND STAINLESS STEEL/226.jpg",
-      "/Doctorblade/CARBON STEEL  AND STAINLESS STEEL/224.jpg"
+      "/Doctorblade/steel-blade/226.jpg",
+      "/Doctorblade/steel-blade/224.jpg"
     ],
     overview: "Every printing press and coating machine has unique requirements. Our Custom Size & Slit Doctor Blades are specifically manufactured to match the exact specifications of your machinery, ensuring a perfect fit, optimal wiping angle, and superior print quality.\n\nWhether you need an unusual width, a specialized lamella step, or a specific bevel angle, we have the precision manufacturing capabilities to deliver the exact blade you need.",
     detailedDescription: `We understand that off-the-shelf solutions don't always work for specialized applications. By offering Custom Size & Slit Blades, we empower printers and converters to optimize their ink metering systems without having to compromise.

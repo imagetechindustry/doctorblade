@@ -160,13 +160,18 @@ const CityProductPage = () => {
     ...(product.faqs || [])
   ];
 
+  const formatImageUrl = (imgPath) => {
+    if (!imgPath) return "https://www.doctorblade.co.in/heroimage.webp";
+    if (imgPath.startsWith("http")) return encodeURI(imgPath);
+    return `https://www.doctorblade.co.in${encodeURI(imgPath)}`;
+  };
+  const productImages = (images || []).map(formatImageUrl);
+
   const productSchema = {
     "@context": "https://schema.org/",
     "@type": "Product",
     name: `${product.name} in ${location.name}`,
-    image: images[0]?.startsWith("http")
-      ? images[0]
-      : `https://www.doctorblade.co.in${images[0]}`,
+    image: productImages.length > 1 ? productImages : productImages[0] || "https://www.doctorblade.co.in/heroimage.webp",
     description: `${product.shortDescription} Manufactured and supplied by ImageTech Industries in ${location.name}, ${location.state}.`,
     sku: `WIPEX-${product.slug?.toUpperCase()}-${location.slug?.replace(/[^a-zA-Z0-9]/g, "").toUpperCase()}`,
     mpn: `WIPEX-${product.slug?.toUpperCase()}-${location.slug?.replace(/[^a-zA-Z0-9]/g, "").toUpperCase()}`,
@@ -254,11 +259,7 @@ const CityProductPage = () => {
       <SEO
         title={`${product.name} in ${location.name} | Doctor Blade Price & Supplier ${location.state}`}
         description={`Buy ${product.name} in ${location.name}, ${location.state} from ImageTech Industries \u2014 India's trusted doctor blade manufacturer. This doctor blade type is engineered for rotogravure and flexo printing machines. Get competitive doctor blade price with same-day dispatch across ${location.name}. Choose the right doctor blade material and doctor blade thickness for your press.`}
-        image={
-          images[0]?.startsWith("http")
-            ? images[0]
-            : `https://www.doctorblade.co.in${images[0]}`
-        }
+        image={productImages[0]}
         keywords={[
           "doctor blade",
           `${product.name}`,

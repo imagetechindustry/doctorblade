@@ -156,24 +156,63 @@ const CityPage = () => {
     "name": `Doctor Blades in ${locName}`,
     "image": "https://www.doctorblade.co.in/heroimage.webp",
     "description": `Premium Doctor Blades available in ${locName}, ${locState}. Designed for gravure and flexographic printing presses.`,
-    "sku": `IT-DB-${locationSlug ? locationSlug.replace(/[^a-zA-Z0-9]/g, "").toUpperCase() : "DEL"}`,
-    "mpn": `IT-DB-${locationSlug ? locationSlug.replace(/[^a-zA-Z0-9]/g, "").toUpperCase() : "DEL"}`,
+    "sku": `WIPEX-DB-${locationSlug ? locationSlug.replace(/[^a-zA-Z0-9]/g, "").toUpperCase() : "DEL"}`,
+    "mpn": `WIPEX-DB-${locationSlug ? locationSlug.replace(/[^a-zA-Z0-9]/g, "").toUpperCase() : "DEL"}`,
     "brand": {
       "@type": "Brand",
       "name": "ImageTech Industries"
     },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": `${locName}, ${locState}`
+    },
     "offers": {
-      "@type": "AggregateOffer",
+      "@type": "Offer",
       "priceCurrency": "INR",
-      "lowPrice": "350",
-      "highPrice": "4500",
-      "offerCount": "15",
-      "availability": "https://schema.org/InStock",
+      "price": "350",
+      "validFrom": "2025-01-01",
       "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
       "url": `https://www.doctorblade.co.in/${locationSlug}`,
       "seller": {
         "@type": "Organization",
         "name": "ImageTech Industries"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "INR"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "IN"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 2,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 2,
+            "maxValue": 4,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "IN",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 15,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
       }
     },
     "aggregateRating": {

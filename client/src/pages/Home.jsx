@@ -66,24 +66,59 @@ const Home = () => {
     "name": "Doctor Blade",
     "image": "https://www.doctorblade.co.in/heroimage.webp",
     "description": "A doctor blade is a thin, flexible scraping blade used in gravure and flexo printing machines to remove excess ink from cylinders. ImageTech Industries manufactures premium carbon steel, stainless steel, and polymer doctor blades. Get best doctor blade price in India.",
-    "sku": "IT-DB-SERIES",
-    "mpn": "IT-DB-SERIES",
+    "sku": "WIPEX-DOCTOR-BLADE",
+    "mpn": "WIPEX-DOCTOR-BLADE",
     "brand": {
       "@type": "Brand",
       "name": "ImageTech Industries"
     },
     "offers": {
-      "@type": "AggregateOffer",
+      "@type": "Offer",
       "priceCurrency": "INR",
-      "lowPrice": "350",
-      "highPrice": "4500",
-      "offerCount": "15",
-      "availability": "https://schema.org/InStock",
+      "price": "350",
+      "validFrom": "2025-01-01",
       "priceValidUntil": "2027-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition",
       "url": "https://www.doctorblade.co.in/",
       "seller": {
         "@type": "Organization",
         "name": "ImageTech Industries"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "INR"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "IN"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 2,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 2,
+            "maxValue": 4,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "IN",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 15,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
       }
     },
     "aggregateRating": {

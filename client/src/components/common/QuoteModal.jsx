@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useSubmitQuote } from "../../services/api";
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -78,6 +79,9 @@ const TruckIcon = ({ className = "w-5 h-5" }) => (
 );
 
 export default function QuoteModal() {
+  const location = useLocation();
+  const isAdminPage = location?.pathname?.startsWith("/admin");
+
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -95,8 +99,13 @@ export default function QuoteModal() {
 
   const submitQuoteMutation = useSubmitQuote();
 
-  // Handle open event and lead gen triggers
+  // Handle open event and lead gen triggers (DISABLED on admin pages)
   useEffect(() => {
+    if (isAdminPage) {
+      setIsOpen(false);
+      return;
+    }
+
     const handleOpen = (e) => {
       setIsOpen(true);
       setIsSuccess(false);
@@ -154,7 +163,7 @@ export default function QuoteModal() {
       if (timer2) clearTimeout(timer2);
       if (timer3) clearTimeout(timer3);
     };
-  }, []);
+  }, [isAdminPage]);
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
@@ -168,7 +177,7 @@ export default function QuoteModal() {
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (isAdminPage || !isOpen) return null;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

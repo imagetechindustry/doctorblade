@@ -2,6 +2,28 @@ import { useQuery, useMutation, useQueryClient, keepPreviousData } from "@tansta
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
+const SITE_DOMAIN = import.meta.env.VITE_SITE_DOMAIN || "doctorblade.co.in";
+
+/**
+ * Returns website domain for multi-tenant backend queries.
+ * - On live custom domain (e.g. doctorblade.co.in, barcoater.com): automatically extracts from window.location.hostname.
+ * - In local dev (localhost) or staging previews (*.vercel.app): falls back to VITE_SITE_DOMAIN.
+ */
+export const getCurrentSite = () => {
+  if (typeof window === "undefined") return SITE_DOMAIN;
+  const host = window.location.hostname.replace(/^www\./, "");
+  if (
+    !host ||
+    host === "localhost" ||
+    host === "127.0.0.1" ||
+    host.includes("vercel.app") ||
+    host.includes("netlify.app")
+  ) {
+    return SITE_DOMAIN;
+  }
+  return host;
+};
+
 /* ═══════════════════════════════════════════════════════════════════════════
    1. CORE HTTP FETCH FUNCTIONS
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -120,7 +142,7 @@ export const adminDeleteLocation = async (token, id) => {
  * @returns {Promise<{ success: boolean, message: string }>}
  */
 export const submitQuote = async (payload) => {
-  const currentHost = typeof window !== 'undefined' ? window.location.hostname.replace(/^www\./, '') : 'doctorblade.co.in';
+  const currentHost = getCurrentSite();
   const finalPayload = { sourceWebsite: currentHost, ...payload };
 
   const res = await fetch(`${BASE_URL}/forms/quote`, {
@@ -148,7 +170,7 @@ export const submitQuote = async (payload) => {
  * @returns {Promise<{ success: boolean, message: string }>}
  */
 export const submitContact = async (payload) => {
-  const currentHost = typeof window !== 'undefined' ? window.location.hostname.replace(/^www\./, '') : 'doctorblade.co.in';
+  const currentHost = getCurrentSite();
   const finalPayload = { sourceWebsite: currentHost, ...payload };
 
   const res = await fetch(`${BASE_URL}/forms/contact`, {
@@ -309,6 +331,147 @@ export const deleteSubmission = async (token, id) => {
   return res.json();
 };
 
+/**
+ * Fetch published blogs for the current website
+ * @param {Object} params - { category, search, page, limit }
+ */
+export const fetchBlogs = async (params = {}) => {
+  const currentHost = getCurrentSite();
+  const query = new URLSearchParams({ site: currentHost, ...params }).toString();
+  const res = await fetch(`${BASE_URL}/blogs?${query}`);
+  if (!res.ok) throw new Error("Failed to fetch blogs");
+  return res.json();
+};
+
+/**
+ * Fetch a single blog post by slug
+ * @param {string} slug
+ */
+export const fetchBlogBySlug = async (slug) => {
+  const currentHost = getCurrentSite();
+  const res = await fetch(`${BASE_URL}/blogs/${slug}?site=${currentHost}`);
+  if (!res.ok) {
+    const err = new Error(`Blog post not found`);
+    err.status = res.status;
+    throw err;
+  }
+  return res.json();
+};
+
+/**
+ * Fetch active blog categories for current website
+ */
+export const fetchBlogCategories = async () => {
+  const currentHost = getCurrentSite();
+  const res = await fetch(`${BASE_URL}/blogs/categories?site=${currentHost}`);
+  if (!res.ok) throw new Error("Failed to fetch categories");
+  return res.json();
+};
+
+/**
+ * Admin: Fetch all blogs across sites
+ */
+export const adminFetchBlogs = async (token, params = {}) => {
+  const query = new URLSearchParams(params).toString();
+  const res = await fetch(`${BASE_URL}/blogs/admin/all?${query}`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
+  if (!res.ok) throw new Error("Failed to fetch admin blogs");
+  return res.json();
+};
+
+/**
+ * Admin: Fetch single blog by ID
+ */
+export const adminFetchBlogById = async (token, id) => {
+  const res = await fetch(`${BASE_URL}/blogs/admin/${id}`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
+  if (!res.ok) throw new Error("Failed to fetch blog post");
+  return res.json();
+};
+
+/**
+ * Admin: Create a new blog post
+ */
+export const adminCreateBlog = async (token, payload) => {
+  const res = await fetch(`${BASE_URL}/blogs/admin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify(payload),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || "Failed to create blog post");
+  return data;
+};
+
+/**
+ * Admin: Update a blog post
+ */
+export const adminUpdateBlog = async (token, id, payload) => {
+  const res = await fetch(`${BASE_URL}/blogs/admin/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify(payload),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || "Failed to update blog post");
+  return data;
+};
+
+/**
+ * Admin: Delete a blog post
+ */
+export const adminDeleteBlog = async (token, id) => {
+  const res = await fetch(`${BASE_URL}/blogs/admin/${id}`, {
+    method: "DELETE",
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || "Failed to delete blog post");
+  return data;
+};
+
+/**
+ * Admin: Toggle publish status
+ */
+export const adminTogglePublishBlog = async (token, id) => {
+  const res = await fetch(`${BASE_URL}/blogs/admin/${id}/publish`, {
+    method: "PATCH",
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || "Failed to toggle publish status");
+  return data;
+};
+
+/**
+ * Admin: Upload image to S3
+ * @param {string} token
+ * @param {File} file
+ * @returns {Promise<{ success: boolean, url: string }>}
+ */
+export const adminUploadImage = async (token, file) => {
+  const formData = new FormData();
+  formData.append("image", file);
+
+  const res = await fetch(`${BASE_URL}/upload`, {
+    method: "POST",
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+    body: formData,
+  });
+
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || "Failed to upload image to S3");
+  return data;
+};
+
 /* ═══════════════════════════════════════════════════════════════════════════
    2. TANSTACK QUERY KEYS
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -319,6 +482,11 @@ export const QUERY_KEYS = {
   adminStats: ["admin", "stats"],
   adminSubmissions: (params) => ["admin", "submissions", params],
   adminLocations: ["admin", "locations"],
+  blogs: (params) => ["blogs", getCurrentSite(), params],
+  blog: (slug) => ["blog", getCurrentSite(), slug],
+  blogCategories: ["blogCategories", getCurrentSite()],
+  adminBlogs: (params) => ["admin", "blogs", params],
+  adminBlog: (id) => ["admin", "blog", id],
 };
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -598,3 +766,118 @@ export const useAdminDeleteLocation = (token, options = {}) => {
     ...options,
   });
 };
+
+/* ── Blog Hooks ── */
+
+/** Hook: Fetch published blogs with pagination, search, category */
+export const useBlogs = (params = {}, options = {}) => {
+  return useQuery({
+    queryKey: QUERY_KEYS.blogs(params),
+    queryFn: () => fetchBlogs(params),
+    placeholderData: keepPreviousData,
+    staleTime: 1000 * 60 * 5, // 5 mins
+    ...options,
+  });
+};
+
+/** Hook: Fetch single blog by slug */
+export const useBlog = (slug, options = {}) => {
+  return useQuery({
+    queryKey: QUERY_KEYS.blog(slug),
+    queryFn: () => fetchBlogBySlug(slug),
+    enabled: Boolean(slug),
+    staleTime: 1000 * 60 * 10, // 10 mins
+    ...options,
+  });
+};
+
+/** Hook: Fetch active blog categories */
+export const useBlogCategories = (options = {}) => {
+  return useQuery({
+    queryKey: QUERY_KEYS.blogCategories,
+    queryFn: () => fetchBlogCategories(),
+    staleTime: 1000 * 60 * 30, // 30 mins
+    ...options,
+  });
+};
+
+/** Hook: Admin fetch all blogs */
+export const useAdminBlogs = (token, params = {}, options = {}) => {
+  return useQuery({
+    queryKey: [...QUERY_KEYS.adminBlogs(params), token],
+    queryFn: () => adminFetchBlogs(token, params),
+    enabled: Boolean(token),
+    placeholderData: keepPreviousData,
+    ...options,
+  });
+};
+
+/** Hook: Admin fetch single blog by ID */
+export const useAdminBlog = (token, id, options = {}) => {
+  return useQuery({
+    queryKey: [...QUERY_KEYS.adminBlog(id), token],
+    queryFn: () => adminFetchBlogById(token, id),
+    enabled: Boolean(token && id),
+    ...options,
+  });
+};
+
+/** Hook: Admin create blog */
+export const useAdminCreateBlog = (token, options = {}) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload) => adminCreateBlog(token, payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["blogs"] });
+      queryClient.invalidateQueries({ queryKey: ["admin", "blogs"] });
+      queryClient.invalidateQueries({ queryKey: QUERY_KEYS.blogCategories });
+    },
+    ...options,
+  });
+};
+
+/** Hook: Admin update blog */
+export const useAdminUpdateBlog = (token, options = {}) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, payload }) => adminUpdateBlog(token, id, payload),
+    onSuccess: (data, variables) => {
+      queryClient.invalidateQueries({ queryKey: ["blogs"] });
+      queryClient.invalidateQueries({ queryKey: ["admin", "blogs"] });
+      if (variables?.id) {
+        queryClient.invalidateQueries({ queryKey: QUERY_KEYS.adminBlog(variables.id) });
+      }
+      if (data?.blog?.slug) {
+        queryClient.invalidateQueries({ queryKey: QUERY_KEYS.blog(data.blog.slug) });
+      }
+    },
+    ...options,
+  });
+};
+
+/** Hook: Admin delete blog */
+export const useAdminDeleteBlog = (token, options = {}) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id) => adminDeleteBlog(token, id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["blogs"] });
+      queryClient.invalidateQueries({ queryKey: ["admin", "blogs"] });
+    },
+    ...options,
+  });
+};
+
+/** Hook: Admin toggle publish */
+export const useAdminTogglePublishBlog = (token, options = {}) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id) => adminTogglePublishBlog(token, id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["blogs"] });
+      queryClient.invalidateQueries({ queryKey: ["admin", "blogs"] });
+    },
+    ...options,
+  });
+};
+

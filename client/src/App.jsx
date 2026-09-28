@@ -20,6 +20,8 @@ import WorkingPrinciplePage from "./pages/WorkingPrinciplePage";
 import PressApplicationsPage from "./pages/PressApplicationsPage";
 import CityPage from "./pages/CityPage";
 import CityProductPage from "./pages/CityProductPage";
+import BlogList from "./pages/BlogList";
+import BlogPost from "./pages/BlogPost";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import QuoteModal from "./components/common/QuoteModal";
@@ -32,13 +34,15 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import { AdminQuotes, AdminContacts } from "./pages/admin/AdminSubmissions";
 import AdminLocations from "./pages/admin/AdminLocations";
+import AdminBlogs from "./pages/admin/AdminBlogs";
 
-// Layout wrapper for public pages (includes Navbar + Footer)
+// Layout wrapper for public pages (includes Navbar + Footer + QuoteModal)
 const PublicLayout = ({ children }) => (
   <div className="min-h-screen bg-white font-sans flex flex-col relative">
     <Navbar />
     <div className="flex-grow flex flex-col">{children}</div>
     <Footer />
+    <QuoteModal />
   </div>
 );
 
@@ -57,7 +61,6 @@ function App() {
   return (
     <AdminAuthProvider>
       <Router>
-        <QuoteModal />
         <Routes>
           {/* ── Public routes ── */}
           <Route
@@ -165,6 +168,22 @@ function App() {
             }
           />
           <Route
+            path="/blog"
+            element={
+              <PublicLayout>
+                <BlogList />
+              </PublicLayout>
+            }
+          />
+          <Route
+            path="/blog/:slug"
+            element={
+              <PublicLayout>
+                <BlogPost />
+              </PublicLayout>
+            }
+          />
+          <Route
             path="/:locationSlug"
             element={
               <PublicLayout>
@@ -192,6 +211,14 @@ function App() {
             element={
               <AdminProtectedRoute>
                 <AdminDashboard />
+              </AdminProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/blogs"
+            element={
+              <AdminProtectedRoute>
+                <AdminBlogs />
               </AdminProtectedRoute>
             }
           />

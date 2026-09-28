@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { useLocations, usePrefetchLocation } from "../services/api";
+import { useLocations, usePrefetchLocation, useBlogs } from "../services/api";
 import { productsData } from "../data/product";
 import SEO from "../components/common/SEO";
 
@@ -54,6 +54,8 @@ const Sitemap = () => {
   }, []);
 
   const { data: locations = [], isLoading } = useLocations();
+  const { data: blogData } = useBlogs({ limit: 50 });
+  const blogs = blogData?.blogs || [];
 
   // Instant filter by city, state, or slug
   const filteredLocations = useMemo(() => {
@@ -353,6 +355,53 @@ const Sitemap = () => {
             ))}
           </div>
         </div>
+
+        {/* Technical Articles & Blog Directory */}
+        {blogs.length > 0 && (
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-12">
+            <div className="bg-gradient-to-r from-blue-50 to-white border-b border-blue-100 px-6 py-4 flex items-center justify-between">
+              <h2 className="text-xl font-bold text-blue-900">Technical Articles & Blog Directory</h2>
+              <Link
+                to="/blog"
+                className="text-blue-600 bg-white rounded-full px-3 py-1 text-xs font-bold border border-blue-100 shadow-sm hover:bg-blue-50 transition-colors"
+              >
+                View All {blogs.length} Guides →
+              </Link>
+            </div>
+            <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {blogs.map((b) => (
+                <Link
+                  key={b._id || b.slug}
+                  to={`/blog/${b.slug}`}
+                  className="group flex flex-col justify-between bg-white border border-gray-200 hover:border-blue-500 text-gray-800 hover:text-blue-700 font-medium p-4 rounded-xl transition-all duration-300 hover:shadow-md"
+                >
+                  <div>
+                    <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider mb-1 block">
+                      {b.category}
+                    </span>
+                    <h3 className="text-sm font-bold text-gray-900 group-hover:text-blue-600 mb-1 leading-snug line-clamp-2">
+                      {b.title}
+                    </h3>
+                    <p className="text-xs text-gray-500 line-clamp-2">
+                      {b.excerpt}
+                    </p>
+                  </div>
+                  <div className="mt-3 flex items-center text-xs font-semibold text-blue-600">
+                    <span>Read Article</span>
+                    <svg
+                      className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

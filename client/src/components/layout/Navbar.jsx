@@ -55,6 +55,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
+    { name: "Blog", href: "/blog" },
     { name: "Certifications", href: "/certifications" },
     { name: "Sitemap", href: "/sitemap" },
     { name: "Contact Us", href: "/contact" },
@@ -105,6 +106,15 @@ const Navbar = () => {
               }`}
             >
               About Us
+            </Link>
+
+            <Link
+              to="/blog"
+              className={`flex items-center px-3 py-2 text-sm font-semibold rounded-md transition-colors ${
+                isActive("/blog") ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-900 font-bold hover:text-blue-600"
+              }`}
+            >
+              Blog
             </Link>
 
             {/* Technical Guides Dropdown with Zero-Gap Hover Bridge & Debounce */}
@@ -276,6 +286,16 @@ const Navbar = () => {
               }`}
             >
               About Us
+            </Link>
+
+            <Link
+              to="/blog"
+              onClick={() => setIsOpen(false)}
+              className={`block px-3 py-2.5 rounded-md text-base font-semibold ${
+                isActive("/blog") ? "text-blue-600 bg-blue-50" : "text-gray-900 font-bold hover:text-blue-600 hover:bg-gray-50"
+              }`}
+            >
+              Blog
             </Link>
 
             {/* Mobile Technical Guides Accordion */}

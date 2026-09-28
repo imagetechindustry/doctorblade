@@ -10,6 +10,7 @@ import HomeSelectionGuide from "../components/home/HomeSelectionGuide";
 import HomeTroubleshootingGuide from "../components/home/HomeTroubleshootingGuide";
 import HomeIndustryCaseStudies from "../components/home/HomeIndustryCaseStudies";
 import HomePressApplications from "../components/home/HomePressApplications";
+import HomeInsights from "../components/home/HomeInsights";
 import HomeFAQ from "../components/home/HomeFAQ";
 import HomeCTA from "../components/home/HomeCTA";
 import SEO from "../components/common/SEO";
@@ -190,6 +191,7 @@ const Home = () => {
         <HomeTroubleshootingGuide />
         <HomeIndustryCaseStudies />
         <HomePressApplications />
+        <HomeInsights />
         <HomeFAQ />
         <HomeCTA />
       </main>

@@ -263,7 +263,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/#blog"
+                  to="/blog"
                   className="hover:text-blue-600 flex items-center transition-colors"
                 >
                   <svg

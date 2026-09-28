@@ -237,8 +237,8 @@ const CityProductPage = () => {
     },
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "120",
+      ratingValue: product.ratingValue || "4.9",
+      reviewCount: product.reviewCount || "120",
       bestRating: "5",
       worstRating: "1",
     },

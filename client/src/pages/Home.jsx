@@ -20,7 +20,8 @@ const Home = () => {
     "@type": "Organization",
     "name": "ImageTech Industries",
     "url": "https://www.doctorblade.co.in/",
-    "logo": "https://www.doctorblade.co.in/logo.png",
+    "logo": "https://www.doctorblade.co.in/logo-512x512.png",
+    "image": "https://www.doctorblade.co.in/logo-512x512.png",
     "knowsAbout": [
       "Doctor Blade",
       "Doctor Blade Types",
@@ -64,7 +65,11 @@ const Home = () => {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": "Doctor Blade",
-    "image": "https://www.doctorblade.co.in/heroimage.webp",
+    "image": [
+      "https://www.doctorblade.co.in/Doctorblade/steel-blade/224.jpg",
+      "https://www.doctorblade.co.in/Doctorblade/polymer-blade/227.jpg",
+      "https://www.doctorblade.co.in/heroimage.webp"
+    ],
     "description": "A doctor blade is a thin, flexible scraping blade used in gravure and flexo printing machines to remove excess ink from cylinders. ImageTech Industries manufactures premium carbon steel, stainless steel, and polymer doctor blades. Get best doctor blade price in India.",
     "sku": "WIPEX-DOCTOR-BLADE",
     "mpn": "WIPEX-DOCTOR-BLADE",
@@ -124,7 +129,7 @@ const Home = () => {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "120",
+      "reviewCount": "440",
       "bestRating": "5",
       "worstRating": "1"
     }
@@ -134,6 +139,7 @@ const Home = () => {
     <>
       <SEO
         title="Doctor Blade - Manufacturer in India | Get Best Price,Types, Material  | ImageTech Industries"
+        image="https://www.doctorblade.co.in/Doctorblade/steel-blade/224.jpg"
         description="India's leading doctor blade manufacturer since 1992,ImageTech Industries is supplying best quality carbon steel doctor blade, stainless steel doctor blade, and polymer doctor blade for every printing press.What is a doctor blade? A doctor blade is a thin, flexible scraping blade used in rotogravure and flexographic printing machines to wipe excess ink from the cylinder surface. Compare doctor blade types, check doctor blade material options, get competitive doctor blade price, and learn doctor blade operation principles. Our doctor blade coating solutions serve flexible packaging, label printing, and corrugated industries across India."
         keywords={[
           'doctor blade',

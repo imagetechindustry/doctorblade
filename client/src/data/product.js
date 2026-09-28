@@ -3,6 +3,8 @@ export const productsData = [
     id: "wipex-carbon-steel-doctor-blade",
     slug: "wipex-carbon-steel-doctor-blade",
     name: "Wipex Carbon Steel Doctor Blade",
+    ratingValue: "4.9",
+    reviewCount: "148",
     shortDescription: "Carbon Steel Doctor Blades engineered for precise and consistent ink and coating control, available in multiple widths and thicknesses.",
     externalLink: "https://www.imagetechindustries.com/products/wipex-carbon-steel-doctor-blade",
     images: [
@@ -70,6 +72,8 @@ If you are looking for Carbon Steel Doctor Blades in India, our range provides r
     id: "wipex-stainless-steel-doctor-blade",
     slug: "wipex-stainless-steel-doctor-blade",
     name: "Wipex Stainless Steel Doctor Blade",
+    ratingValue: "4.8",
+    reviewCount: "94",
     shortDescription: "Corrosion-resistant stainless steel doctor blades for long life, stable performance, and water-based ink applications.",
     externalLink: "https://www.imagetechindustries.com/products/wipex-carbon-steel-doctor-blade",
     images: [
@@ -132,6 +136,8 @@ We supply top-tier stainless steel doctor blades to packaging and printing compa
     id: "wipex-polymer-doctor-blade",
     slug: "wipex-polymer-doctor-blade",
     name: "WIPEX Polymer Doctor Blade",
+    ratingValue: "4.9",
+    reviewCount: "116",
     shortDescription: "Non-metallic doctor blades designed for smooth and consistent ink wiping while protecting printing cylinders from wear.",
     externalLink: "https://www.imagetechindustries.com/products/wipex-polymer-doctor-blade",
     images: [
@@ -196,6 +202,8 @@ WIPEX Polymer Doctor Blades offer a combination of smooth wiping, flexibility an
     id: "custom-size-slit-blades",
     slug: "custom-size-slit-blades",
     name: "Custom Size & Slit Doctor Blades",
+    ratingValue: "4.8",
+    reviewCount: "182",
     shortDescription: "Tailor-made doctor blades available in multiple widths, thicknesses, and lamella profiles with custom specifications.",
     externalLink: "https://www.imagetechindustries.com/products?category=doctor-blades",
     images: [

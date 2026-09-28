@@ -4,8 +4,8 @@ import { useLocation } from 'react-router-dom';
 
 const SITE_URL = 'https://www.doctorblade.co.in';
 const SITE_NAME = 'ImageTech Industries';
-const LOGO_URL = `${SITE_URL}/logo.png`;
-const DEFAULT_IMAGE = LOGO_URL;
+const LOGO_URL = `${SITE_URL}/logo-512x512.png`;
+const DEFAULT_IMAGE = `${SITE_URL}/Doctorblade/steel-blade/224.jpg`;
 const TWITTER_HANDLE = '@ImageTech_Ind'; // Placeholder
 
 /**

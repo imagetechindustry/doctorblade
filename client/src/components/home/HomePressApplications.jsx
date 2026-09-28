@@ -3,28 +3,28 @@ import { Link } from "react-router-dom";
 
 const sectors = [
   {
-    title: "Flexible Packaging",
-    subtitle: "BOPP, PET, CPP & Multilayer Films",
-    desc: "Precision doctor blades engineered for high-speed solvent and PU inks running up to 500 m/min with zero hazing on transparent pouch windows.",
-    blade: "0.150 mm Lamella Carbon Steel",
+    title: "Flexible Plastic Packaging",
+    subtitle: "Snack Packets, Pouches & Food Films",
+    desc: "Engineered for high-speed gravure presses running up to 500 m/min. Ensures crystal-clear transparent windows with zero foggy ink hazing or streaks.",
+    blade: "WIPEX Carbon Steel Lamella Blade",
   },
   {
-    title: "CI & Stack Flexography",
-    subtitle: "Central Impression & Narrow Web",
-    desc: "Corrosion-resistant stainless steel and non-metallic polymer blades designed for dual-blade chambered systems and ceramic anilox rolls.",
+    title: "Flexo & Label Printing",
+    subtitle: "Stickers, Narrow-Web & CI Flexo",
+    desc: "Rust-resistant stainless steel and gentle polymer blades built for ceramic anilox rollers. Delivers razor-sharp text, fine barcodes, and clean colors.",
     blade: "WIPEX Stainless Steel & Polymer",
   },
   {
-    title: "Corrugated Box Printing",
-    subtitle: "Kraft Liner & Fluted Boards",
-    desc: "Forgiving polymer doctor blades that tolerate paper dust, high pH water inks, and press vibrations while keeping operators 100% safe from cuts.",
-    blade: "WIPEX Polymer 0.350–0.500 mm",
+    title: "Corrugated Cardboard Boxes",
+    subtitle: "Shipping Cartons & Brown Kraft Paper",
+    desc: "Durable polymer plastic blades that handle paper dust and rough vibrations without breaking, while keeping workers 100% safe from blade cut injuries.",
+    blade: "WIPEX Polymer (0.350–0.500 mm)",
   },
   {
-    title: "Barrier Coating & Lacquer",
-    subtitle: "PVDC, Heat Seal, UV Varnishes",
-    desc: "Stiff beveled coating blades providing micro-meter level GSM coat-weight uniformity across wide-web industrial lamination lines up to 2.2 meters.",
-    blade: "0.200 / 0.250 mm Stainless Steel",
+    title: "Varnishing & Foil Coating",
+    subtitle: "UV Gloss, Blister Foil & Lacquers",
+    desc: "Precision beveled coating blades that lay down a perfectly uniform, streak-free protective coat across wide industrial rolls up to 2.2 meters wide.",
+    blade: "WIPEX Heavy-Duty Stainless Steel",
   },
 ];
 
@@ -38,13 +38,13 @@ export default function HomePressApplications({ locationData }) {
           <div>
             <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-2 sm:mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-              Industrial Manufacturing Sectors
+              Printing & Packaging Applications
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
               Doctor Blades for Every <span className="text-blue-600">Pressroom Sector</span>
             </h2>
             <p className="text-xs sm:text-base md:text-lg text-slate-700 mt-1.5 sm:mt-2 max-w-2xl leading-relaxed">
-              From ultra-thin flexible film pouches to heavy corrugated post-print packaging {locName ? `in ${locName}` : "across India"}.
+              Whether you print plastic snack pouches, corrugated shipping boxes, labels, or shiny foil packaging, we have the ideal doctor blade {locName ? `for your factory in ${locName}` : "across India"}.
             </p>
           </div>
 
@@ -52,7 +52,7 @@ export default function HomePressApplications({ locationData }) {
             to="/press-applications"
             className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-full text-xs sm:text-sm font-bold transition-all border border-slate-200/80 whitespace-nowrap self-start md:self-auto"
           >
-            <span>Explore All 6 Industry Sectors</span>
+            <span>Explore All Press Applications</span>
             <span>→</span>
           </Link>
         </div>

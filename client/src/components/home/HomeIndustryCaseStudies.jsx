@@ -2,34 +2,34 @@ import React from "react";
 
 const caseStudies = [
   {
-    tag: "Flexible Packaging",
-    headline: "Zero Web Breaks Across 120,000m BOPP Run",
-    press: "10-Color Electronic Line Shaft Rotogravure (450 m/min)",
+    tag: "Snack & Food Packaging",
+    headline: "Printed 120,000 Meters Non-Stop with Zero Blade Stops",
+    press: "10-Color Rotogravure Printing Machine (450 m/min)",
     metric: "+38%",
-    metricLabel: "Blade Lifespan Extension",
-    challenge: "Frequent streaks from rapid tip feathering forced blade changes every 4 to 5 hours, generating scrap during web stops.",
-    solution: "Transitioned to WIPEX 0.150 mm Lamella Carbon Steel with 1.3 bar pneumatic clamping and 58° contact angle.",
-    result: "Achieved continuous 120,000-meter production runs without a single blade change or background hazing stop.",
+    metricLabel: "Longer Blade Life",
+    challenge: "Cheap blades kept making ink streaks every 4 hours, forcing the plant to stop the press and waste hundreds of meters of expensive film.",
+    solution: "Switched to WIPEX carbon steel doctor blades running at gentle, light wiping pressure.",
+    result: "Completed a 120,000-meter continuous print run without a single blade change or streak stop.",
   },
   {
-    tag: "High-Speed CI Flexo",
-    headline: "Eliminated Ceramic Anilox Scoring & Cell Damage",
-    press: "8-Color Central Impression Flexographic Press (380 m/min)",
+    tag: "Flexo & Cardboard Boxes",
+    headline: "Zero Scratched Rollers & 100% Safe Hand Cleaning",
+    press: "8-Color Flexographic Printing Press (380 m/min)",
     metric: "100%",
-    metricLabel: "Anilox Roll Protection",
-    challenge: "Steel blade burrs scored two ceramic anilox rolls in three months, costing over $8,500 in recoating.",
-    solution: "Installed WIPEX Polymer Doctor Blades (0.350 mm) in closed chamber doctor blade systems.",
-    result: "Zero ceramic roll score lines over 14 consecutive months and 100% operator hand safety during blade washdowns.",
+    metricLabel: "Roller Protection",
+    challenge: "Sharp steel blades scratched two expensive ceramic rollers in 3 months (costing ₹7+ Lakhs) and cut operator fingers during washdowns.",
+    solution: "Installed WIPEX polymer (plastic) doctor blades inside closed ink chambers.",
+    result: "Zero roller scratches over 14 consecutive months and 100% safe, cut-free blade changes for workers.",
   },
   {
-    tag: "Decorative Paper & Laminate",
-    headline: "8% Reduction in White Ink Consumption",
-    press: "Wide-Web Gravure Decor Line (2200 mm width)",
+    tag: "Laminates & Paper Printing",
+    headline: "Saved 8% on Expensive White Ink Every Single Day",
+    press: "Wide-Web Printing & Coating Machine (2.2 Meter Width)",
     metric: "-8.2%",
-    metricLabel: "Ink Consumption Savings",
-    challenge: "High abrasive TiO2 white ink caused blade float, leaving a heavy 1.5 GSM excess ink film across non-image areas.",
-    solution: "Switched to WIPEX 0.200 mm Stainless Steel with a 15° Bevel edge to resist pigment abrasion.",
-    result: "Sharper wiping tolerance saved 45 kg of white ink per 24-hour shift while maintaining identical opacity.",
+    metricLabel: "Less Ink Wasted",
+    challenge: "Old blades leaked excess white ink onto the film, wasting expensive ink and causing uneven color coats.",
+    solution: "Installed wear-resistant WIPEX stainless steel doctor blades that resist gritty white pigments.",
+    result: "Saved 45 kg of white ink every 24-hour shift while keeping colors bright and completely solid.",
   },
 ];
 
@@ -42,13 +42,13 @@ export default function HomeIndustryCaseStudies({ locationData }) {
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 px-2">
           <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 mb-2 sm:mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-            Proven Pressroom Results
+            Proven Real-World Savings
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-3 sm:mb-4">
             Quantifiable Impact in <span className="text-blue-600">Pressroom Operations</span>
           </h2>
           <p className="text-xs sm:text-base md:text-lg text-slate-700 leading-relaxed">
-            Real performance benchmarks from industrial converters running WIPEX Doctor Blades {locName ? `in ${locName}` : "across India"}.
+            See how printing and packaging factories save time, cut ink waste, and protect expensive rollers with WIPEX Doctor Blades {locName ? `in ${locName}` : "across India"}.
           </p>
         </div>
 

@@ -81,6 +81,10 @@ const TruckIcon = ({ className = "w-5 h-5" }) => (
 export default function QuoteModal() {
   const location = useLocation();
   const isAdminPage = location?.pathname?.startsWith("/admin");
+  const isBlogPage = location?.pathname?.startsWith("/blog");
+  const isCrawler =
+    typeof navigator !== "undefined" &&
+    /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent || "");
 
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -101,7 +105,7 @@ export default function QuoteModal() {
 
   // Handle open event and lead gen triggers (DISABLED on admin pages)
   useEffect(() => {
-    if (isAdminPage) {
+    if (isAdminPage || isCrawler) {
       setIsOpen(false);
       return;
     }
@@ -117,21 +121,21 @@ export default function QuoteModal() {
 
     window.addEventListener("open-quote-modal", handleOpen);
 
-    // Automatic Popup Logic for Lead Generation (if not submitted)
+    // Automatic Popup Logic for Lead Generation (DISABLED on blog articles to prevent reading disruptions)
     let timer1, timer2, timer3;
     let hasTriggeredScroll = false;
 
-    const handleScroll = () => {
-      if (!hasTriggeredScroll && window.scrollY > 300) {
-        if (localStorage.getItem("quoteSubmitted") !== "true") {
-          setIsOpen(true);
-          hasTriggeredScroll = true;
-          window.removeEventListener("scroll", handleScroll);
+    if (!isBlogPage && localStorage.getItem("quoteSubmitted") !== "true") {
+      const handleScroll = () => {
+        if (!hasTriggeredScroll && window.scrollY > 300) {
+          if (localStorage.getItem("quoteSubmitted") !== "true") {
+            setIsOpen(true);
+            hasTriggeredScroll = true;
+            window.removeEventListener("scroll", handleScroll);
+          }
         }
-      }
-    };
+      };
 
-    if (localStorage.getItem("quoteSubmitted") !== "true") {
       window.addEventListener("scroll", handleScroll);
 
       // Trigger 1: Show at 5 seconds

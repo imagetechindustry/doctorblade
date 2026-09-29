@@ -787,6 +787,8 @@ export const useBlog = (slug, options = {}) => {
     queryFn: () => fetchBlogBySlug(slug),
     enabled: Boolean(slug),
     staleTime: 1000 * 60 * 10, // 10 mins
+    retry: 3,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 5000),
     ...options,
   });
 };

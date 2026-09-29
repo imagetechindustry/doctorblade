@@ -23,6 +23,7 @@ export default function SEO({
   keywords,
   schema,
   noindex = false,
+  canonicalUrl,
 }) {
   const location = useLocation();
 
@@ -42,7 +43,7 @@ export default function SEO({
 
   // Format canonical URL: root gets trailing slash (matches sitemap & GSC), subpages don't
   const cleanPath = location.pathname.replace(/\/+$/, '');
-  const currentUrl = cleanPath ? `${SITE_URL}${cleanPath}` : `${SITE_URL}/`;
+  const currentUrl = canonicalUrl || (cleanPath ? `${SITE_URL}${cleanPath}` : `${SITE_URL}/`);
 
   const schemaList = Array.isArray(schema) ? schema : schema ? [schema] : [];
   const keywordContent = Array.isArray(keywords) ? keywords.join(', ') : keywords;

@@ -254,7 +254,7 @@ export default function BlogPost() {
   const { slug } = useParams();
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  const { data, isLoading, isError } = useBlog(slug);
+  const { data, isLoading, isError, refetch } = useBlog(slug);
   const blog = data?.blog;
   const relatedBlogs = data?.relatedBlogs || [];
 
@@ -278,9 +278,21 @@ export default function BlogPost() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const fallbackTitle = slug
+    ? slug
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase())
+    : "Doctor Blade Article";
+  const slugCanonical = `https://www.doctorblade.co.in/blog/${slug}`;
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-white py-16">
+        <SEO
+          title={`${fallbackTitle} | ImageTech Journal`}
+          description="Read our latest technical insights on doctor blades, printing, and converting."
+          canonicalUrl={slugCanonical}
+        />
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="animate-pulse space-y-6">
             <div className="h-4 bg-slate-100 rounded w-1/4" />
@@ -299,7 +311,39 @@ export default function BlogPost() {
   }
 
   if (isError || !blog) {
-    return <Navigate to="/blog" replace />;
+    return (
+      <div className="min-h-[70vh] bg-slate-50 py-20 flex items-center justify-center px-4">
+        <SEO
+          title="Article Not Found | ImageTech Industries"
+          description="The requested article could not be loaded."
+          canonicalUrl={slugCanonical}
+          noindex={true}
+        />
+        <div className="max-w-md w-full bg-white rounded-3xl p-8 border border-slate-200 shadow-md text-center">
+          <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xl border border-amber-200">
+            !
+          </div>
+          <h1 className="text-2xl font-bold text-slate-900 mb-2">Article Not Found</h1>
+          <p className="text-slate-600 text-sm mb-6 leading-relaxed">
+            We couldn't load this article. It may still be loading from the server or may have been updated.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <button
+              onClick={() => refetch()}
+              className="px-5 py-2.5 bg-blue-600 text-white text-xs font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-sm cursor-pointer"
+            >
+              Retry Loading
+            </button>
+            <Link
+              to="/blog"
+              className="px-5 py-2.5 bg-slate-100 text-slate-700 text-xs font-bold rounded-xl hover:bg-slate-200 transition-colors cursor-pointer"
+            >
+              Browse All Articles
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   const canonicalUrl =
@@ -399,6 +443,7 @@ export default function BlogPost() {
         description={blog.metaDescription || blog.excerpt}
         keywords={blog.keywords || ["doctor blade", "printing guides"]}
         image={blog.featuredImage}
+        canonicalUrl={canonicalUrl}
         type="article"
         schema={schemas}
       />

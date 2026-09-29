@@ -124,14 +124,17 @@ export default function QuoteModal() {
     // Automatic Popup Logic for Lead Generation (DISABLED on blog articles to prevent reading disruptions)
     let timer1, timer2, timer3;
     let hasTriggeredScroll = false;
+    let handleScroll;
 
     if (!isBlogPage && localStorage.getItem("quoteSubmitted") !== "true") {
-      const handleScroll = () => {
+      handleScroll = () => {
         if (!hasTriggeredScroll && window.scrollY > 300) {
           if (localStorage.getItem("quoteSubmitted") !== "true") {
             setIsOpen(true);
             hasTriggeredScroll = true;
-            window.removeEventListener("scroll", handleScroll);
+            if (handleScroll) {
+              window.removeEventListener("scroll", handleScroll);
+            }
           }
         }
       };
@@ -162,12 +165,14 @@ export default function QuoteModal() {
 
     return () => {
       window.removeEventListener("open-quote-modal", handleOpen);
-      window.removeEventListener("scroll", handleScroll);
+      if (handleScroll) {
+        window.removeEventListener("scroll", handleScroll);
+      }
       if (timer1) clearTimeout(timer1);
       if (timer2) clearTimeout(timer2);
       if (timer3) clearTimeout(timer3);
     };
-  }, [isAdminPage]);
+  }, [isAdminPage, isBlogPage, isCrawler]);
 
   // Prevent background scrolling when modal is open
   useEffect(() => {

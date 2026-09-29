@@ -71,7 +71,7 @@ const HomeHero = ({ locationData }) => {
               </button>
 
               <a
-                href="https://www.imagetechindustries.com/products"
+                href="https://www.imagetechindustries.com/products?category=doctor-blades"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center whitespace-nowrap px-5 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base bg-white text-blue-600 border border-blue-200 rounded-lg font-semibold hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 shadow-sm"

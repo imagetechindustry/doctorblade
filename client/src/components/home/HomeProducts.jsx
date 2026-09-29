@@ -33,7 +33,7 @@ const HomeProducts = ({ locationData }) => {
           </div>
           <div className="mt-4 sm:mt-6 md:mt-0 shrink-0">
             <a
-              href="https://www.imagetechindustries.com/products"
+              href="https://www.imagetechindustries.com/products?category=doctor-blades"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center text-blue-600 border border-blue-200 bg-white hover:bg-blue-50 px-5 sm:px-6 py-2.5 rounded-full font-semibold text-xs sm:text-sm transition-colors shadow-sm cursor-pointer"

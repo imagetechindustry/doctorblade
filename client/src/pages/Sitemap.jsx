@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { useLocations, usePrefetchLocation, useBlogs, useProducts } from "../services/api";
-import { productsData } from "../data/product";
 import SEO from "../components/common/SEO";
 
 const SitemapSkeleton = () => (
@@ -55,7 +54,7 @@ const Sitemap = () => {
 
   const { data: locations = [], isLoading } = useLocations();
   const { data: blogData } = useBlogs({ limit: 50 });
-  const { data: products = productsData } = useProducts();
+  const { data: products = [] } = useProducts();
   const blogs = blogData?.blogs || [];
 
   // Instant filter by city, state, or slug

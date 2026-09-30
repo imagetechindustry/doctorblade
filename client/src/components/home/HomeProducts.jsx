@@ -59,7 +59,7 @@ const HomeProducts = ({ locationData }) => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+        <div className={`grid grid-cols-1 ${products.length <= 2 ? "md:grid-cols-2 max-w-4xl mx-auto" : "sm:grid-cols-2 lg:grid-cols-4"} gap-6 lg:gap-8`}>
           {products.map((product) => (
             <Link
               key={product.id}

@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useProducts } from "../../services/api";
 
 const Footer = () => {
+  const { data: products = [] } = useProducts();
   return (
     <footer className="bg-white text-gray-900 font-bold border-t border-gray-200 pt-16 mt-auto">
       {/* Top Section */}
@@ -312,70 +314,24 @@ const Footer = () => {
               OUR PRODUCTS
             </h4>
             <ul className="space-y-3 text-sm text-gray-900 font-bold font-semibold">
-              <li>
-                <Link
-                  to="/products/wipex-carbon-steel-doctor-blade"
-                  className="hover:text-blue-600 flex items-start transition-colors"
-                >
-                  <svg
-                    className="w-3 h-3 text-blue-500 mr-2 mt-1 shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+              {products.map((p) => (
+                <li key={p.slug}>
+                  <Link
+                    to={`/products/${p.slug}`}
+                    className="hover:text-blue-600 flex items-start transition-colors"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                  <span>Carbon Steel Doctor Blades</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products/wipex-stainless-steel-doctor-blade"
-                  className="hover:text-blue-600 flex items-start transition-colors"
-                >
-                  <svg
-                    className="w-3 h-3 text-blue-500 mr-2 mt-1 shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                  <span>Stainless Steel Doctor Blades</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products/wipex-polymer-doctor-blade"
-                  className="hover:text-blue-600 flex items-start transition-colors"
-                >
-                  <svg
-                    className="w-3 h-3 text-blue-500 mr-2 mt-1 shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                  <span>Polymer Doctor Blades</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products/custom-size-slit-blades"
-                  className="hover:text-blue-600 flex items-start transition-colors"
-                >
-                  <svg
-                    className="w-3 h-3 text-blue-500 mr-2 mt-1 shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                  <span>Custom Size & Slit Blades</span>
-                </Link>
-              </li>
+                    <svg
+                      className="w-3 h-3 text-blue-500 mr-2 mt-1 shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    <span>{p.title || p.name}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useProducts } from "../../services/api";
 
 export default function HomeSelectionGuide({ locationData }) {
   const locName = locationData ? locationData.name : "India";
+  const { data: products = [] } = useProducts();
 
   return (
     <section className="py-10 sm:py-16 lg:py-24 bg-slate-50 border-t border-slate-200/80">
@@ -20,125 +22,57 @@ export default function HomeSelectionGuide({ locationData }) {
           </p>
         </div>
 
-        {/* 3 Quick Comparison Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
-          {/* Card 1: Carbon Steel */}
-          <div className="bg-white rounded-2xl p-4 sm:p-7 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-300 transition-all flex flex-col justify-between group">
-            <div>
-              <div className="flex items-center justify-between pb-3 sm:pb-3.5 border-b border-slate-100 mb-3 sm:mb-4">
-                <span className="text-[11px] sm:text-xs font-black text-blue-700 bg-blue-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md sm:rounded-lg border border-blue-200/60">
-                  0.150 mm (Standard)
-                </span>
-                <span className="text-[11px] sm:text-xs uppercase font-bold text-slate-500 tracking-wide">Everyday Packaging</span>
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1.5 sm:mb-2 group-hover:text-blue-600 transition-colors">
-                WIPEX Carbon Steel Doctor Blade
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4 sm:mb-5">
-                The #1 choice for printing snack packets, pouches, and plastic wrappers. Wipes crystal-clean right out of the box with zero ink streaks and no startup waste.
-              </p>
-              <div className="space-y-1.5 sm:space-y-2 text-xs bg-slate-50 p-3 sm:p-3.5 rounded-xl border border-slate-200/80 mb-4 sm:mb-6">
-                <div className="flex justify-between">
-                  <span className="font-bold text-slate-900">Printing Speed:</span>
-                  <span className="text-slate-700 font-medium">Up to 350 m/min</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-bold text-slate-900">Best For:</span>
-                  <span className="text-slate-700 font-medium">Chips, pouches & film</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-bold text-slate-900">Ink Compatibility:</span>
-                  <span className="text-slate-700 font-medium">Standard solvent inks</span>
-                </div>
-              </div>
-            </div>
-            <Link
-              to="/products/wipex-carbon-steel-doctor-blade"
-              className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center justify-between pt-3 sm:pt-3.5 border-t border-slate-100"
-            >
-              <span>See Carbon Steel Blade Details</span>
-              <span>→</span>
-            </Link>
-          </div>
+        {/* Dynamic Comparison Cards */}
+        {products.length > 0 && (
+          <div className={`grid grid-cols-1 ${products.length <= 2 ? "md:grid-cols-2 max-w-4xl mx-auto" : "md:grid-cols-3"} gap-6 sm:gap-8 mb-8 sm:mb-12`}>
+            {products.map((p) => {
+              const materialBox = p.infoBoxes?.find((b) => b.title?.toLowerCase().includes("material"));
+              const thicknessBox = p.infoBoxes?.find((b) => b.title?.toLowerCase().includes("thickness"));
+              const appBox = p.infoBoxes?.find((b) => b.title?.toLowerCase().includes("application"));
+              const tagText = thicknessBox ? `${thicknessBox.value} (${materialBox?.value || "Blade"})` : (materialBox?.value || "Precision Blade");
+              const subtitle = appBox ? appBox.value : "Rotogravure & Flexo";
 
-          {/* Card 2: Stainless Steel */}
-          <div className="bg-white rounded-2xl p-4 sm:p-7 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-300 transition-all flex flex-col justify-between group">
-            <div>
-              <div className="flex items-center justify-between pb-3 sm:pb-3.5 border-b border-slate-100 mb-3 sm:mb-4">
-                <span className="text-[11px] sm:text-xs font-black text-blue-700 bg-blue-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md sm:rounded-lg border border-blue-200/60">
-                  0.200 mm (Heavy Duty)
-                </span>
-                <span className="text-[11px] sm:text-xs uppercase font-bold text-slate-500 tracking-wide">Fast Runs & White Inks</span>
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1.5 sm:mb-2 group-hover:text-blue-600 transition-colors">
-                WIPEX Stainless Steel Doctor Blade
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4 sm:mb-5">
-                Rust-proof and ultra tough. Specially engineered for thick white background inks and water-based inks that quickly wear down and corrode ordinary steel blades.
-              </p>
-              <div className="space-y-1.5 sm:space-y-2 text-xs bg-slate-50 p-3 sm:p-3.5 rounded-xl border border-slate-200/80 mb-4 sm:mb-6">
-                <div className="flex justify-between">
-                  <span className="font-bold text-slate-900">Printing Speed:</span>
-                  <span className="text-slate-700 font-medium">300 – 600 m/min (High speed)</span>
+              return (
+                <div
+                  key={p.id || p.slug}
+                  className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-300 transition-all flex flex-col justify-between group"
+                >
+                  <div>
+                    <div className="flex items-center justify-between pb-3 sm:pb-3.5 border-b border-slate-100 mb-3 sm:mb-4">
+                      <span className="text-[11px] sm:text-xs font-black text-blue-700 bg-blue-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md sm:rounded-lg border border-blue-200/60">
+                        {tagText}
+                      </span>
+                      <span className="text-[11px] sm:text-xs uppercase font-bold text-slate-500 tracking-wide line-clamp-1">
+                        {subtitle}
+                      </span>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1.5 sm:mb-2 group-hover:text-blue-600 transition-colors">
+                      {p.title || p.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4 sm:mb-5 line-clamp-3">
+                      {p.shortDescription || p.shortDesc}
+                    </p>
+                    <div className="space-y-1.5 sm:space-y-2 text-xs bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200/80 mb-4 sm:mb-6">
+                      {p.infoBoxes?.slice(0, 3).map((box, idx) => (
+                        <div key={idx} className="flex justify-between">
+                          <span className="font-bold text-slate-900">{box.title}:</span>
+                          <span className="text-slate-700 font-medium">{box.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <Link
+                    to={`/products/${p.slug}`}
+                    className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center justify-between pt-3 sm:pt-3.5 border-t border-slate-100"
+                  >
+                    <span>See {p.title || p.name} Details</span>
+                    <span>→</span>
+                  </Link>
                 </div>
-                <div className="flex justify-between">
-                  <span className="font-bold text-slate-900">Best For:</span>
-                  <span className="text-slate-700 font-medium">Heavy white & solid inks</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-bold text-slate-900">Rust Resistance:</span>
-                  <span className="text-slate-700 font-medium">100% Anti-corrosive</span>
-                </div>
-              </div>
-            </div>
-            <Link
-              to="/products/wipex-stainless-steel-doctor-blade"
-              className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center justify-between pt-3 sm:pt-3.5 border-t border-slate-100"
-            >
-              <span>See Stainless Steel Blade Details</span>
-              <span>→</span>
-            </Link>
+              );
+            })}
           </div>
-
-          {/* Card 3: Polymer Doctor Blade */}
-          <div className="bg-white rounded-2xl p-4 sm:p-7 shadow-sm border border-slate-200 hover:shadow-xl hover:border-blue-300 transition-all flex flex-col justify-between group">
-            <div>
-              <div className="flex items-center justify-between pb-3 sm:pb-3.5 border-b border-slate-100 mb-3 sm:mb-4">
-                <span className="text-[11px] sm:text-xs font-black text-emerald-700 bg-emerald-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md sm:rounded-lg border border-emerald-200/60">
-                  0.350–0.500 mm (Safe)
-                </span>
-                <span className="text-[11px] sm:text-xs uppercase font-bold text-slate-500 tracking-wide">Cardboard & Anilox</span>
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1.5 sm:mb-2 group-hover:text-blue-600 transition-colors">
-                WIPEX Polymer (Plastic) Doctor Blade
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4 sm:mb-5">
-                Made from 100% heavy-duty industrial polymer. It cannot scratch expensive ceramic rollers, and it will never cut an operator's hands during blade changes.
-              </p>
-              <div className="space-y-1.5 sm:space-y-2 text-xs bg-slate-50 p-3 sm:p-3.5 rounded-xl border border-slate-200/80 mb-4 sm:mb-6">
-                <div className="flex justify-between">
-                  <span className="font-bold text-slate-900">Roller Safety:</span>
-                  <span className="text-slate-700 font-medium">0 Scratches guaranteed</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-bold text-slate-900">Best For:</span>
-                  <span className="text-slate-700 font-medium">Cardboard boxes & flexo</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-bold text-slate-900">Worker Safety:</span>
-                  <span className="text-slate-700 font-medium">Zero hand cuts & injuries</span>
-                </div>
-              </div>
-            </div>
-            <Link
-              to="/products/wipex-polymer-doctor-blade"
-              className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center justify-between pt-3 sm:pt-3.5 border-t border-slate-100"
-            >
-              <span>See Polymer Blade Details</span>
-              <span>→</span>
-            </Link>
-          </div>
-        </div>
+        )}
 
         {/* Banner with Sizing Calculator Link */}
         <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-md border border-blue-200 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 sm:gap-6">

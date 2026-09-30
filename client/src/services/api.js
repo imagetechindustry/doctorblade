@@ -1,5 +1,4 @@
 import { useQuery, useMutation, useQueryClient, keepPreviousData } from "@tanstack/react-query";
-import { productsData } from "../data/product";
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 const IMAGETECH_API_URL = import.meta.env.VITE_IMAGETECH_API_URL || 'https://api.imagetechindustries.com/api';
@@ -514,43 +513,58 @@ const extractApplications = (longDesc, fallback) => {
 };
 
 /**
+ * Helper to resolve icon for info boxes
+ */
+const resolveBoxIcon = (title, icon) => {
+  if (icon && typeof icon === "string" && icon.trim()) return icon;
+  const t = (title || "").toLowerCase();
+  if (t.includes("material") || t.includes("steel") || t.includes("diameter")) return "Settings";
+  if (t.includes("thickness") || t.includes("width") || t.includes("length") || t.includes("size")) return "Maximize";
+  if (t.includes("application") || t.includes("type") || t.includes("customization")) return "Layout";
+  if (t.includes("supply") || t.includes("delivery")) return "Truck";
+  return "Settings";
+};
+
+/**
  * Maps ImageTech backend product schema to the client UI schema
  * @param {Object} p - API Product object
- * @param {Object|null} fallbackProduct - Local fallback product
- * @returns {Object} Mapped product
+ * @returns {Object|null} Mapped product
  */
-export const mapApiProductToClient = (p, fallbackProduct = null) => {
-  if (!p && !fallbackProduct) return null;
-  const slug = p?.slug || fallbackProduct?.slug;
-  const fb = fallbackProduct || productsData.find((item) => item.slug === slug) || null;
+export const mapApiProductToClient = (p) => {
+  if (!p) return null;
 
-  const title = p?.title || p?.name || fb?.name || "Doctor Blade";
-  const shortDesc = p?.shortDesc || p?.shortDescription || fb?.shortDescription || "";
-  const longDesc = p?.longDesc || fb?.detailedDescription || shortDesc;
+  const rawSlug = p?.slug || "";
+  const clientSlug = rawSlug;
+  const title = p?.title || p?.name || "Doctor Blade";
+  const shortDesc = p?.shortDesc || p?.shortDescription || "";
+  const longDesc = p?.longDesc || shortDesc;
 
   return {
-    _id: p?._id || fb?.id || slug,
-    id: slug,
-    slug,
+    _id: p?._id || clientSlug,
+    id: clientSlug,
+    slug: clientSlug,
+    apiSlug: rawSlug,
     name: title,
     title,
     shortDescription: shortDesc,
     shortDesc,
     externalLink:
       p?.externalLink ||
-      fb?.externalLink ||
-      `https://www.imagetechindustries.com/products/${slug}`,
+      `https://www.imagetechindustries.com/products/${clientSlug}`,
     images:
       p?.images && p.images.length > 0
         ? p.images
-        : fb?.images || ["/Doctorblade/steel-blade/224.jpg"],
-    overview: fb?.overview || extractOverview(p?.longDesc, shortDesc),
+        : ["/Doctorblade/steel-blade/224.jpg"],
+    overview: p?.overviewText || extractOverview(p?.longDesc, shortDesc) || shortDesc,
     detailedDescription: longDesc,
-    longDesc: longDesc,
+    longDesc: p?.longDesc || null,
     category: p?.category || { name: "Doctor Blades", slug: "doctor-blades" },
     infoBoxes:
       p?.infoBoxes && p.infoBoxes.length > 0
-        ? p.infoBoxes
+        ? p.infoBoxes.map((box) => ({
+            ...box,
+            icon: resolveBoxIcon(box.title, box.icon),
+          }))
         : [
             { title: "Material", value: "High Grade Steel / Polymer", icon: "Settings" },
             { title: "Application", value: "Printing & Coating", icon: "Layout" },
@@ -559,49 +573,45 @@ export const mapApiProductToClient = (p, fallbackProduct = null) => {
           ],
     overviewFeatures:
       p?.overviewFeatures && p.overviewFeatures.length > 0
-        ? p.overviewFeatures
-        : (fb?.keyFeatures || []).map((kf) => {
-            const parts = kf.split(" for ");
-            return {
-              title: parts[0] || kf,
-              desc: parts[1] ? `Engineered for ${parts[1]}` : kf,
-              icon: "Target",
-            };
-          }),
+        ? p.overviewFeatures.map((f) => ({
+            ...f,
+            icon: f.icon || "Target",
+          }))
+        : [],
     keyFeatures:
       p?.features && p.features.length > 0
         ? p.features
         : p?.overviewFeatures && p.overviewFeatures.length > 0
         ? p.overviewFeatures.map((f) => (f.desc ? `${f.title}: ${f.desc}` : f.title))
-        : fb?.keyFeatures || [],
+        : [],
     features:
       p?.features && p.features.length > 0
         ? p.features
-        : fb?.keyFeatures || [],
-    applications: extractApplications(p?.longDesc, fb?.applications),
+        : [],
+    applications: extractApplications(p?.longDesc),
     specifications:
       p?.specifications && p.specifications.length > 0
         ? p.specifications
-        : fb?.specifications || [],
+        : [],
     faqs:
       p?.faqs && p.faqs.length > 0
         ? p.faqs
-        : fb?.faqs || [],
-    metaTitle: p?.seoTitle || fb?.metaTitle || `${title} | ImageTech Industries`,
-    metaDescription: p?.seoDescription || fb?.metaDescription || shortDesc,
+        : [],
+    metaTitle: p?.seoTitle || `${title} | ImageTech Industries`,
+    metaDescription: p?.seoDescription || shortDesc,
     keywords:
       typeof p?.seoKeywords === "string"
         ? p.seoKeywords.split(",").map((k) => k.trim()).filter(Boolean)
         : Array.isArray(p?.seoKeywords)
         ? p.seoKeywords
-        : fb?.keywords || ["doctor blade", title, "ImageTech Industries"],
-    ratingValue: p?.ratingValue || fb?.ratingValue || "4.9",
-    reviewCount: p?.reviewCount || fb?.reviewCount || "148",
+        : ["doctor blade", title, "ImageTech Industries"],
+    ratingValue: p?.ratingValue || "4.9",
+    reviewCount: p?.reviewCount || "148",
   };
 };
 
 /**
- * Fetch all doctor blade products directly from ImageTech API with fallback
+ * Fetch all doctor blade products directly from ImageTech API
  * @param {string} category
  * @returns {Promise<Array>}
  */
@@ -622,48 +632,46 @@ export const fetchProducts = async (category = "doctor-blades") => {
       const catName = p.category?.name || "";
       return (
         catSlug === category ||
+        catSlug.includes("doctor-blade") ||
         catName.toLowerCase().includes("doctor blade") ||
         (p.slug && p.slug.includes("doctor-blade"))
       );
     });
 
-    const mappedApiProducts = dbApiProducts.map((p) => mapApiProductToClient(p));
-    const apiSlugs = new Set(mappedApiProducts.map((p) => p.slug));
-
-    // Preserve static products from productsData not yet present in the live API DB
-    const missingFallbackProducts = productsData
-      .filter((p) => !apiSlugs.has(p.slug))
-      .map((p) => mapApiProductToClient(null, p));
-
-    return [...mappedApiProducts, ...missingFallbackProducts];
+    return dbApiProducts.map((p) => mapApiProductToClient(p));
   } catch (error) {
-    console.warn("ImageTech API fetch failed, falling back to local productsData:", error);
-    return productsData.map((p) => mapApiProductToClient(null, p));
+    console.error("ImageTech API fetch failed:", error);
+    throw error;
   }
 };
 
 /**
- * Fetch a single product by slug directly from ImageTech API with fallback
+ * Fetch a single product by slug directly from ImageTech API
  * @param {string} slug
  * @returns {Promise<Object>}
  */
 export const fetchProductBySlug = async (slug) => {
   if (!slug) throw new Error("Product slug is required");
 
-  try {
-    const res = await fetch(`${IMAGETECH_API_URL}/products/${slug}`);
-    if (res.ok) {
-      const data = await res.json();
-      return mapApiProductToClient(data);
-    }
-  } catch (err) {
-    console.warn(`ImageTech API product fetch failed for ${slug}, checking fallback:`, err);
-  }
+  // Determine candidate slugs
+  const candidateSlugs = [
+    slug,
+    slug.replace(/^wipex-/, ""),
+    `wipex-${slug}`,
+  ];
 
-  // Fallback to local productsData
-  const localFallback = productsData.find((p) => p.slug === slug);
-  if (localFallback) {
-    return mapApiProductToClient(null, localFallback);
+  for (const candidate of candidateSlugs) {
+    try {
+      const res = await fetch(`${IMAGETECH_API_URL}/products/${candidate}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.slug) {
+          return mapApiProductToClient(data);
+        }
+      }
+    } catch {
+      // Continue to next candidate
+    }
   }
 
   const err = new Error(`Product not found: ${slug}`);
@@ -1086,7 +1094,7 @@ export const useAdminTogglePublishBlog = (token, options = {}) => {
 
 /* ── Product Hooks (ImageTech Backend) ── */
 
-/** Hook: Fetch and cache doctor blade products directly from API with 0ms fallback */
+/** Hook: Fetch and cache doctor blade products directly from API */
 export const useProducts = (category = "doctor-blades", options = {}) => {
   const queryClient = useQueryClient();
   return useQuery({
@@ -1094,7 +1102,7 @@ export const useProducts = (category = "doctor-blades", options = {}) => {
     queryFn: async () => {
       const data = await fetchProducts(category);
       if (Array.isArray(data)) {
-        // Automatically seed query cache for individual products for 0ms transitions
+        // Automatically seed query cache for individual products for fast transitions
         data.forEach((prod) => {
           if (prod && prod.slug) {
             queryClient.setQueryData(QUERY_KEYS.product(prod.slug), prod);
@@ -1103,15 +1111,12 @@ export const useProducts = (category = "doctor-blades", options = {}) => {
       }
       return data;
     },
-    initialData: () => {
-      return productsData.map((p) => mapApiProductToClient(null, p));
-    },
-    staleTime: 1000 * 60 * 15, // 15 minutes fresh
+    staleTime: 1000 * 60 * 5, // 5 minutes fresh once fetched from API
     ...options,
   });
 };
 
-/** Hook: Fetch and cache a single product with 0ms fallback */
+/** Hook: Fetch and cache a single product */
 export const useProduct = (slug, options = {}) => {
   const queryClient = useQueryClient();
   return useQuery({
@@ -1126,24 +1131,25 @@ export const useProduct = (slug, options = {}) => {
       // 2. Derive from all-products query cache
       const allProducts = queryClient.getQueryData(QUERY_KEYS.products("doctor-blades"));
       if (Array.isArray(allProducts)) {
-        const found = allProducts.find((p) => p.slug === slug);
+        const found = allProducts.find((p) => p.slug === slug || p.id === slug || p.apiSlug === slug);
         if (found) return found;
       }
-
-      // 3. Fallback to local productsData for 0ms render
-      const local = productsData.find((p) => p.slug === slug);
-      if (local) return mapApiProductToClient(null, local);
 
       return undefined;
     },
     initialDataUpdatedAt: () => {
-      return (
-        queryClient.getQueryState(QUERY_KEYS.product(slug))?.dataUpdatedAt ||
-        queryClient.getQueryState(QUERY_KEYS.products("doctor-blades"))?.dataUpdatedAt
-      );
+      const single = queryClient.getQueryState(QUERY_KEYS.product(slug));
+      if (single?.dataUpdatedAt && single?.status === "success") {
+        return single.dataUpdatedAt;
+      }
+      const all = queryClient.getQueryState(QUERY_KEYS.products("doctor-blades"));
+      if (all?.dataUpdatedAt && all?.status === "success") {
+        return all.dataUpdatedAt;
+      }
+      return 0;
     },
     enabled: Boolean(slug),
-    staleTime: 1000 * 60 * 15, // 15 minutes fresh
+    staleTime: 1000 * 60 * 5, // 5 minutes fresh once fetched from API
     ...options,
   });
 };

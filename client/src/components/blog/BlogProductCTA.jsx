@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useProduct } from "../../services/api";
-import { productsData } from "../../data/product";
+import { useProduct, useProducts } from "../../services/api";
 
 export default function BlogProductCTA({ productSlug = "wipex-carbon-steel-doctor-blade" }) {
   const { data: apiProduct } = useProduct(productSlug);
-  const fallback = productsData.find((p) => p.slug === productSlug) || productsData[0];
-  const product = apiProduct || fallback;
+  const { data: allProducts = [] } = useProducts();
+  const product = apiProduct || allProducts[0];
+
+  if (!product) return null;
 
   const handleOpenQuote = () => {
     window.dispatchEvent(
       new CustomEvent("open-quote-modal", {
-        detail: { subject: `Quote Inquiry for ${product.name}` },
+        detail: { subject: `Quote Inquiry for ${product.name || product.title}` },
       })
     );
   };

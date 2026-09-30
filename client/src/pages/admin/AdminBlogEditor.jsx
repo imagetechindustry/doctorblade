@@ -4,6 +4,7 @@ import {
   useAdminCreateBlog,
   useAdminUpdateBlog,
   adminUploadImage,
+  useProducts,
 } from "../../services/api";
 
 const ALL_SITES = [
@@ -28,17 +29,20 @@ const CATEGORIES = [
 
 const PRODUCTS = [
   { slug: "wipex-carbon-steel-doctor-blade", name: "Wipex Carbon Steel Doctor Blade" },
-  { slug: "wipex-stainless-steel-doctor-blade", name: "Wipex Stainless Steel Doctor Blade" },
   { slug: "wipex-polymer-doctor-blade", name: "WIPEX Polymer Doctor Blade" },
-  { slug: "custom-size-slit-blades", name: "Custom Size & Slit Doctor Blades" },
 ];
 
 export default function AdminBlogEditor({ blogId, token, onClose }) {
   const isEditing = Boolean(blogId);
 
   const { data: blogData, isLoading: loadingBlog } = useAdminBlog(token, blogId);
+  const { data: dynamicProducts = [] } = useProducts();
   const createBlogMutation = useAdminCreateBlog(token);
   const updateBlogMutation = useAdminUpdateBlog(token);
+
+  const availableProducts = dynamicProducts.length > 0
+    ? dynamicProducts.map((p) => ({ slug: p.slug, name: p.name || p.title }))
+    : PRODUCTS;
 
   const [formData, setFormData] = useState({
     title: "",
@@ -454,7 +458,7 @@ export default function AdminBlogEditor({ blogId, token, onClose }) {
                   onChange={(e) => handleChange("relatedProductSlug", e.target.value)}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs font-bold text-slate-800 focus:outline-none focus:border-blue-500 cursor-pointer"
                 >
-                  {PRODUCTS.map((p) => (
+                  {availableProducts.map((p) => (
                     <option key={p.slug} value={p.slug}>
                       {p.name}
                     </option>

@@ -1,11 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useLocation as useLocationQuery } from "../services/api";
-import { productsData } from "../data/product";
+import {
+  Target,
+  Shield,
+  Settings,
+  Layout,
+  Maximize,
+  Truck,
+  CheckCircle2,
+} from "lucide-react";
+import { useLocation as useLocationQuery, useProduct } from "../services/api";
 import SEO from "../components/common/SEO";
 import NotFound from "../components/common/NotFound";
 import FAQSection from "../components/common/FAQSection";
 import HomeCTA from "../components/home/HomeCTA";
+
+const IconMap = {
+  Settings: <Settings className="w-5 h-5" />,
+  Layout: <Layout className="w-5 h-5" />,
+  Maximize: <Maximize className="w-5 h-5" />,
+  Truck: <Truck className="w-5 h-5" />,
+  Target: <Target className="w-6 h-6 text-blue-600" />,
+  Shield: <Shield className="w-6 h-6 text-blue-600" />,
+};
 
 const CityProductPageSkeleton = () => (
   <div className="bg-slate-50 min-h-screen py-6 lg:py-10 animate-pulse">
@@ -77,24 +94,31 @@ const isInvalidSlug = (slug) =>
 const CityProductPage = () => {
   const { locationSlug, productSlug } = useParams();
   const [activeImage, setActiveImage] = useState(0);
+  const [activeTab, setActiveTab] = useState("overview");
 
   useEffect(() => {
     window.scrollTo(0, 0);
     setActiveImage(0);
+    setActiveTab("overview");
   }, [locationSlug, productSlug]);
 
-  const baseProduct = productsData.find((p) => p.slug === productSlug);
-  const invalid = isInvalidSlug(locationSlug) || !baseProduct;
+  const invalid = isInvalidSlug(locationSlug) || isInvalidSlug(productSlug);
+
+  const {
+    data: baseProduct,
+    isLoading: isProductLoading,
+    isError: isProductError,
+  } = useProduct(productSlug, { enabled: !invalid });
 
   const {
     data: location,
-    isLoading,
-    isError,
-    error,
-    refetch,
+    isLoading: isLocationLoading,
+    isError: isLocationError,
+    error: locationError,
+    refetch: refetchLocation,
   } = useLocationQuery(locationSlug, { enabled: !invalid });
 
-  if (invalid || (isError && error?.status === 404)) {
+  if (invalid || (!isProductLoading && !baseProduct) || (isLocationError && locationError?.status === 404)) {
     return (
       <NotFound
         title="Product or Location Not Found"
@@ -103,11 +127,11 @@ const CityProductPage = () => {
     );
   }
 
-  if (isLoading) {
+  if (isLocationLoading || (isProductLoading && !baseProduct)) {
     return <CityProductPageSkeleton />;
   }
 
-  if (isError) {
+  if (isLocationError || isProductError) {
     return (
       <div className="min-h-[50vh] flex flex-col items-center justify-center px-4 py-16 text-center">
         <div className="w-16 h-16 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center mb-4">
@@ -118,7 +142,7 @@ const CityProductPage = () => {
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Unable to load product details</h2>
         <p className="text-gray-600 mb-6 max-w-md">There was a temporary problem communicating with our server. Please try again.</p>
         <button
-          onClick={() => refetch()}
+          onClick={() => { refetchLocation(); }}
           className="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-sm"
         >
           Try Again
@@ -456,178 +480,167 @@ const CityProductPage = () => {
             </div>
           </div>
 
-          {/* Detailed Description Section */}
-          <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-lg border border-gray-100 mb-16">
-            <h2 className="text-3xl font-extrabold text-gray-900 mb-6">
-              Product Information
-            </h2>
-            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed whitespace-pre-line mb-8">
-              {product.detailedDescription}
+          {/* ══════════════════════════════════════════════════════════════
+              TABS SECTION: PRODUCT OVERVIEW & SPECIFICATIONS
+              ══════════════════════════════════════════════════════════════ */}
+          <div className="mb-20">
+            {/* Tabs Header */}
+            <div className="flex items-center border-b border-gray-200 mb-8 overflow-x-auto hide-scrollbar">
+              {["overview", "specifications"].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-8 py-4 text-[14px] font-black uppercase tracking-wider whitespace-nowrap transition-colors relative cursor-pointer ${
+                    activeTab === tab
+                      ? "text-[#1e3a8a]"
+                      : "text-gray-500 hover:text-gray-800"
+                  }`}
+                >
+                  {tab}
+                  {activeTab === tab && (
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-[#1e3a8a] rounded-t-full"></div>
+                  )}
+                </button>
+              ))}
             </div>
 
-            {/* Localized Supply & Distribution Block */}
-            <div className="mt-8 pt-8 border-t border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                Direct Supply & Delivery in {location.name} by ImageTech Industries
-              </h3>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                ImageTech Industries is a trusted manufacturer of {product.name} supplying printing and packaging businesses in {location.name} and across {location.state}. With decades of industry expertise, our blades are built with high-grade carbon steel, stainless steel, and polymers to provide consistent ink metering and reliable long-term performance.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                  <div className="font-bold text-gray-900 mb-1 flex items-center gap-2">
-                    <span className="text-blue-600">🚚</span> Fast Dispatch
-                  </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    Safe and prompt delivery directly to your facility in {location.name}.
-                  </p>
-                </div>
-                <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                  <div className="font-bold text-gray-900 mb-1 flex items-center gap-2">
-                    <span className="text-blue-600">📐</span> Custom Sizing Available
-                  </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    Manufactured to your required dimensions to suit your machine.
-                  </p>
-                </div>
-                <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                  <div className="font-bold text-gray-900 mb-1 flex items-center gap-2">
-                    <span className="text-blue-600">⭐</span> 30+ Years of Quality
-                  </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    ISO 9001:2015 certified manufacturer with direct technical and after-sales support.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Specifications, Features and Applications Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-            {/* Key Features */}
-            <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 flex flex-col h-full lg:col-span-1">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mr-4">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">
-                  Key Features
-                </h3>
-              </div>
-              <ul className="space-y-4">
-                {product.keyFeatures?.map((feature, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <div className="bg-blue-50 p-1 rounded-full mr-3 mt-0.5 shrink-0">
-                      <svg
-                        className="w-3.5 h-3.5 text-blue-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="3"
-                          d="M5 13l4 4L19 7"
+            {/* Tab Body Card */}
+            <div className="bg-white rounded-2xl border border-gray-200 p-8 lg:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] min-h-[400px]">
+              {/* Tab 1: Product Overview */}
+              {activeTab === "overview" && (
+                <div className="flex flex-col gap-12">
+                  <div className="w-full">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                      Product Overview
+                    </h3>
+                    <div className="space-y-4 mb-8">
+                      {product.longDesc ? (
+                        <div
+                          className="prose max-w-none text-gray-700 prose-headings:font-bold prose-headings:text-[#0f172a] prose-h2:text-2xl prose-h2:mb-4 prose-h2:font-bold prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:font-bold prose-p:text-[15px] prose-p:text-gray-700 prose-p:mb-5 prose-p:leading-relaxed prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-6 prose-li:text-[15px] prose-li:text-gray-700 prose-li:mb-2"
+                          dangerouslySetInnerHTML={{ __html: product.longDesc }}
                         />
-                      </svg>
+                      ) : (
+                        <div className="prose max-w-none text-gray-700 leading-relaxed whitespace-pre-line">
+                          {product.detailedDescription || product.overview}
+                        </div>
+                      )}
                     </div>
-                    <span className="text-gray-800 font-medium leading-relaxed">
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
 
-            {/* Industrial Applications */}
-            <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 flex flex-col h-full lg:col-span-1">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mr-4">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">
-                  Applications
-                </h3>
-              </div>
-              <p className="text-gray-800 font-medium leading-relaxed mb-6">
-                {product.applications}
-              </p>
-              <div className="mt-auto pt-4 border-t border-gray-100">
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 block mb-1">
-                  Available for Orders in {location.name}
-                </span>
-                <p className="text-sm text-gray-600">
-                  Supplied by ImageTech Industries for printing, coating, and packaging machinery in {location.name}, {location.state}.
-                </p>
-              </div>
-            </div>
+                    {/* Localized Supply & Distribution Block */}
+                    <div className="bg-blue-50/60 border border-blue-100 rounded-2xl p-6 sm:p-8 mb-8">
+                      <h4 className="text-xl font-bold text-gray-900 mb-2">
+                        Direct Supply & Delivery in {location.name} by ImageTech Industries
+                      </h4>
+                      <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6">
+                        ImageTech Industries is a trusted manufacturer supplying {product.name} to printing and packaging businesses in {location.name} and across {location.state}. With decades of industry expertise, our blades are built with high-grade carbon steel, stainless steel, and polymers for consistent ink metering and long-term cylinder protection.
+                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="p-4 bg-white rounded-xl border border-blue-100/80 shadow-xs">
+                          <div className="font-bold text-gray-900 mb-1 flex items-center gap-2 text-sm">
+                            <span className="text-blue-600">🚚</span> Fast Dispatch
+                          </div>
+                          <p className="text-xs text-gray-600 leading-relaxed">
+                            Safe and prompt delivery directly to your facility in {location.name}.
+                          </p>
+                        </div>
+                        <div className="p-4 bg-white rounded-xl border border-blue-100/80 shadow-xs">
+                          <div className="font-bold text-gray-900 mb-1 flex items-center gap-2 text-sm">
+                            <span className="text-blue-600">📐</span> Custom Sizing Available
+                          </div>
+                          <p className="text-xs text-gray-600 leading-relaxed">
+                            Manufactured to your required dimensions to suit your machine.
+                          </p>
+                        </div>
+                        <div className="p-4 bg-white rounded-xl border border-blue-100/80 shadow-xs">
+                          <div className="font-bold text-gray-900 mb-1 flex items-center gap-2 text-sm">
+                            <span className="text-blue-600">⭐</span> 30+ Years of Quality
+                          </div>
+                          <p className="text-xs text-gray-600 leading-relaxed">
+                            ISO 9001:2015 certified manufacturer with direct technical support.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
 
-            {/* Technical Specifications */}
-            <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 flex flex-col h-full lg:col-span-1">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mr-4">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">
-                  Specifications
-                </h3>
-              </div>
-              <div className="space-y-3">
-                <div className="flex justify-between items-start border-b border-gray-100 pb-2">
-                  <span className="text-gray-600 font-semibold pr-4">Delivery Region</span>
-                  <span className="text-gray-900 font-bold text-right">{location.name}, {location.state}</span>
-                </div>
-                {product.specifications?.map((spec, idx) => (
-                  <div
-                    key={idx}
-                    className="flex justify-between items-start border-b border-gray-100 pb-2 last:border-0"
-                  >
-                    <span className="text-gray-600 font-semibold pr-4">
-                      {spec.label}
-                    </span>
-                    <span className="text-gray-900 font-bold text-right">
-                      {spec.value}
-                    </span>
+                    <div className="bg-blue-50 border border-blue-100 rounded-xl p-5 flex items-start gap-4">
+                      <Shield className="w-8 h-8 text-blue-600 shrink-0" />
+                      <div>
+                        <h4 className="font-bold text-gray-900 text-[15px] mb-1">
+                          Quality Assured
+                        </h4>
+                        <p className="text-[13px] text-gray-600 font-medium">
+                          Every blade is manufactured and inspected to meet strict
+                          quality standards for consistent performance.
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                ))}
-              </div>
+
+                  {/* Overview Key Features Grid */}
+                  {product.overviewFeatures && product.overviewFeatures.length > 0 && (
+                    <div className="w-full">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                        Key Features
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                        {product.overviewFeatures.map((feat, idx) => (
+                          <div key={idx} className="flex gap-4">
+                            <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center shrink-0">
+                              {IconMap[feat.icon] || (
+                                <Target className="w-6 h-6 text-blue-600" />
+                              )}
+                            </div>
+                            <div>
+                              <h4 className="font-bold text-[15px] text-gray-900 mb-1">
+                                {feat.title}
+                              </h4>
+                              <p className="text-[13px] font-medium text-gray-600 leading-relaxed">
+                                {feat.desc}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Tab 2: Technical Specifications */}
+              {activeTab === "specifications" && (
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                    Technical Specifications
+                  </h3>
+                  <div className="overflow-hidden rounded-xl border border-gray-200">
+                    <table className="w-full text-left border-collapse">
+                      <tbody>
+                        <tr className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                          <th className="py-4 px-6 text-[14px] font-bold text-gray-700 bg-gray-50/50 w-1/3 border-r border-gray-100">
+                            Delivery Region
+                          </th>
+                          <td className="py-4 px-6 text-[14px] font-medium text-blue-700">
+                            {location.name}, {location.state}
+                          </td>
+                        </tr>
+                        {(product.specifications || []).map((spec, idx) => (
+                          <tr
+                            key={idx}
+                            className="border-b border-gray-200 last:border-0 hover:bg-gray-50 transition-colors"
+                          >
+                            <th className="py-4 px-6 text-[14px] font-bold text-gray-700 bg-gray-50/50 w-1/3 border-r border-gray-100">
+                              {spec.label}
+                            </th>
+                            <td className="py-4 px-6 text-[14px] font-medium text-gray-900">
+                              {spec.value}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 

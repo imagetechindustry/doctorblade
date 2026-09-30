@@ -1,19 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import { productsData } from "../../data/product";
+import { useProducts, usePrefetchProduct } from "../../services/api";
 
 const HomeProducts = ({ locationData }) => {
   const locName = locationData ? locationData.name : "";
   const locSlug = locationData ? locationData.slug : "";
+  const { data: productsList = [] } = useProducts();
+  const prefetchProduct = usePrefetchProduct();
 
-  const products = productsData.map(p => ({
-    id: p.id,
-    title: p.name,
-    description: p.shortDescription,
-    image: p.images[0],
+  const products = productsList.map((p) => ({
+    id: p.id || p.slug,
+    slug: p.slug,
+    title: p.name || p.title,
+    description: p.shortDescription || p.shortDesc,
+    image: (p.images && p.images[0]) || "/Doctorblade/steel-blade/224.jpg",
     link: locSlug ? `/${locSlug}/${p.slug}` : `/products/${p.slug}`,
-    externalLink: p.externalLink,
+    externalLink: p.externalLink || `https://www.imagetechindustries.com/products/${p.slug}`,
   }));
   return (
     <section className="py-10 sm:py-16 lg:py-24 bg-gray-50">
@@ -59,29 +61,26 @@ const HomeProducts = ({ locationData }) => {
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {products.map((product) => (
-            <div
+            <Link
               key={product.id}
-              className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 hover:shadow-xl transition-shadow group flex flex-col h-full"
+              to={product.link}
+              onMouseEnter={() => prefetchProduct(product.slug)}
+              className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col h-full cursor-pointer"
             >
-              <a href={product.externalLink} target="_blank" rel="noopener noreferrer" className="block group/link cursor-pointer">
-                <div className="bg-gray-100 rounded-xl mb-4 sm:mb-6 overflow-hidden aspect-square flex items-center justify-center p-3 sm:p-4">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-full object-cover mix-blend-multiply group-hover/link:scale-105 transition-transform duration-500 rounded-lg shadow-sm"
-                  />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 leading-tight group-hover/link:text-blue-600 transition-colors">
-                  {product.title}
-                </h3>
-              </a>
+              <div className="bg-gray-100 rounded-xl mb-4 sm:mb-6 overflow-hidden aspect-square flex items-center justify-center p-3 sm:p-4">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500 rounded-lg shadow-sm"
+                />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors">
+                {product.title}
+              </h3>
               <p className="text-gray-700 text-xs sm:text-sm mb-4 sm:mb-6 flex-grow leading-relaxed">
                 {product.description}
               </p>
-              <Link
-                to={product.link}
-                className="inline-flex items-center text-blue-600 font-semibold text-xs sm:text-sm hover:text-blue-800 transition-colors mt-auto"
-              >
+              <div className="inline-flex items-center text-blue-600 font-semibold text-xs sm:text-sm group-hover:text-blue-800 transition-colors mt-auto">
                 View Details
                 <svg
                   className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1 transform group-hover:translate-x-1 transition-transform"
@@ -96,8 +95,8 @@ const HomeProducts = ({ locationData }) => {
                     d="M14 5l7 7m0 0l-7 7m7-7H3"
                   />
                 </svg>
-              </Link>
-            </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

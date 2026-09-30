@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { useLocations, usePrefetchLocation, useBlogs } from "../services/api";
+import { useLocations, usePrefetchLocation, useBlogs, useProducts } from "../services/api";
 import { productsData } from "../data/product";
 import SEO from "../components/common/SEO";
 
@@ -55,6 +55,7 @@ const Sitemap = () => {
 
   const { data: locations = [], isLoading } = useLocations();
   const { data: blogData } = useBlogs({ limit: 50 });
+  const { data: products = productsData } = useProducts();
   const blogs = blogData?.blogs || [];
 
   // Instant filter by city, state, or slug
@@ -262,13 +263,13 @@ const Sitemap = () => {
           <div className="bg-gradient-to-r from-blue-50 to-white border-b border-blue-100 px-6 py-4 flex items-center justify-between">
             <h2 className="text-xl font-bold text-blue-900">Our Products Directory</h2>
             <span className="text-blue-600 bg-white rounded-full px-3 py-1 text-xs font-bold border border-blue-100 shadow-sm">
-              {productsData.length} Products
+              {products.length} Products
             </span>
           </div>
           <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {productsData.map((prod) => (
+            {products.map((prod) => (
               <Link
-                key={prod.id}
+                key={prod.id || prod.slug}
                 to={`/products/${prod.slug}`}
                 className="group flex flex-col justify-between bg-white border border-gray-200 hover:border-blue-500 text-gray-800 hover:text-blue-700 font-medium p-4 rounded-xl transition-all duration-300 hover:shadow-md"
               >

@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useProduct } from "../../services/api";
 import { productsData } from "../../data/product";
 
 export default function BlogProductCTA({ productSlug = "wipex-carbon-steel-doctor-blade" }) {
-  const product =
-    productsData.find((p) => p.slug === productSlug) || productsData[0];
+  const { data: apiProduct } = useProduct(productSlug);
+  const fallback = productsData.find((p) => p.slug === productSlug) || productsData[0];
+  const product = apiProduct || fallback;
 
   const handleOpenQuote = () => {
     window.dispatchEvent(

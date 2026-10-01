@@ -47,7 +47,7 @@ const ProductDetailSkeleton = () => (
 
 const ProductDetail = () => {
   const { slug } = useParams();
-  const { data: product, isLoading, isError } = useProduct(slug);
+  const { data: product, isPending, isLoading, isError } = useProduct(slug);
   const { data: allProducts = [] } = useProducts();
 
   const [activeImage, setActiveImage] = useState(0);
@@ -72,7 +72,9 @@ const ProductDetail = () => {
     setOpenFaqIndex(null);
   }, [slug]);
 
-  if (isLoading && !product) {
+  const isFetchingProduct = (isPending || isLoading) && !product;
+
+  if (isFetchingProduct) {
     return <ProductDetailSkeleton />;
   }
 

@@ -106,19 +106,21 @@ const CityProductPage = () => {
 
   const {
     data: baseProduct,
+    isPending: isProductPending,
     isLoading: isProductLoading,
     isError: isProductError,
   } = useProduct(productSlug, { enabled: !invalid });
 
   const {
     data: location,
+    isPending: isLocationPending,
     isLoading: isLocationLoading,
     isError: isLocationError,
     error: locationError,
     refetch: refetchLocation,
   } = useLocationQuery(locationSlug, { enabled: !invalid });
 
-  if (invalid || (!isProductLoading && !baseProduct) || (isLocationError && locationError?.status === 404)) {
+  if (invalid) {
     return (
       <NotFound
         title="Product or Location Not Found"
@@ -127,8 +129,20 @@ const CityProductPage = () => {
     );
   }
 
-  if (isLocationLoading || (isProductLoading && !baseProduct)) {
+  const isProductWaiting = (isProductPending || isProductLoading) && !baseProduct;
+  const isLocationWaiting = (isLocationPending || isLocationLoading) && !location;
+
+  if (isProductWaiting || isLocationWaiting) {
     return <CityProductPageSkeleton />;
+  }
+
+  if (!baseProduct || !location || isLocationError || isProductError) {
+    return (
+      <NotFound
+        title="Product or Location Not Found"
+        message={`We could not find the requested combination of "${locationSlug}" and "${productSlug}". Please verify the location and product or browse our sitemap.`}
+      />
+    );
   }
 
   if (isLocationError || isProductError) {

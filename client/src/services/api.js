@@ -1122,7 +1122,7 @@ export const useProduct = (slug, options = {}) => {
   return useQuery({
     queryKey: QUERY_KEYS.product(slug),
     queryFn: () => fetchProductBySlug(slug),
-    initialData: () => {
+    placeholderData: () => {
       if (!slug) return undefined;
       // 1. Direct hit from single product cache
       const cachedDirect = queryClient.getQueryData(QUERY_KEYS.product(slug));
@@ -1136,17 +1136,6 @@ export const useProduct = (slug, options = {}) => {
       }
 
       return undefined;
-    },
-    initialDataUpdatedAt: () => {
-      const single = queryClient.getQueryState(QUERY_KEYS.product(slug));
-      if (single?.dataUpdatedAt && single?.status === "success") {
-        return single.dataUpdatedAt;
-      }
-      const all = queryClient.getQueryState(QUERY_KEYS.products("doctor-blades"));
-      if (all?.dataUpdatedAt && all?.status === "success") {
-        return all.dataUpdatedAt;
-      }
-      return 0;
     },
     enabled: Boolean(slug),
     staleTime: 1000 * 60 * 5, // 5 minutes fresh once fetched from API
